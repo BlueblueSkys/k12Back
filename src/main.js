@@ -6,12 +6,12 @@ import VueRouter from 'vue-router'
 import routerConfig from './router.config'
 Vue.use(VueRouter);
 
-
-Vue.config.productionTip = false;
 const router = new VueRouter(routerConfig);
+Vue.config.productionTip = false;
+
 /* eslint-disable no-new */
 new Vue({
-  router:router,
+  router,
   el: '#app',
   components: { App },
   template: '<App/>'

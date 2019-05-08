@@ -12,13 +12,6 @@ function resolve (dir) {
 
 
 module.exports = {
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
-    new webpack.ProvidePlugin({
-      jQuery: "jquery",
-      $: "jquery"
-    })
-  ],
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
@@ -72,6 +65,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\\\\\\\\.css$/,
+        loader: "style!css"
+      },
+      {
+        test: /\\\\\\\\.(eot|woff|woff2|ttf)([\\\\\\\\?]?.*)$/,
+        loader: "file"
       }
     ]
   },
@@ -86,5 +87,12 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      $: "jquery"
+    })
+  ],
 }
