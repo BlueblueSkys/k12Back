@@ -4,10 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import routerConfig from './router.config'
-import 'bootstrap3/dist/css/bootstrap.css'
-import '../static/css/app.css'
-import $ from 'jquery'
-import 'bootstrap'
 
 Vue.use(VueRouter);
 
