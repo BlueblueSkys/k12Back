@@ -29,6 +29,7 @@ import systemHelp from './components/sys/system-help'
 
 export default {
   routes:[
+    {path:'/',redirect:'/app/event/category'},
     {path:'/operatCenter',component:operatCenter},
     {path:'/infoClassifyControl',component:infoClassifyControl},
     {path:'/saleCenter',component:saleCenter},
