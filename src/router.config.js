@@ -9,6 +9,12 @@ import sMarketuser from './components/sale-center/s-marketuser'
 import sSaleuser from './components/sale-center/s-saleuser'
 // 引入订单管理
 import orderControl from './components/sale-center/order-control'
+// 引入统计分析
+import statistics from './components/sale-center/statistics'
+
+import sIncome from './components/sale-center/s_statistics/s-income'
+import sRegister from './components/sale-center/s_statistics/s-register'
+
 
 
 // 引入 系统管理
@@ -19,13 +25,35 @@ import systemPerson from './components/sys/system-person'
 import systemLog from './components/sys/system-log'
 import systemHelp from './components/sys/system-help'
 
+
+// 引入运维中心
+import saveCenter from './components/save-center/save_center'
+
+// 运维中心下组件
+import leaveBag from './components/save-center/leave-bag'
+import versionsControl from './components/save-center/versions-control'
+
+
 export default {
   routes:[
+    {path:'/',redirect:'/operatCenter'},
     {path:'/operatCenter',component:operatCenter},
-    {path:'/saleCenter',component:saleCenter},
-    {path:'/sMarketuser',component:sMarketuser},
-    {path:'/sSaleuser',component:sSaleuser},
-    {path:'/orderControl',component: orderControl},
+
+    {path:'/saleCenter',component:saleCenter,children:[
+        {path:'/saleCenter/sMarketuser',component:sMarketuser},
+        {path:'/saleCenter/sSaleuser',component:sSaleuser},
+        {path:'/saleCenter/orderControl',component: orderControl},
+        {path:'/saleCenter/statistics',
+          component: statistics,
+          children:[
+            {path:'/saleCenter/statistics/sIncome',component:sIncome},
+            {path:'/saleCenter/statistics/sRegister',component:sRegister}
+          ],
+        },
+
+      ]},
+
+
     {
       path:'/system',
       component: systemControl,
@@ -35,6 +63,17 @@ export default {
         {path:'/system/log',component:systemControl},
         {path:'/system/admin',component:systemControl},
       ]
+    },
+
+
+    {path:'/saveCenter',
+      component:saveCenter,
+      children:[
+        {path:'/saveCenter/leaveBag',component:leaveBag},
+        {path:'/saveCenter/versionsControl',component:versionsControl}
+      ]
     }
+
+
   ]
 }
