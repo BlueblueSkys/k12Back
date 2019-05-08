@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import routerConfig from './router.config'
+
 import '../static/css/app.css'
 
 import ElementUI from 'element-ui'
