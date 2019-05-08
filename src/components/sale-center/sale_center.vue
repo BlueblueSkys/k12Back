@@ -21,22 +21,10 @@
 </template>
 
 <script>
-  // 引入 销售跟进用户
-  import sMarketuser from './s-marketuser'
-  // 引入消费用户
-  import sSaleuser from './s-saleuser'
-  //  引入右边主要
-  import saleCentermain from './saleCentermain'
-  // 引入订单管理
-  import orderControl from './order-control'
 
   export default {
     name: "sale_center",
     components: {
-      sSaleuser,
-      sMarketuser,
-      saleCentermain,
-      orderControl,
     }
   }
 </script>
