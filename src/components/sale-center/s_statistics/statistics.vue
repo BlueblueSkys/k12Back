@@ -1,16 +1,13 @@
 <template>
-
-  <el-submenu index="4">
-    <template slot="title"><i class="el-icon-setting"></i>统计分析</template>
+  <el-submenu index="4"  style="text-indent: 13px;">
+    <template slot="title"><i class="el-icon-setting"></i><span style="margin-left: 10px">统计分析</span></template>
     <el-menu-item-group >
       <el-menu-item index="4-1" style="text-indent: 20px">
         <router-link to="sIncome" class="router-link">收入统计</router-link></el-menu-item>
       <el-menu-item index="4-2" style="text-indent: 20px">
         <router-link to="sRegister" class="router-link">注册统计</router-link></el-menu-item>
     </el-menu-item-group>
-
   </el-submenu>
-
 </template>
 
 <script>
