@@ -1,47 +1,50 @@
 <template>
   <!--  销售中心 左边框-->
-  <div style="text-align:left">
+  <div>
     <el-menu-item index="1"  style="text-indent: 13px;">
       <i class="el-icon-setting"></i>
-      <router-link to="/sSaleuser" class="router-link"  style="margin-left: 7px">消费用户</router-link>
+      <router-link to="/saleCenter/sSaleuser" class="router-link"  style="margin-left: 7px">消费用户</router-link>
     </el-menu-item>
     <el-menu-item index="2"  style="text-indent: 13px;">
       <template slot="title">
         <i class="el-icon-menu"></i>
-        <router-link to="/sMarketuser" class="router-link"  style="margin-left: 7px">销售跟进用户</router-link>
+        <router-link to="/saleCenter/sMarketuser" class="router-link"  style="margin-left: 7px">销售跟进用户</router-link>
       </template>
     </el-menu-item>
     <el-menu-item index="3"  style="text-indent: 13px;">
       <template slot="title">
         <i class="el-icon-setting"></i>
-        <router-link to="/orderControl" class="router-link"  style="margin-left: 7px">订单管理</router-link>
+        <router-link to="/saleCenter/orderControl" class="router-link"  style="margin-left: 7px">订单管理</router-link>
       </template>
     </el-menu-item>
-    <statistics></statistics>
+    <el-menu-item index="4"  style="text-indent: 13px;">
+      <template slot="title">
+        <i class="el-icon-setting"></i>
+        <router-link to="/saleCenter/statistics" class="router-link"  style="margin-left: 7px">统计分析</router-link>
+      </template>
+    </el-menu-item>
+
 
   </div>
 </template>
 
 <script>
   // 引入统计分析
-  import statistics from './s_statistics/statistics'
+
   // 引入 销售跟进用户
-  import sMarketuser from './s-marketuser'
-  // 引入消费用户
-  import sSaleuser from './s-saleuser'
-  //  引入右边主要
-  import saleCentermain from './saleCentermain'
-  // 引入订单管理
-  import orderControl from './order-control'
+  // import sMarketuser from './s-marketuser'
+  // // 引入消费用户
+  // import sSaleuser from './s-saleuser'
+  // //  引入右边主要
+  // import saleCentermain from './saleCentermain'
+  // // 引入订单管理
+  // import orderControl from './order-control'
 
   export default {
     name: "sale_center",
     components: {
-      sSaleuser,
-      sMarketuser,
-      saleCentermain,
-      orderControl,
-      statistics
+
+
     }
   }
 </script>
