@@ -1,13 +1,10 @@
 <template>
-
+    
 </template>
 
 <script>
     export default {
-        name: "opinionControl",
-        components:{
-
-        }
+        name: "answerControl"
     }
 </script>
 
