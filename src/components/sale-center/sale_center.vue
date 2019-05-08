@@ -1,69 +1,31 @@
 <template>
   <!--  销售中心 左边框-->
-  <el-row class="tac">
-    <el-col :span="12">
-      <h5>默认颜色</h5>
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose">
-        <el-menu-item index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title"><router-link to="/sSaleuser">消费用户</router-link></span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title"> <router-link to="/sMarketuser">销售跟进用户</router-link></span>
-        </el-menu-item>
+  <div style="text-align:left">
 
-        <el-menu-item index="3">
-          <i class="el-icon-menu"></i>
-          <span slot="title"> <router-link to="/orderControl">订单管理</router-link></span>
-        </el-menu-item>
+    <el-menu-item index="1">
+      <i class="el-icon-setting"></i>
+      <router-link to="/sSaleuser" class="router-link">消费用户</router-link>
+    </el-menu-item>
+    <el-menu-item index="2">
+      <template slot="title">
+        <i class="el-icon-menu"></i>
+        <router-link to="/sMarketuser" class="router-link">销售跟进用户</router-link>
+      </template>
+    </el-menu-item>
+    <el-menu-item index="3">
+      <template slot="title">
+        <i class="el-icon-setting"></i>
+        <router-link to="/orderControl" class="router-link">订单管理</router-link>
+      </template>
+    </el-menu-item>
+    <statistics></statistics>
 
-        <el-submenu index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title"><router-link to="/statistics">统计分析</router-link></span>
-          <el-menu-item-group>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-      </el-menu>
-    </el-col>
-  </el-row>
-
-
-<!--  <div class="sale_center_main">-->
-<!--    <div class="sale_center_left">-->
-<!--      <div class="s-saveuser">-->
-<!--        <router-link to="/sSaleuser">消费用户</router-link>-->
-<!--      </div>-->
-<!--      <div class="s-marketuser">-->
-<!--        <router-link to="/sMarketuser">销售跟进用户</router-link>-->
-<!--      </div>-->
-<!--      <div class="order_control">-->
-<!--        <router-link to="/orderControl">订单管理</router-link>-->
-<!--      </div>-->
-<!--      <div class="statistics">-->
-<!--        <router-link to="/statistics">统计分析</router-link>-->
-
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <saleCentermain></saleCentermain>-->
-
-<!--  </div>-->
-
-
+  </div>
 </template>
 
 <script>
   // 引入统计分析
-  import statistics from './statistics'
+  import statistics from './s_statistics/statistics'
   // 引入 销售跟进用户
   import sMarketuser from './s-marketuser'
   // 引入消费用户
@@ -86,5 +48,8 @@
 </script>
 
 <style scoped>
-
+.router-link{
+  color:#303133;
+  text-decoration: none;
+}
 </style>
