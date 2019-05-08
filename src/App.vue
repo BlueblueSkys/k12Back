@@ -88,6 +88,7 @@
         </el-main>
       </el-container>
     </el-container>
+    <operatCenter></operatCenter>
   </div>
 </template>
 
