@@ -30,10 +30,10 @@ export default {
       path:'/system',
       component: systemControl,
       children:[
-        {path:'/system/admin',component:systemAdmin},
-        {path:'/system/role',component:systemAdmin},
-        {path:'/system/log',component:systemAdmin},
-        {path:'/system/admin',component:systemAdmin},
+        {path:'/system/admin',component:systemControl},
+        {path:'/system/role',component:systemControl},
+        {path:'/system/log',component:systemControl},
+        {path:'/system/admin',component:systemControl},
       ]
     }
   ]

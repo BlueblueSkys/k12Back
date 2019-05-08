@@ -17,10 +17,10 @@
         <router-link to="/system/log" class="router-link">系统日志</router-link>
       </template>
     </el-menu-item>
-    <el-menu-item index="3">
+    <el-menu-item index="4">
       <template slot="title">
         <i class="el-icon-setting"></i>
-        <router-link to="/system/doc" class="router-link">帮助文档</router-link>
+        <router-link to="/system/role" class="router-link">帮助文档</router-link>
       </template>
     </el-menu-item>
   </div>
