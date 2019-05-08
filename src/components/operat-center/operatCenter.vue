@@ -5,8 +5,12 @@
       <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
       <el-submenu index="1-1" class="el-submenu">
         <template slot="title">资讯管理</template>
-        <el-menu-item index="1-1-1">资讯分类管理</el-menu-item>
-        <el-menu-item index="1-1-2">资讯列表</el-menu-item>
+        <el-menu-item index="1-1-1">
+          <router-link to="/infoClassifyControl">资讯分类管理</router-link>
+        </el-menu-item>
+        <el-menu-item index="1-1-2">
+          <router-link to="/infoList">资讯列表</router-link>
+        </el-menu-item>
       </el-submenu>
       <el-menu-item index="1-2" class="el-menu-item">
         <template slot="title">公告管理</template>
