@@ -88,14 +88,11 @@
         </el-main>
       </el-container>
     </el-container>
-    <saleCenter></saleCenter>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
 // 引入销售中心
-import saleCenter from './components/sale-center/sale_center'
 
   export default {
     data() {
@@ -113,9 +110,7 @@ import saleCenter from './components/sale-center/sale_center'
 
       }
     },
-    components: {
-      saleCenter
-    }
+
   };
 
 </script>
