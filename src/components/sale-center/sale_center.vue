@@ -18,14 +18,11 @@
         <router-link to="/orderControl" class="router-link">订单管理</router-link>
       </template>
     </el-menu-item>
-    <statistics></statistics>
-
   </div>
 </template>
 
 <script>
   // 引入统计分析
-  import statistics from './s_statistics/statistics'
   // 引入 销售跟进用户
   import sMarketuser from './s-marketuser'
   // 引入消费用户
@@ -42,7 +39,6 @@
       sMarketuser,
       saleCentermain,
       orderControl,
-      statistics
     }
   }
 </script>

@@ -10,13 +10,31 @@ import sSaleuser from './components/sale-center/s-saleuser'
 // 引入订单管理
 import orderControl from './components/sale-center/order-control'
 
+
+// 引入 系统管理
+import systemControl from './components/sys/system-control'
+// 系统管理下级组件
+import systemAdmin from './components/sys/system-admin'
+import systemPerson from './components/sys/system-person'
+import systemLog from './components/sys/system-log'
+import systemHelp from './components/sys/system-help'
+
 export default {
   routes:[
     {path:'/operatCenter',component:operatCenter},
     {path:'/saleCenter',component:saleCenter},
     {path:'/sMarketuser',component:sMarketuser},
     {path:'/sSaleuser',component:sSaleuser},
-    {path:'/orderControl',component: orderControl}
-
+    {path:'/orderControl',component: orderControl},
+    {
+      path:'/system',
+      component: systemControl,
+      children:[
+        {path:'/system/admin',component:systemAdmin},
+        {path:'/system/role',component:systemAdmin},
+        {path:'/system/log',component:systemAdmin},
+        {path:'/system/admin',component:systemAdmin},
+      ]
+    }
   ]
 }
