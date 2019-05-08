@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+<!--    <img src="./assets/logo.png">-->
     <!--<HelloWorld/>-->
+    <saleCenter></saleCenter>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+// import HelloWorld from './components/HelloWorld'
+// 引入销售中心
+import saleCenter from './components/sale-center/sale_center'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,abc
+    saleCenter
   }
 }
 </script>
