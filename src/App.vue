@@ -11,14 +11,20 @@
             <el-menu-item class="nav-item" index="2">
               <router-link to="/saleCenter">销售中心</router-link>
             </el-menu-item>
-            <el-menu-item class="nav-item" index="3">消息中心</el-menu-item>
-            <el-menu-item class="nav-item" index="4">订单管理</el-menu-item>
+            <el-menu-item class="nav-item" index="3">
+              <router-link to="/saveCenter">运维中心</router-link>
+            </el-menu-item>
+            <el-menu-item class="nav-item" index="4">
+              <router-link to="/system">系统管理</router-link>
+
+            </el-menu-item>
           </el-menu>
         </el-header>
       </el-container>
 
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="['1', '3']">
+          <!--<saleCenter></saleCenter>-->
           <router-view></router-view>
         </el-menu>
       </el-aside>
@@ -28,9 +34,12 @@
 
 <script>
 
+
 export default {
   name: 'App',
   components: {
+
+
   }
 }
 </script>

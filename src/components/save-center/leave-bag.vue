@@ -1,15 +1,11 @@
 <template>
-
+    
 </template>
 
 <script>
-
-  export default {
-    name: "statistics",
-    components: {
-
+    export default {
+        name: "leave-bag"
     }
-  }
 </script>
 
 <style scoped>
