@@ -23,20 +23,20 @@
           <router-view></router-view>
         </el-menu>
       </el-aside>
-
     </el-container>
-
   </div>
 </template>
 
 <script>
 
 
+import operatCenter from './components/operat-center/operatCenter'
 export default {
   name: 'App',
   components: {
 
 
+    operatCenter,
   }
 }
 </script>
