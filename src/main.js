@@ -4,13 +4,24 @@ import Vue from 'vue'
 import App from './App'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VueRouter from 'vue-router'
+import routerConfig from './router.config'
+import 'bootstrap3/dist/css/bootstrap.css'
+import '../static/css/app.css'
+import $ from 'jquery'
+import 'bootstrap'
 
 Vue.use(Element)
 Vue.config.productionTip = false
+Vue.use(VueRouter);
+
+const router = new VueRouter(routerConfig);
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
+  router,
   el: '#app',
   components: { App },
   template: '<App/>'
-})
+});
