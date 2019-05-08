@@ -6,10 +6,10 @@
           <div class="navtext">机灵兔编程</div>
           <el-menu  class="el-menu-demo" mode="horizontal" >
             <el-menu-item class="nav-item" index="1">
-              <router-link to="operatCenter">处理中心</router-link>
+              <router-link to="/operatCenter">运营中心</router-link>
             </el-menu-item>
             <el-menu-item class="nav-item" index="2">
-              <router-link to="saleCenter">处理中心</router-link>
+              <router-link to="/saleCenter">销售中心</router-link>
             </el-menu-item>
             <el-menu-item class="nav-item" index="3">消息中心</el-menu-item>
             <el-menu-item class="nav-item" index="4">订单管理</el-menu-item>
@@ -24,9 +24,7 @@
         </el-menu>
       </el-aside>
 
-
     </el-container>
-
 
   </div>
 </template>
