@@ -3,18 +3,20 @@
     <el-container>
       <el-container class="head">
         <el-header class="theNav">
-          <div class="navtext">机灵兔编程</div>
-          <el-menu  class="el-menu-demo" mode="horizontal" >
-            <el-menu-item class="nav-item" index="1">
+          <div class="navtext">极灵兔编程</div>
+          <el-menu  class="el-menu-demo nav-ul" mode="horizontal" >
+            <el-menu-item class="nav-item">
               <router-link to="/operatCenter">运营中心</router-link>
             </el-menu-item>
-            <el-menu-item class="nav-item" index="2">
+            <el-menu-item  class="nav-item">
               <router-link to="/saleCenter">销售中心</router-link>
-            </el-menu-item>
-            <el-menu-item class="nav-item" index="3">消息中心</el-menu-item>
-            <el-menu-item class="nav-item" index="4">
+            </el-menu-item >
+            <el-menu-item  class="nav-item">
+              <router-link to="/saleCenter">消息中心</router-link>
+            </el-menu-item >
+            <el-menu-item  class="nav-item">
               <router-link to="/system">系统管理</router-link>
-            </el-menu-item>
+            </el-menu-item >
           </el-menu>
         </el-header>
       </el-container>
@@ -82,8 +84,15 @@ export default {
     float: left;
   }
   .nav-item{
-    color: white !important;
-    background-color: black;
+    width: 100px;
+    padding: 0;
+  }
+  .nav-item a{
+    /*background-color: black;*/
+    /*color: white;*/
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
   .theNav{
     background-color: black ;
@@ -94,5 +103,10 @@ export default {
     height: 100%;
     color: white;
     float: left;
+  }
+  .nav-ul{
+    border: none !important;
+    height: 100%;
+    background-color: black;
   }
 </style>

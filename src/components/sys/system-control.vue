@@ -1,26 +1,26 @@
 <template>
   <!--系统管理-->
   <div style="text-align:left">
-    <el-menu-item index="1">
+    <el-menu-item index="1" style="text-indent: 13px;">
       <i class="el-icon-setting"></i>
-      <router-link to="/system/admin" class="router-link">管理员管理</router-link>
+      <router-link to="/system/admin" class="router-link" style="margin-left: 7px;">管理员管理</router-link>
     </el-menu-item>
-    <el-menu-item index="2">
+    <el-menu-item index="2" style="text-indent: 13px;">
       <template slot="title">
         <i class="el-icon-menu"></i>
-        <router-link to="/system/role" class="router-link">角色管理</router-link>
+        <router-link to="/system/role" class="router-link" style="margin-left: 7px;">角色管理</router-link>
       </template>
     </el-menu-item>
-    <el-menu-item index="3">
+    <el-menu-item index="3" style="text-indent: 13px;">
       <template slot="title">
         <i class="el-icon-setting"></i>
-        <router-link to="/system/log" class="router-link">系统日志</router-link>
+        <router-link to="/system/log" class="router-link" style="margin-left: 7px;">系统日志</router-link>
       </template>
     </el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item index="4" style="text-indent: 13px;">
       <template slot="title">
         <i class="el-icon-setting"></i>
-        <router-link to="/system/role" class="router-link">帮助文档</router-link>
+        <router-link to="/system/role" class="router-link" style="margin-left: 7px;">帮助文档</router-link>
       </template>
     </el-menu-item>
   </div>
@@ -32,6 +32,5 @@
     }
 </script>
 
-<style scoped>
-
+<style>
 </style>
