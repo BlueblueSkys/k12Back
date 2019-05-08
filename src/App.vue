@@ -88,10 +88,14 @@
         </el-main>
       </el-container>
     </el-container>
+    <saleCenter></saleCenter>
   </div>
 </template>
 
 <script>
+// import HelloWorld from './components/HelloWorld'
+// 引入销售中心
+import saleCenter from './components/sale-center/sale_center'
 
   export default {
     data() {
@@ -108,8 +112,12 @@
       handleClick(tab, event) {
 
       }
+    },
+    components: {
+      saleCenter
     }
   };
+
 </script>
 
 <style>
