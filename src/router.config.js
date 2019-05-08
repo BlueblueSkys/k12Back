@@ -1,4 +1,6 @@
 // import Home from './components/Home.vue'
+// 引入运营中心
+import operatCenter from './components/operat-center/operatCenter'
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -10,6 +12,7 @@ import orderControl from './components/sale-center/order-control'
 
 export default {
   routes:[
+    {path:'/operatCenter',component:operatCenter},
     {path:'/saleCenter',component:saleCenter},
     {path:'/sMarketuser',component:sMarketuser},
     {path:'/sSaleuser',component:sSaleuser},
