@@ -5,8 +5,12 @@
         <el-header class="theNav">
           <div class="navtext">机灵兔编程</div>
           <el-menu  class="el-menu-demo" mode="horizontal" >
-            <el-menu-item class="nav-item" index="1">处理中心</el-menu-item>
-            <el-menu-item class="nav-item" index="2">处理中心</el-menu-item>
+            <el-menu-item class="nav-item" index="1">
+              <router-link to="/operatCenter">运营中心</router-link>
+            </el-menu-item>
+            <el-menu-item class="nav-item" index="2">
+              <router-link to="/saleCenter">销售中心</router-link>
+            </el-menu-item>
             <el-menu-item class="nav-item" index="3">消息中心</el-menu-item>
             <el-menu-item class="nav-item" index="4">订单管理</el-menu-item>
           </el-menu>
@@ -15,7 +19,8 @@
 
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="['1', '3']">
-          <operatCenter></operatCenter>
+<!--          <saleCenter></saleCenter>-->
+          <router-view></router-view>
         </el-menu>
       </el-aside>
     </el-container>
@@ -23,10 +28,14 @@
 </template>
 
 <script>
+
+
 import operatCenter from './components/operat-center/operatCenter'
 export default {
   name: 'App',
   components: {
+
+
     operatCenter,
   }
 }

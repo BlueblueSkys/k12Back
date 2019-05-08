@@ -9,6 +9,12 @@ Vue.use(VueRouter);
 const router = new VueRouter(routerConfig);
 Vue.config.productionTip = false;
 
+import ElementUI from 'element-ui'
+
+import '../node_modules/element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI);
+
 /* eslint-disable no-new */
 new Vue({
   router,
