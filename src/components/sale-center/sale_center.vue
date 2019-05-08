@@ -30,25 +30,11 @@
         <router-link to="/saleCenter/statistics/sRegister" class="router-link" >注册统计</router-link>
       </el-menu-item>
     </el-submenu>
-
-
-
-
-
   </div>
 </template>
 
 <script>
-  // 引入统计分析
 
-  // // 引入 销售跟进用户
-  // import sMarketuser from './s-marketuser'
-  // // 引入消费用户
-  // import sSaleuser from './s-saleuser'
-  // //  引入右边主要
-  // import saleCentermain from './saleCentermain'
-  // // 引入订单管理
-  // import orderControl from './order-control'
 
   export default {
     name: "sale_center",

@@ -35,15 +35,35 @@ import saveCenter from './components/save-center/save_center'
 
 import leaveBag from './components/save-center/leave-bag'
 import versionsControl from './components/save-center/versions-control'
+
+// 引入 统计分析
+
+import statistics from "./components/sale-center/statistics"
+
+// 引入 收入分析 注册分析
+
+import sIncome from './components/sale-center/s_statistics/s-income'
+import sRegister from './components/sale-center/s_statistics/s-register'
+
 export default {
   routes:[
-    // 销售中心
+    {path:'/',redirect:'/app/event/category'},
+
     {path:'/operatCenter',component:operatCenter},
     {path:'/infoClassifyControl',component:infoClassifyControl},
-    {path:'/saleCenter',component:saleCenter},
-    {path:'/sMarketuser',component:sMarketuser},
-    {path:'/sSaleuser',component:sSaleuser},
-    {path:'/orderControl',component: orderControl},
+
+    // 销售中心
+    {path:'/saleCenter',component:saleCenter,children:[
+        {path:'/saleCenter/sMarketuser',component:sMarketuser},
+        {path:'/saleCenter/sSaleuser',component:sSaleuser},
+        {path:'/saleCenter/orderControl',component: orderControl},
+        {path:'/saleCenter/statistics',component:statistics,children:[
+            {path:'/saleCenter/statistics/sIncome',component:sIncome},
+            {path:'/saleCenter/statistics/sRegister',component:sRegister},
+          ]},
+      ]},
+
+
     {
       path:'/system',
       component: systemControl,
@@ -101,6 +121,17 @@ export default {
         {path:'/app/supporter',component:operatCenter},
         {path:'/app/coupon',component:operatCenter},
       ]
+    },
+
+    // 运维中心
+    {path:'/saveCenter',
+      component:saveCenter,
+      children:[
+        {path:'/saveCenter/leaveBag',component:leaveBag},
+        {path:'/saveCenter/versionsControl',component:versionsControl},
+
+      ]
     }
+
   ]
 }
