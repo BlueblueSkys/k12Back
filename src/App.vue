@@ -24,10 +24,12 @@
 
 <script>
 import operatCenter from './components/operat-center/operatCenter'
+import saleCenter from './components/sale-center/sale_center'
 export default {
   name: 'App',
   components: {
-    operatCenter
+    operatCenter,
+    saleCenter
   }
 }
 </script>

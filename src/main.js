@@ -4,14 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import routerConfig from './router.config'
-
-import '../static/css/app.css'
-
-import ElementUI from 'element-ui'
-import '../node_modules/element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI);
-
-Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 const router = new VueRouter(routerConfig);
