@@ -47,6 +47,8 @@
 
 
     </el-container>
+
+
   </div>
 </template>
 
@@ -55,29 +57,21 @@
 
   export default {
     name: 'App',
-    data() {
-      return {
-        mymenu: [
-          {name: '运营中心', url: "/operatCenter"},
-          {name: '销售中心', url: "/saleCenter"},
-          {name: '消息中心', url: "/saleCenter"},
-          {name: '系统管理', url: "/system"},
-        ]
-      }
-    },
     components: {}
   }
 </script>
 
 <style>
-  *{
+  * {
     margin: 0;
     padding: 0;
   }
-  body,html{
+
+  body, html {
     width: 100%;
     height: 100%;
   }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -106,18 +100,22 @@
     top: 0;
     z-index: 2019;
   }
-  .el-menu-demo{
+
+  .el-menu-demo {
     float: left;
   }
-  .nav-item{
+
+  .nav-item {
     color: white !important;
     background-color: black;
   }
-  .theNav{
-    background-color: black ;
+
+  .theNav {
+    background-color: black;
     padding: 0;
   }
-  .navtext{
+
+  .navtext {
     width: 200px;
     height: 100%;
     color: white;
@@ -143,4 +141,5 @@
     width: 400px;
     margin-left: 680px;
   }
+
 </style>
