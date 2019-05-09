@@ -11,7 +11,7 @@
       <div>
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
-        <el-button class="s-del">删除</el-button>
+        <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
@@ -57,7 +57,8 @@
           show-overflow-tooltip>
           <template slot-scope="scope">
             <el-button
-              size="mini">编辑
+              size="mini"
+              type="primary">编辑
             </el-button>
             <el-button
               size="mini"

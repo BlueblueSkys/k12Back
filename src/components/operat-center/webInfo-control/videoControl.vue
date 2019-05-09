@@ -40,12 +40,12 @@
         <el-table-column
           prop="serial"
           label="视频编号"
-          width="200">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="size"
           label="文件大小"
-          width="50">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="state"
@@ -55,13 +55,13 @@
         <el-table-column
           prop="time"
           label="上传时间"
-          width="50">
+          width="200">
           <template slot-scope="scope">{{ scope.row.time}}</template>
         </el-table-column>
         <el-table-column
           prop="comment"
           label="备注"
-          width="50">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="operate"
