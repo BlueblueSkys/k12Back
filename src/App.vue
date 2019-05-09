@@ -44,12 +44,11 @@
 </script>
 
 <style>
-  * {
+  *{
     margin: 0;
     padding: 0;
   }
-
-  body, html {
+  body,html{
     width: 100%;
     height: 100%;
   }
@@ -82,17 +81,18 @@
     top: 0;
     z-index: 2019;
   }
-
-  .el-menu-demo {
+  .el-menu-demo{
     float: left;
   }
-
-  .theNav {
+  .nav-item{
+    color: white !important;
     background-color: black;
+  }
+  .theNav{
+    background-color: black ;
     padding: 0;
   }
-
-  .navtext {
+  .navtext{
     width: 200px;
     height: 100%;
     color: white;
