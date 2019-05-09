@@ -1,8 +1,6 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
-// 引用资讯分类管理
-import infoClassifyControl from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -51,7 +49,7 @@ export default {
   routes:[
     {path:'/',redirect:'/app/article/category',component:operatCenter},
 
-    // {path:'/operatCenter',component:operatCenter},
+    {path:'/operatCenter',component:operatCenter},
     {path:'/infoClassifyControl',component:infoClassifyControl},
 
     // 销售中心
@@ -67,7 +65,8 @@ export default {
             {path:'/saleCenter/statistics/sRegister',component:sRegister},
           ]},
       ]},
-    // 系统控制
+
+    // 系统管理
     {
       path:'/system',
       component: systemControl,
@@ -128,12 +127,12 @@ export default {
     },
 
     // 运维中心
-    {
-      path:'/saveCenter',
+    {path:'/saveCenter',
       component:saveCenter,
       children:[
         {path:'/saveCenter/leaveBag',component:leaveBag},
         {path:'/saveCenter/versionsControl',component:versionsControl},
+
       ]
     }
 

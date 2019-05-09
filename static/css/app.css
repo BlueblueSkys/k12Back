@@ -4,3 +4,17 @@ a{
   text-decoration: none;
 }
 .router-link-active{}
+
+.el-icon-plus{
+  font-weight:bolder;
+}
+.s-bolder{
+  font-weight:bolder;
+}
+
+.s-del{
+  color:white;
+  font-size:16px;
+  background-color:lightcoral;
+}
+

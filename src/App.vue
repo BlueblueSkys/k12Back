@@ -25,20 +25,48 @@
 
 <script>
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        mymenu: [
-          {name: '运营中心', url: "/app"},
-          {name: '销售中心', url: "/saleCenter"},
-          {name: '运维中心', url: "/saveCenter"},
-          {name: '系统管理', url: "/system"},
-        ]
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      mymenu: [
+        {name: '运营中心', url: "/app"},
+        {name: '销售中心', url: "/saleCenter"},
+        {name: '运维中心', url: "/saveCenter"},
+        {name: '系统管理', url: "/system"},
+      ],
+      tableData: [{
+        id: '1',
+        name: '王小虎',
+        comment: '上海市普陀区金沙江路 1518 弄',
+        state:'正常'
+      }, {
+        id: '2',
+        name: '王小虎',
+        comment: '上海市普陀区金沙江路 1518 弄',
+        state:'正常'
+      }],
+      multipleSelection: []
+    }
+  },
+  methods: {
+    toggleSelection(rows) {
+      if (rows) {
+        rows.forEach(row => {
+          this.$refs.multipleTable.toggleRowSelection(row);
+        });
+      } else {
+        this.$refs.multipleTable.clearSelection();
       }
     },
-    components: {}
-  }
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    }
+  },
+  components: {}
+}
+
 </script>
 
 <style>
@@ -80,22 +108,18 @@
     top: 0;
     z-index: 2019;
   }
-
-  .el-menu-demo {
+  .el-menu-demo{
     float: left;
   }
-
-  .nav-item {
+  .nav-item{
     color: white !important;
     background-color: black;
   }
-
-  .theNav {
-    background-color: black;
+  .theNav{
+    background-color: black ;
     padding: 0;
   }
-
-  .navtext {
+  .navtext{
     width: 200px;
     height: 100%;
     color: white;

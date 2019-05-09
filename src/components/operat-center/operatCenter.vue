@@ -101,19 +101,18 @@
 </template>
 
 <script>
-  export default {
-    name: "operatCenter",
-    components: {}
-  }
+    export default {
+        name: "operatCenter",
+        components:{}
+    }
 </script>
 
 <style scoped>
-  .el-menu-item {
+  .el-menu-item{
     text-indent: 40px;
     text-align: left;
   }
-
-  .el-submenu {
+  .el-submenu{
     text-align: center;
   }
 </style>
