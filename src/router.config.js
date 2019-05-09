@@ -1,8 +1,21 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
-
 import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+import infoList from './components/operat-center/webInfo-control/info-control/infoList'
+import noticeControl from './components/operat-center/webInfo-control/noticeControl'
+import slideshowControl from './components/operat-center/webInfo-control/slideshowControl'
+import videoControl from './components/operat-center/webInfo-control/videoControl'
+import activeList from './components/operat-center/appInfo-control/active-control/activeList'
+import activeClassifyControl from './components/operat-center/appInfo-control/active-control/activeClassifyControl'
+import answerList from './components/operat-center/appInfo-control/answerControl/answerList'
+import typeControl from './components/operat-center/appInfo-control/answerControl/typeControl'
+import opinionList from './components/operat-center/appInfo-control/opinionControl/opinionList'
+import opinionTypeControl from './components/operat-center/appInfo-control/opinionControl/opinionTypeControl'
+import courseTypeControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
+import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
+import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
+
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -29,7 +42,6 @@ import systemAdmin from './components/sys/system-admin'
 import systemPerson from './components/sys/system-person'
 import systemLog from './components/sys/system-log'
 import systemHelp from './components/sys/system-help'
-
 
 //  引入 运维中心
 import saveCenter from './components/save-center/save_center'
@@ -87,42 +99,53 @@ export default {
       children: [
         {
           path:'/app/article',
-          component:infoControl,
+          redirect:'/app/article/category',
+          component: defaults,
           children:[
-            {path:'/app/article/category',component:infoControl},
-            {path:'/app/article/list',component:infoControl},
+            {path:'/app/article/category',component:defaults},
+            {path:'/app/article/list',component:infoList},
           ]
         },
-        {path:'/app/notice',component:infoControl},
-        {path:'/app/carousel',component:infoControl},
-        {path:'/app/video',component:infoControl},
+        {path:'/app/notice',component:noticeControl},
+        {path:'/app/carousel',component:slideshowControl},
+        {path:'/app/video',component:videoControl},
         {
           path:'/app/event',
-          component:activeControl,
+          redirect:'/app/event/category',
+          component:activeClassifyControl,
           children:[
-            {path:'/app/event/category',component:activeControl},
-            {path:'/app/event/list',component:activeControl},
+            {path:'/app/event/category',component:activeClassifyControl},
+            {path:'/app/event/list',component:activeList},
           ]
         },
         {
           path:'/app/qa',
-          component:answerControl,
+          redirect:'/app/qa/category',
+          component:typeControl,
           children:[
-            {path:'/app/qa/category',component:answerControl},
-            {path:'/app/qa/list',component:answerControl},
+            {path:'/app/qa/category',component:typeControl},
+            {path:'/app/qa/list',component:answerList},
           ]
         },
         {
           path:'/app/feedback',
-          component:opinionControl,
+          redirect:'/app/feedback/category',
+          component:opinionTypeControl,
           children:[
-            {path:'/app/feedback/category',component:opinionControl},
-            {path:'/app/feedback/list',component:opinionControl},
+            {path:'/app/feedback/category',component:opinionTypeControl},
+            {path:'/app/feedback/list',component:opinionList},
           ]
         },
-        {path:'/app/course/category',component:operatCenter},
-        {path:'/app/course/type',component:operatCenter},
-        {path:'/app/course/list',component:operatCenter},
+        {
+          path:'/app/course',
+          redirect:'/app/course/category',
+          component:classifyControl,
+          children:[
+            {path:'/app/course/category',component:classifyControl},
+            {path:'/app/course/type',component:courseTypeControl},
+            {path:'/app/course/list',component:courseList},
+          ]
+        },
         {path:'/app/user/list',component:operatCenter},
         {path:'/app/supporter',component:operatCenter},
         {path:'/app/coupon',component:operatCenter},
