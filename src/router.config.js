@@ -21,7 +21,9 @@ import activeControl from './components/operat-center/appInfo-control/active-con
 import answerControl from  './components/operat-center/appInfo-control/answerControl/answerControl'
 // 用户反馈
 import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
+// 引入轮播图管理
 
+import swipercontrol from './components/operat-center/webInfo-control/slideshowControl'
 
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
@@ -64,7 +66,7 @@ export default {
         {path:'/saleCenter/sSaleuser',component:sSaleuser},
         {path:'/saleCenter/orderControl',component: orderControl},
         {path:'/saleCenter/statistics',
-          component:statistics,
+          redirect:'/saleCenter/statistics/sIncome',
           children:[
             {path:'/saleCenter/statistics/sIncome',component:sIncome},
             {path:'/saleCenter/statistics/sRegister',component:sRegister},
@@ -97,7 +99,7 @@ export default {
         },
         {path:'/app/notice',component:infoControl},
         {path:'/app/carousel',component:infoControl},
-        {path:'/app/video',component:infoControl},
+        {path:'/app/video',component:swipercontrol},
         {
           path:'/app/event',
           component:activeControl,
