@@ -97,15 +97,8 @@ export default {
       path:'/app',
       component: operatCenter,
       children: [
-        {
-          path:'/app/article',
-          redirect:'/app/article/category',
-          component: defaults,
-          children:[
-            {path:'/app/article/category',component:defaults},
-            {path:'/app/article/list',component:infoList},
-          ]
-        },
+        {path:'/app/article/category',component:defaults},
+        {path:'/app/article/list',component:infoList},
         {path:'/app/notice',component:noticeControl},
         {path:'/app/carousel',component:slideshowControl},
         {path:'/app/video',component:videoControl},

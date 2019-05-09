@@ -22,12 +22,12 @@
             </el-menu-item>
             <el-menu-item index="1-3">
               <template slot="title">
-                <router-link to="/app/carousel">视频管理</router-link>
+                <router-link to="/app/carousel">轮播图管理</router-link>
               </template>
             </el-menu-item>
             <el-menu-item index="1-4">
               <template slot="title">
-                <router-link to="/app/video">轮播图管理</router-link>
+                <router-link to="/app/video">视频管理</router-link>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -126,5 +126,11 @@
 
   .el-submenu {
     text-align: center;
+  }
+  .body-left{
+    float: left;
+  }
+  .right{
+    float: left;
   }
 </style>

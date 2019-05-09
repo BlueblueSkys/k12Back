@@ -1,10 +1,12 @@
 <template>
-    
+
 </template>
 
 <script>
+
     export default {
-        name: "infoControl"
+      name: "infoControl",
+
     }
 </script>
 
