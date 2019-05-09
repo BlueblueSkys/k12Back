@@ -1,6 +1,10 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
+
+import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+
+
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -17,6 +21,8 @@ import activeControl from './components/operat-center/appInfo-control/active-con
 import answerControl from  './components/operat-center/appInfo-control/answerControl/answerControl'
 // 用户反馈
 import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
+
+
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
 // 系统管理下级组件
@@ -30,23 +36,30 @@ import systemHelp from './components/sys/system-help'
 import saveCenter from './components/save-center/save_center'
 
 // 运维中心 下组件
+
 import leaveBag from './components/save-center/leave-bag'
 import versionsControl from './components/save-center/versions-control'
 
 // 引入 统计分析
+
 import statistics from "./components/sale-center/statistics"
 
 // 引入 收入分析 注册分析
+
 import sIncome from './components/sale-center/s_statistics/s-income'
 import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes:[
-    {path:'/',redirect:'/app/event/category'},
+    {path:'/',redirect:'/app/article/category',component:operatCenter},
+
     {path:'/operatCenter',component:operatCenter},
 
     // 销售中心
-    {path:'/saleCenter',component:saleCenter,children:[
+    {
+      path:'/saleCenter',
+      component:saleCenter,
+      children:[
         {path:'/saleCenter/sMarketuser',component:sMarketuser},
         {path:'/saleCenter/sSaleuser',component:sSaleuser},
         {path:'/saleCenter/orderControl',component: orderControl},
@@ -120,9 +133,12 @@ export default {
     {path:'/saveCenter',
       component:saveCenter,
       children:[
-        {path:'/saveCenter/leaveBag',component:leaveBag},
+        // 离线包管理  版本管理
+        {path:'/saveCenter/leaveBag',component:defaults},
         {path:'/saveCenter/versionsControl',component:versionsControl},
+
       ]
     }
+
   ]
 }

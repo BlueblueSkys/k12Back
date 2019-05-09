@@ -1,6 +1,7 @@
 <template>
   <!--  销售中心 左边框-->
   <div style="text-align:left">
+    <el-menu>
     <el-menu-item index="1" style="text-indent: 13px;">
       <i class="el-icon-setting"></i>
       <router-link to="/saleCenter/sSaleuser" class="router-link" style="margin-left: 7px">消费用户</router-link>
@@ -30,6 +31,7 @@
         <router-link to="/saleCenter/statistics/sRegister" class="router-link" >注册统计</router-link>
       </el-menu-item>
     </el-submenu>
+    </el-menu>
   </div>
 </template>
 
@@ -38,7 +40,7 @@
 
   export default {
     name: "sale_center",
-    components: {}
+    components: {},
   }
 </script>
 

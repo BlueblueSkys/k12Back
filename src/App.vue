@@ -13,21 +13,18 @@
           </el-menu>
         </el-header>
       </el-container>
-      <!--  左边框  -->
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '3']">
-          <router-view></router-view>
-        </el-menu>
-      </el-aside>
-      <!--  右边main-->
-      <el-container>
+      <!--  body  -->
+      <keep-alive>
         <router-view></router-view>
-      </el-container>
+      </keep-alive>
+
     </el-container>
   </div>
 </template>
 
 <script>
+
+
   export default {
     name: 'App',
     data() {
@@ -38,48 +35,26 @@
           {name: '运维中心', url: "/saveCenter"},
           {name: '系统管理', url: "/system"},
         ],
-        tableData: [{
-          id: '1',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state:'正常'
-        }, {
-          id: '2',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state:'正常'
-        }],
-        multipleSelection: [],
       }
     },
-    components: {},
-  methods: {
-    toggleSelection(rows) {
-      if (rows) {
-        rows.forEach(row => {
-          this.$refs.multipleTable.toggleRowSelection(row);
-        });
-      } else {
-        this.$refs.multipleTable.clearSelection();
-      }
+    methods: {
+
     },
-    handleSelectionChange(val) {
-      this.multipleSelection = val;
-    }
-  },
-}
+  }
 
 </script>
 
 <style>
-  *{
+  * {
     margin: 0;
     padding: 0;
   }
-  body,html{
+
+  body, html {
     width: 100%;
     height: 100%;
   }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -108,18 +83,22 @@
     top: 0;
     z-index: 2019;
   }
-  .el-menu-demo{
+
+  .el-menu-demo {
     float: left;
   }
-  .nav-item{
+
+  .nav-item {
     color: white !important;
     background-color: black;
   }
-  .theNav{
-    background-color: black ;
+
+  .theNav {
+    background-color: black;
     padding: 0;
   }
-  .navtext{
+
+  .navtext {
     width: 200px;
     height: 100%;
     color: white;
