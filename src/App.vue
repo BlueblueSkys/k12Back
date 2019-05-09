@@ -13,23 +13,31 @@
           </el-menu>
         </el-header>
       </el-container>
-
+      <!--  左边框  -->
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="['1', '3']">
           <router-view></router-view>
         </el-menu>
       </el-aside>
-
+      <!--  右边main-->
       <el-container>
-        <el-header style="text-align: left; font-size: 16px">
-          <div >
-            <span class="">首页</span>&nbsp&nbsp>
-            <span>首页</span>&nbsp&nbsp>
-            <span>首页</span>&nbsp&nbsp>
-            <span>首页</span>&nbsp&nbsp
+        <el-header style="text-align: left; font-size: 16px; height:150px">
+          <div>
+            <!--       s-bolder 加粗           -->
+            <span class="s-bolder">首页</span>&nbsp&nbsp>
+            <span class="s-bolder">运营中心</span>&nbsp&nbsp>
+            <span>资讯管理</span>&nbsp&nbsp>
+            <span>分类管理</span>&nbsp&nbsp
+          </div>
+          <div>
+            <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
+            <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
+            <el-button class="s-del">删除</el-button>
+            <el-input placeholder="请输入内容" class="input-with-select">
+              <el-button slot="append" icon="el-icon-search"></el-button>
+            </el-input>
           </div>
         </el-header>
-
         <template>
           <el-table
             ref="multipleTable"
@@ -82,57 +90,36 @@
           </div>
         </template>
       </el-container>
-
-      <el-container>
-        <el-header style="text-align: left; font-size: 16px; height:150px">
-
-          <div>
-            <!--       s-bolder 加粗           -->
-            <span class="s-bolder">首页</span>&nbsp&nbsp>
-            <span class="s-bolder">运营中心</span>&nbsp&nbsp>
-            <span>资讯管理</span>&nbsp&nbsp>
-            <span>分类管理</span>&nbsp&nbsp
-          </div>
-          <div>
-            <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-            <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
-            <el-button class="s-del">删除</el-button>
-            <el-input placeholder="请输入内容" class="input-with-select">
-              <el-button slot="append" icon="el-icon-search"></el-button>
-            </el-input>
-
-          </div>
-
-
-        </el-header>
-      </el-container>
-
-
     </el-container>
   </div>
 </template>
 
 <script>
-
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      tableData: [{
-        id: '1',
-        name: '王小虎',
-        comment: '上海市普陀区金沙江路 1518 弄',
-        state:'正常'
-      }, {
-        id: '2',
-        name: '王小虎',
-        comment: '上海市普陀区金沙江路 1518 弄',
-        state:'正常'
-      }],
-      multipleSelection: []
-    }
-  },
+  export default {
+    name: 'App',
+    data() {
+      return {
+        mymenu: [
+          {name: '运营中心', url: "/app"},
+          {name: '销售中心', url: "/saleCenter"},
+          {name: '运维中心', url: "/saveCenter"},
+          {name: '系统管理', url: "/system"},
+        ],
+        tableData: [{
+          id: '1',
+          name: '王小虎',
+          comment: '上海市普陀区金沙江路 1518 弄',
+          state:'正常'
+        }, {
+          id: '2',
+          name: '王小虎',
+          comment: '上海市普陀区金沙江路 1518 弄',
+          state:'正常'
+        }],
+        multipleSelection: []
+      }
+    },
+    components: {},
   methods: {
     toggleSelection(rows) {
       if (rows) {
@@ -147,22 +134,7 @@ export default {
       this.multipleSelection = val;
     }
   },
-  components: {}
 }
-  export default {
-    name: 'App',
-    data() {
-      return {
-        mymenu: [
-          {name: '运营中心', url: "/app"},
-          {name: '销售中心', url: "/saleCenter"},
-          {name: '运维中心', url: "/saveCenter"},
-          {name: '系统管理', url: "/system"},
-        ]
-      }
-    },
-    components: {}
-  }
 
 </script>
 
@@ -220,4 +192,25 @@ export default {
     color: white;
     float: left;
   }
+
+  /*4个*/
+  .item {
+    float: left;
+    height: 60px;
+  }
+
+  .item li {
+    height: 100%;
+  }
+
+  .item li .is-active {
+    background-color: blue;
+    color: white;
+  }
+
+  .input-with-select {
+    width: 400px;
+    margin-left: 680px;
+  }
+
 </style>
