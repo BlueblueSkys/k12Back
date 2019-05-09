@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;">
       <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu>
+        <el-menu :default-openeds="openlist">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
             <el-submenu index="10" class="el-submenu">
@@ -109,6 +109,11 @@
 <script>
   export default {
     name: "operatCenter",
+    data(){
+      return{
+        openlist:['1','10']
+      }
+    },
     components: {}
   }
 </script>
