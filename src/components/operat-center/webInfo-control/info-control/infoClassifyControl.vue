@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div>
         <!--       s-bolder 加粗           -->
@@ -106,5 +106,7 @@
 </script>
 
 <style scoped>
-
+ .allright{
+   width: 100%;
+ }
 </style>

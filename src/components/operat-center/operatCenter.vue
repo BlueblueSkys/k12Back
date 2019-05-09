@@ -6,7 +6,8 @@
             <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
             <el-submenu index="10" class="el-submenu">
               <template slot="title">
-                <router-link to="/app/article">资讯管理</router-link>
+                <!--<router-link to="/app/article">资讯管理</router-link>-->
+                <div @click="article">咨询管理</div>
               </template>
               <el-menu-item index="1-1-1">
                 <router-link to="/app/article/category">资讯分类管理</router-link>
@@ -114,7 +115,12 @@
         openlist:['1','10']
       }
     },
-    components: {}
+    components: {},
+    methods:{
+      article(){
+        this.$router.push({path:'/app/article'})
+      }
+    }
   }
 </script>
 

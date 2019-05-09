@@ -123,7 +123,8 @@
 
   .input-with-select {
     width: 400px;
-    margin-left: 680px;
+    float: right;
+    margin-top: 10px;
   }
 
 </style>
