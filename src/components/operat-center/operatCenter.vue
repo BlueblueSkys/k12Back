@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%;">
-      <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
+      <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246); float: left">
         <el-menu :default-openeds="openlist">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>

@@ -89,10 +89,11 @@ export default {
       children: [
         {
           path:'/app/article',
-          component:infoControl,
+          redirect:'/app/article/category',
+          component:defaults,
           children:[
-            {path:'/app/article/category',component:infoControl},
-            {path:'/app/article/list',component:infoControl},
+            {path:'/app/article/category',component:defaults},
+            {path:'/app/article/list',component:defaults},
           ]
         },
         {path:'/app/notice',component:infoControl},
