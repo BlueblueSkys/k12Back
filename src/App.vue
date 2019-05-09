@@ -4,19 +4,12 @@
       <el-container class="head">
         <el-header class="theNav">
           <div class="navtext">机灵兔编程</div>
-          <el-menu class="el-menu-demo" mode="horizontal">
-            <el-menu-item class="nav-item" index="1">
-              <router-link to="/operatCenter">运营中心</router-link>
-            </el-menu-item>
-            <el-menu-item class="nav-item" index="2">
-              <router-link to="/saleCenter">销售中心</router-link>
-            </el-menu-item>
-            <el-menu-item class="nav-item">
-              <router-link to="/saveCenter">消息中心</router-link>
-            </el-menu-item>
-            <el-menu-item class="nav-item">
-              <router-link to="/system">系统管理</router-link>
-            </el-menu-item>
+          <el-menu class="el-menu-demo" router mode="horizontal">
+            <div class="item" v-for="(item,index) in mymenu" :key="index">
+              <el-menu-item :index='item.url'>
+                <span slot="title">{{item.name}}</span>
+              </el-menu-item>
+            </div>
           </el-menu>
         </el-header>
       </el-container>
@@ -54,8 +47,6 @@
 
 
     </el-container>
-
-
   </div>
 </template>
 
@@ -64,21 +55,29 @@
 
   export default {
     name: 'App',
+    data() {
+      return {
+        mymenu: [
+          {name: '运营中心', url: "/operatCenter"},
+          {name: '销售中心', url: "/saleCenter"},
+          {name: '消息中心', url: "/saleCenter"},
+          {name: '系统管理', url: "/system"},
+        ]
+      }
+    },
     components: {}
   }
 </script>
 
 <style>
-  * {
+  *{
     margin: 0;
     padding: 0;
   }
-
-  body, html {
+  body,html{
     width: 100%;
     height: 100%;
   }
-
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -107,26 +106,37 @@
     top: 0;
     z-index: 2019;
   }
-
-  .el-menu-demo {
+  .el-menu-demo{
     float: left;
   }
-
-  .nav-item {
+  .nav-item{
     color: white !important;
     background-color: black;
   }
-
-  .theNav {
-    background-color: black;
+  .theNav{
+    background-color: black ;
     padding: 0;
   }
-
-  .navtext {
+  .navtext{
     width: 200px;
     height: 100%;
     color: white;
     float: left;
+  }
+
+  /*4个*/
+  .item {
+    float: left;
+    height: 60px;
+  }
+
+  .item li {
+    height: 100%;
+  }
+
+  .item li .is-active {
+    background-color: blue;
+    color: white;
   }
 
   .input-with-select {
