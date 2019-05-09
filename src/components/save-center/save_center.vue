@@ -37,7 +37,7 @@
   .body-left{
     float: left;
   }
-  .body-right{
+  .right{
     float: left;
   }
 </style>

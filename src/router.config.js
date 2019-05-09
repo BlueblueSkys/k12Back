@@ -89,7 +89,7 @@ export default {
           path:'/app/article',
           component:infoControl,
           children:[
-            {path:'/app/article/category',component:infoControl},
+            {path:'/app/article/category',component:defaults},
             {path:'/app/article/list',component:infoControl},
           ]
         },
@@ -134,7 +134,7 @@ export default {
       component:saveCenter,
       children:[
         // 离线包管理  版本管理
-        {path:'/saveCenter/leaveBag',component:defaults},
+        {path:'/saveCenter/leaveBag',component:leaveBag},
         {path:'/saveCenter/versionsControl',component:versionsControl},
 
       ]

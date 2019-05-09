@@ -1,11 +1,11 @@
 <template>
-    
+
 </template>
 
 <script>
-    export default {
-        name: "activeClassifyControl"
-    }
+  export default {
+    name: "activeClassifyControl"
+  }
 </script>
 
 <style scoped>
