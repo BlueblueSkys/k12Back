@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div></div>
     <el-submenu index="1">
       <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
       <el-submenu index="1-1" class="el-submenu">
