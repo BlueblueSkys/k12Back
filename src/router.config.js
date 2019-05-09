@@ -19,6 +19,8 @@ import activeControl from './components/operat-center/appInfo-control/active-con
 import answerControl from  './components/operat-center/appInfo-control/answerControl/answerControl'
 // 用户反馈
 import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
+
+
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
 // 系统管理下级组件
@@ -47,13 +49,16 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes:[
-    {path:'/',redirect:'/app/event/category'},
+    {path:'/',redirect:'/app/article/category',component:operatCenter},
 
-    {path:'/operatCenter',component:operatCenter},
+    // {path:'/operatCenter',component:operatCenter},
     {path:'/infoClassifyControl',component:infoClassifyControl},
 
     // 销售中心
-    {path:'/saleCenter',component:saleCenter,children:[
+    {
+      path:'/saleCenter',
+      component:saleCenter,
+      children:[
         {path:'/saleCenter/sMarketuser',component:sMarketuser},
         {path:'/saleCenter/sSaleuser',component:sSaleuser},
         {path:'/saleCenter/orderControl',component: orderControl},
@@ -62,8 +67,7 @@ export default {
             {path:'/saleCenter/statistics/sRegister',component:sRegister},
           ]},
       ]},
-
-
+    // 系统控制
     {
       path:'/system',
       component: systemControl,
@@ -124,12 +128,12 @@ export default {
     },
 
     // 运维中心
-    {path:'/saveCenter',
+    {
+      path:'/saveCenter',
       component:saveCenter,
       children:[
         {path:'/saveCenter/leaveBag',component:leaveBag},
         {path:'/saveCenter/versionsControl',component:versionsControl},
-
       ]
     }
 

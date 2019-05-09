@@ -1,6 +1,7 @@
 <template>
   <!--系统管理-->
   <div style="text-align:left">
+    <el-menu>
     <el-menu-item index="1" style="text-indent: 13px;">
       <i class="el-icon-setting"></i>
       <router-link to="/system/admin" class="router-link" style="margin-left: 7px;">管理员管理</router-link>
@@ -23,6 +24,7 @@
         <router-link to="/system/role" class="router-link" style="margin-left: 7px;">帮助文档</router-link>
       </template>
     </el-menu-item>
+    </el-menu>
   </div>
 </template>
 

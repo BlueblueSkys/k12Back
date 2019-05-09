@@ -15,10 +15,9 @@
       </el-container>
 
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '3']">
-          <!--<saleCenter></saleCenter>-->
+        <keep-alive>
           <router-view></router-view>
-        </el-menu>
+        </keep-alive>
       </el-aside>
     </el-container>
   </div>
@@ -26,15 +25,14 @@
 
 <script>
 
-
   export default {
     name: 'App',
     data() {
       return {
         mymenu: [
-          {name: '运营中心', url: "/operatCenter"},
+          {name: '运营中心', url: "/app"},
           {name: '销售中心', url: "/saleCenter"},
-          {name: '消息中心', url: "/saleCenter"},
+          {name: '运维中心', url: "/saveCenter"},
           {name: '系统管理', url: "/system"},
         ]
       }
@@ -44,11 +42,12 @@
 </script>
 
 <style>
-  *{
+  * {
     margin: 0;
     padding: 0;
   }
-  body,html{
+
+  body, html {
     width: 100%;
     height: 100%;
   }
@@ -81,18 +80,22 @@
     top: 0;
     z-index: 2019;
   }
-  .el-menu-demo{
+
+  .el-menu-demo {
     float: left;
   }
-  .nav-item{
+
+  .nav-item {
     color: white !important;
     background-color: black;
   }
-  .theNav{
-    background-color: black ;
+
+  .theNav {
+    background-color: black;
     padding: 0;
   }
-  .navtext{
+
+  .navtext {
     width: 200px;
     height: 100%;
     color: white;
