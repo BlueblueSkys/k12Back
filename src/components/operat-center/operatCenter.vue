@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%;">
-      <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246); float: left">
+      <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="openlist">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
@@ -23,12 +23,12 @@
             </el-menu-item>
             <el-menu-item index="1-3">
               <template slot="title">
-                <router-link to="/app/carousel">视频管理</router-link>
+                <router-link to="/app/carousel">轮播图管理</router-link>
               </template>
             </el-menu-item>
             <el-menu-item index="1-4">
               <template slot="title">
-                <router-link to="/app/video">轮播图管理</router-link>
+                <router-link to="/app/video">视频管理</router-link>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -132,5 +132,14 @@
 
   .el-submenu {
     text-align: center;
+  }
+
+  .body-left {
+    float: left;
+  }
+
+  .right {
+    float: left;
+   border-right:1px solid lightgray;
   }
 </style>

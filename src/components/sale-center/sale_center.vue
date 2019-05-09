@@ -57,4 +57,7 @@
     color: #303133;
     text-decoration: none;
   }
+  .body-left{
+    float:left;
+  }
 </style>
