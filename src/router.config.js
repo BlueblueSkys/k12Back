@@ -1,6 +1,10 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
+
+import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+
+
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -129,7 +133,8 @@ export default {
     {path:'/saveCenter',
       component:saveCenter,
       children:[
-        {path:'/saveCenter/leaveBag',component:leaveBag},
+        // 离线包管理  版本管理
+        {path:'/saveCenter/leaveBag',component:defaults},
         {path:'/saveCenter/versionsControl',component:versionsControl},
 
       ]
