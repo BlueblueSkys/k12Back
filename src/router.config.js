@@ -26,14 +26,43 @@ import systemPerson from './components/sys/system-person'
 import systemLog from './components/sys/system-log'
 import systemHelp from './components/sys/system-help'
 
+
+//  引入 运维中心
+import saveCenter from './components/save-center/save_center'
+
+// 运维中心 下组件
+
+import leaveBag from './components/save-center/leave-bag'
+import versionsControl from './components/save-center/versions-control'
+
+// 引入 统计分析
+
+import statistics from "./components/sale-center/statistics"
+
+// 引入 收入分析 注册分析
+
+import sIncome from './components/sale-center/s_statistics/s-income'
+import sRegister from './components/sale-center/s_statistics/s-register'
+
 export default {
   routes:[
     {path:'/',redirect:'/app/event/category'},
+
     {path:'/operatCenter',component:operatCenter},
-    {path:'/saleCenter',component:saleCenter},
-    {path:'/sMarketuser',component:sMarketuser},
-    {path:'/sSaleuser',component:sSaleuser},
-    {path:'/orderControl',component: orderControl},
+    {path:'/infoClassifyControl',component:infoClassifyControl},
+
+    // 销售中心
+    {path:'/saleCenter',component:saleCenter,children:[
+        {path:'/saleCenter/sMarketuser',component:sMarketuser},
+        {path:'/saleCenter/sSaleuser',component:sSaleuser},
+        {path:'/saleCenter/orderControl',component: orderControl},
+        {path:'/saleCenter/statistics',component:statistics,children:[
+            {path:'/saleCenter/statistics/sIncome',component:sIncome},
+            {path:'/saleCenter/statistics/sRegister',component:sRegister},
+          ]},
+      ]},
+
+
     {
       path:'/system',
       component: systemControl,
@@ -90,6 +119,16 @@ export default {
         {path:'/app/user/list',component:operatCenter},
         {path:'/app/supporter',component:operatCenter},
         {path:'/app/coupon',component:operatCenter},
+      ]
+    },
+
+    // 运维中心
+    {path:'/saveCenter',
+      component:saveCenter,
+      children:[
+        {path:'/saveCenter/leaveBag',component:leaveBag},
+        {path:'/saveCenter/versionsControl',component:versionsControl},
+
       ]
     }
   ]
