@@ -36,6 +36,7 @@
         </el-menu>
       </el-aside>
     </div>
+
     <el-container class="right">
       <router-view></router-view>
     </el-container>

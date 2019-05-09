@@ -95,9 +95,9 @@ export default {
             {path:'/app/article/list',component:infoControl},
           ]
         },
-        {path:'/app/notice',component:operatCenter},
-        {path:'/app/carousel',component:operatCenter},
-        {path:'/app/video',component:operatCenter},
+        {path:'/app/notice',component:infoControl},
+        {path:'/app/carousel',component:infoControl},
+        {path:'/app/video',component:infoControl},
         {
           path:'/app/event',
           component:activeControl,
