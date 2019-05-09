@@ -61,7 +61,9 @@ export default {
         {path:'/saleCenter/sMarketuser',component:sMarketuser},
         {path:'/saleCenter/sSaleuser',component:sSaleuser},
         {path:'/saleCenter/orderControl',component: orderControl},
-        {path:'/saleCenter/statistics',component:statistics,children:[
+        {path:'/saleCenter/statistics',
+          component:statistics,
+          children:[
             {path:'/saleCenter/statistics/sIncome',component:sIncome},
             {path:'/saleCenter/statistics/sRegister',component:sRegister},
           ]},
@@ -72,10 +74,10 @@ export default {
       path:'/system',
       component: systemControl,
       children:[
-        {path:'/system/admin',component:systemControl},
-        {path:'/system/role',component:systemControl},
-        {path:'/system/log',component:systemControl},
-        {path:'/system/admin',component:systemControl},
+        {path:'/system/admin',component:systemAdmin},
+        {path:'/system/role',component:systemPerson},
+        {path:'/system/log',component:systemLog},
+        {path:'/system/help',component:systemHelp},
       ]
     },
     // 运营中心
@@ -91,9 +93,9 @@ export default {
             {path:'/app/article/list',component:infoControl},
           ]
         },
-        {path:'/app/notice',component:operatCenter},
-        {path:'/app/carousel',component:operatCenter},
-        {path:'/app/video',component:operatCenter},
+        {path:'/app/notice',component:infoControl},
+        {path:'/app/carousel',component:infoControl},
+        {path:'/app/video',component:infoControl},
         {
           path:'/app/event',
           component:activeControl,
