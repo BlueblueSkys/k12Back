@@ -4,19 +4,12 @@
       <el-container class="head">
         <el-header class="theNav">
           <div class="navtext">机灵兔编程</div>
-          <el-menu  class="el-menu-demo" mode="horizontal" >
-            <el-menu-item class="nav-item" index="1">
-              <router-link to="/operatCenter">运营中心</router-link>
-            </el-menu-item>
-            <el-menu-item class="nav-item" index="2">
-              <router-link to="/saleCenter">销售中心</router-link>
-            </el-menu-item >
-            <el-menu-item  class="nav-item">
-              <router-link to="/saveCenter">消息中心</router-link>
-            </el-menu-item >
-            <el-menu-item  class="nav-item">
-              <router-link to="/system">系统管理</router-link>
-            </el-menu-item >
+          <el-menu class="el-menu-demo" router mode="horizontal">
+            <div class="item" v-for="(item,index) in mymenu" :key="index">
+              <el-menu-item :index='item.url'>
+                <span slot="title">{{item.name}}</span>
+              </el-menu-item>
+            </div>
           </el-menu>
         </el-header>
       </el-container>
@@ -89,6 +82,32 @@
           </div>
         </template>
       </el-container>
+
+      <el-container>
+        <el-header style="text-align: left; font-size: 16px; height:150px">
+
+          <div>
+            <!--       s-bolder 加粗           -->
+            <span class="s-bolder">首页</span>&nbsp&nbsp>
+            <span class="s-bolder">运营中心</span>&nbsp&nbsp>
+            <span>资讯管理</span>&nbsp&nbsp>
+            <span>分类管理</span>&nbsp&nbsp
+          </div>
+          <div>
+            <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
+            <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
+            <el-button class="s-del">删除</el-button>
+            <el-input placeholder="请输入内容" class="input-with-select">
+              <el-button slot="append" icon="el-icon-search"></el-button>
+            </el-input>
+
+          </div>
+
+
+        </el-header>
+      </el-container>
+
+
     </el-container>
   </div>
 </template>
@@ -130,6 +149,21 @@ export default {
   },
   components: {}
 }
+  export default {
+    name: 'App',
+    data() {
+      return {
+        mymenu: [
+          {name: '运营中心', url: "/app"},
+          {name: '销售中心', url: "/saleCenter"},
+          {name: '运维中心', url: "/saveCenter"},
+          {name: '系统管理', url: "/system"},
+        ]
+      }
+    },
+    components: {}
+  }
+
 </script>
 
 <style>
