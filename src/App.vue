@@ -57,8 +57,19 @@
 
   export default {
     name: 'App',
+    data() {
+      return {
+        mymenu: [
+          {name: '运营中心', url: "/app"},
+          {name: '销售中心', url: "/saleCenter"},
+          {name: '运维中心', url: "/saveCenter"},
+          {name: '系统管理', url: "/system"},
+        ]
+      }
+    },
     components: {}
   }
+
 </script>
 
 <style>
