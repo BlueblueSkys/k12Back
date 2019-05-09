@@ -108,17 +108,21 @@
 <script>
   export default {
     name: "operatCenter",
+    data(){
+      return{
+        openlist:['1','10']
+      }
+    },
     components: {}
   }
 </script>
 
 <style scoped>
-  .el-menu-item {
+  .el-menu-item{
     text-indent: 40px;
     text-align: left;
   }
-
-  .el-submenu {
+  .el-submenu{
     text-align: center;
   }
 
