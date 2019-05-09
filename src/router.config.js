@@ -1,7 +1,6 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
-
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -31,25 +30,20 @@ import systemHelp from './components/sys/system-help'
 import saveCenter from './components/save-center/save_center'
 
 // 运维中心 下组件
-
 import leaveBag from './components/save-center/leave-bag'
 import versionsControl from './components/save-center/versions-control'
 
 // 引入 统计分析
-
 import statistics from "./components/sale-center/statistics"
 
 // 引入 收入分析 注册分析
-
 import sIncome from './components/sale-center/s_statistics/s-income'
 import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes:[
     {path:'/',redirect:'/app/event/category'},
-
     {path:'/operatCenter',component:operatCenter},
-    {path:'/infoClassifyControl',component:infoClassifyControl},
 
     // 销售中心
     {path:'/saleCenter',component:saleCenter,children:[
@@ -62,7 +56,7 @@ export default {
           ]},
       ]},
 
-
+    // 系统管理
     {
       path:'/system',
       component: systemControl,
@@ -128,7 +122,6 @@ export default {
       children:[
         {path:'/saveCenter/leaveBag',component:leaveBag},
         {path:'/saveCenter/versionsControl',component:versionsControl},
-
       ]
     }
   ]
