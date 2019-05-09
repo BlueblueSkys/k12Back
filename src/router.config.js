@@ -61,98 +61,112 @@ import sIncome from './components/sale-center/s_statistics/s-income'
 import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
-  routes:[
-    {path:'/',redirect:'/app/article/category',component:operatCenter},
-    {path:'/operatCenter',component:operatCenter},
+  routes: [
+    {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/operatCenter', component: operatCenter},
 
     // 销售中心
     {
-      path:'/saleCenter',
-      component:saleCenter,
-      children:[
-        {path:'/saleCenter/sMarketuser',component:sMarketuser},
-        {path:'/saleCenter/sSaleuser',component:sSaleuser},
-        {path:'/saleCenter/orderControl',component: orderControl},
-        {path:'/saleCenter/statistics',
-          component:statistics,
-          children:[
-            {path:'/saleCenter/statistics/sIncome',component:sIncome},
-            {path:'/saleCenter/statistics/sRegister',component:sRegister},
-          ]},
-      ]},
+      path: '/saleCenter',
+      component: saleCenter,
+      children: [
+        {path: '/saleCenter/sMarketuser', component: sMarketuser},
+        {path: '/saleCenter/sSaleuser', component: sSaleuser},
+        {path: '/saleCenter/orderControl', component: orderControl},
+        {
+          path: '/saleCenter/statistics',
+          redirect: '/saleCenter/statistics/sIncome',
+          children: [
+            {path: '/saleCenter/statistics/sIncome', component: sIncome},
+            {path: '/saleCenter/statistics/sRegister', component: sRegister},
+          ]
+        },
+      ]
+    },
 
     // 系统管理
     {
-      path:'/system',
+      path: '/system',
       component: systemControl,
-      children:[
-        {path:'/system/admin',component:systemAdmin},
-        {path:'/system/role',component:systemPerson},
-        {path:'/system/log',component:systemLog},
-        {path:'/system/help',component:systemHelp},
+      children: [
+        {path: '/system/admin', component: systemAdmin},
+        {path: '/system/role', component: systemPerson},
+        {path: '/system/log', component: systemLog},
+        {path: '/system/help', component: systemHelp},
       ]
     },
     // 运营中心
     {
-      path:'/app',
+      path: '/app',
       component: operatCenter,
       children: [
-        {path:'/app/article/category',component:defaults},
-        {path:'/app/article/list',component:infoList},
-        {path:'/app/notice',component:noticeControl},
-        {path:'/app/carousel',component:slideshowControl},
-        {path:'/app/video',component:videoControl},
         {
-          path:'/app/event',
-          redirect:'/app/event/category',
-          component:activeClassifyControl,
-          children:[
-            {path:'/app/event/category',component:activeClassifyControl},
-            {path:'/app/event/list',component:activeList},
+          path: '/app/article',
+          redirect: '/app/article/category',
+
+        },
+        {path: '/app/article/category', component: defaults},
+        {path: '/app/article/list', component: infoList},
+        {path: '/app/notice', component: noticeControl},
+        {path: '/app/carousel', component: slideshowControl},
+        {path: '/app/video', component: videoControl},
+        {
+          path: '/app/event',
+          redirect: '/app/event/category',
+          component: activeClassifyControl,
+          children: [
+            {path: '/app/event/category', component: activeClassifyControl},
+            {path: '/app/event/list', component: activeList},
           ]
         },
         {
-          path:'/app/qa',
-          redirect:'/app/qa/category',
-          component:typeControl,
-          children:[
-            {path:'/app/qa/category',component:typeControl},
-            {path:'/app/qa/list',component:answerList},
+          path: '/app/qa',
+          redirect: '/app/qa/category',
+          component: typeControl,
+          children: [
+            {path: '/app/qa/category', component: typeControl},
+            {path: '/app/qa/list', component: answerList},
           ]
         },
         {
-          path:'/app/feedback',
-          redirect:'/app/feedback/category',
-          component:opinionTypeControl,
-          children:[
-            {path:'/app/feedback/category',component:opinionTypeControl},
-            {path:'/app/feedback/list',component:opinionList},
+          path: '/app/feedback',
+          redirect: '/app/feedback/category',
+          component: opinionTypeControl,
+          children: [
+            {path: '/app/feedback/category', component: opinionTypeControl},
+            {path: '/app/feedback/list', component: opinionList},
           ]
         },
         {
-          path:'/app/course',
-          redirect:'/app/course/category',
-          component:classifyControl,
-          children:[
-            {path:'/app/course/category',component:classifyControl},
-            {path:'/app/course/type',component:courseTypeControl},
-            {path:'/app/course/list',component:courseList},
+          path: '/app/course',
+          redirect: '/app/course/category',
+          component: classifyControl,
+          children: [
+            {path: '/app/course/category', component: classifyControl},
+            {path: '/app/course/type', component: courseTypeControl},
+            {path: '/app/course/list', component: courseList},
           ]
         },
-        {path:'/app/user/list',component:operatCenter},
-        {path:'/app/supporter',component:operatCenter},
-        {path:'/app/coupon',component:operatCenter},
+        {path: '/app/course/category', component: operatCenter},
+        {path: '/app/course/type', component: operatCenter},
+        {path: '/app/course/list', component: operatCenter},
+        {path: '/app/user/list', component: operatCenter},
+        {path: '/app/supporter', component: operatCenter},
+        {path: '/app/coupon', component: operatCenter},
       ]
     },
 
     // 运维中心
-    {path:'/saveCenter',
-      component:saveCenter,
-      children:[
+    {
+      path: '/saveCenter',
+      component: saveCenter,
+      children: [
         // 离线包管理  版本管理
-        {path:'/saveCenter/leaveBag',component:defaults},
-        {path:'/saveCenter/versionsControl',component:versionsControl},
+        {path: '/saveCenter/leaveBag', component: defaults},
+        {path: '/saveCenter/versionsControl', component: versionsControl},
+
       ]
     }
+
   ]
 }
