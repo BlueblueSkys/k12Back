@@ -50,7 +50,6 @@ export default {
     {path:'/',redirect:'/app/article/category',component:operatCenter},
 
     {path:'/operatCenter',component:operatCenter},
-    {path:'/infoClassifyControl',component:infoClassifyControl},
 
     // 销售中心
     {
