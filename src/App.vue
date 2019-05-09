@@ -18,7 +18,6 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-
     </el-container>
   </div>
 </template>
@@ -38,9 +37,7 @@
         ],
       }
     },
-    methods: {
-
-    },
+    methods: {},
   }
 
 </script>

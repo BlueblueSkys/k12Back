@@ -1,8 +1,20 @@
 // import Home from './components/Home.vue'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
-
 import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+import infoList from './components/operat-center/webInfo-control/info-control/infoList'
+import noticeControl from './components/operat-center/webInfo-control/noticeControl'
+import slideshowControl from './components/operat-center/webInfo-control/slideshowControl'
+import videoControl from './components/operat-center/webInfo-control/videoControl'
+import activeList from './components/operat-center/appInfo-control/active-control/activeList'
+import activeClassifyControl from './components/operat-center/appInfo-control/active-control/activeClassifyControl'
+import answerList from './components/operat-center/appInfo-control/answerControl/answerList'
+import typeControl from './components/operat-center/appInfo-control/answerControl/typeControl'
+import opinionList from './components/operat-center/appInfo-control/opinionControl/opinionList'
+import opinionTypeControl from './components/operat-center/appInfo-control/opinionControl/opinionTypeControl'
+import courseTypeControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
+import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
+import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
 
 
 // 引入销售中心
@@ -18,12 +30,10 @@ import infoControl from './components/operat-center/webInfo-control/info-control
 // 活动管理
 import activeControl from './components/operat-center/appInfo-control/active-control/activeControl'
 // 问答管理
-import answerControl from  './components/operat-center/appInfo-control/answerControl/answerControl'
+import answerControl from './components/operat-center/appInfo-control/answerControl/answerControl'
 // 用户反馈
 import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
-// 引入轮播图管理
 
-import swipercontrol from './components/operat-center/webInfo-control/slideshowControl'
 
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
@@ -52,94 +62,109 @@ import sIncome from './components/sale-center/s_statistics/s-income'
 import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
-  routes:[
-    {path:'/',redirect:'/app/article/category',component:operatCenter},
-
-    {path:'/operatCenter',component:operatCenter},
+  routes: [
+    {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/operatCenter', component: operatCenter},
 
     // 销售中心
     {
-      path:'/saleCenter',
-      component:saleCenter,
-      children:[
-        {path:'/saleCenter/sMarketuser',component:sMarketuser},
-        {path:'/saleCenter/sSaleuser',component:sSaleuser},
-        {path:'/saleCenter/orderControl',component: orderControl},
-        {path:'/saleCenter/statistics',
-          redirect:'/saleCenter/statistics/sIncome',
-          children:[
-            {path:'/saleCenter/statistics/sIncome',component:sIncome},
-            {path:'/saleCenter/statistics/sRegister',component:sRegister},
-          ]},
-      ]},
+      path: '/saleCenter',
+      component: saleCenter,
+      children: [
+        {path: '/saleCenter/sMarketuser', component: sMarketuser},
+        {path: '/saleCenter/sSaleuser', component: sSaleuser},
+        {path: '/saleCenter/orderControl', component: orderControl},
+        {
+          path: '/saleCenter/statistics',
+          redirect: '/saleCenter/statistics/sIncome',
+          children: [
+            {path: '/saleCenter/statistics/sIncome', component: sIncome},
+            {path: '/saleCenter/statistics/sRegister', component: sRegister},
+          ]
+        },
+      ]
+    },
 
     // 系统管理
     {
-      path:'/system',
+      path: '/system',
       component: systemControl,
-      children:[
-        {path:'/system/admin',component:systemAdmin},
-        {path:'/system/role',component:systemPerson},
-        {path:'/system/log',component:systemLog},
-        {path:'/system/help',component:systemHelp},
+      children: [
+        {path: '/system/admin', component: systemAdmin},
+        {path: '/system/role', component: systemPerson},
+        {path: '/system/log', component: systemLog},
+        {path: '/system/help', component: systemHelp},
       ]
     },
     // 运营中心
     {
-      path:'/app',
+      path: '/app',
       component: operatCenter,
       children: [
         {
-          path:'/app/article',
-          component:infoControl,
-          children:[
-            {path:'/app/article/category',component:defaults},
-            {path:'/app/article/list',component:infoControl},
-          ]
+          path: '/app/article',
+          redirect: '/app/article/category',
+
         },
-        {path:'/app/notice',component:infoControl},
-        {path:'/app/carousel',component:infoControl},
-        {path:'/app/video',component:swipercontrol},
+        {path: '/app/article/category', component: defaults},
+        {path: '/app/article/list', component: infoList},
+        {path: '/app/notice', component: noticeControl},
+        {path: '/app/carousel', component: slideshowControl},
+        {path: '/app/video', component: videoControl},
         {
-          path:'/app/event',
-          component:activeControl,
-          children:[
-            {path:'/app/event/category',component:activeControl},
-            {path:'/app/event/list',component:activeControl},
-          ]
-        },
-        {
-          path:'/app/qa',
-          component:answerControl,
-          children:[
-            {path:'/app/qa/category',component:answerControl},
-            {path:'/app/qa/list',component:answerControl},
+          path: '/app/event',
+          redirect: '/app/event/category',
+          component: activeClassifyControl,
+          children: [
+            {path: '/app/event/category', component: activeClassifyControl},
+            {path: '/app/event/list', component: activeList},
           ]
         },
         {
-          path:'/app/feedback',
-          component:opinionControl,
-          children:[
-            {path:'/app/feedback/category',component:opinionControl},
-            {path:'/app/feedback/list',component:opinionControl},
+          path: '/app/qa',
+          redirect: '/app/qa/category',
+          component: typeControl,
+          children: [
+            {path: '/app/qa/category', component: typeControl},
+            {path: '/app/qa/list', component: answerList},
           ]
         },
-        {path:'/app/course/category',component:operatCenter},
-        {path:'/app/course/type',component:operatCenter},
-        {path:'/app/course/list',component:operatCenter},
-        {path:'/app/user/list',component:operatCenter},
-        {path:'/app/supporter',component:operatCenter},
-        {path:'/app/coupon',component:operatCenter},
+        {
+          path: '/app/feedback',
+          redirect: '/app/feedback/category',
+          component: opinionTypeControl,
+          children: [
+            {path: '/app/feedback/category', component: opinionTypeControl},
+            {path: '/app/feedback/list', component: opinionList},
+          ]
+        },
+        {
+          path: '/app/course',
+          redirect: '/app/course/category',
+          component: classifyControl,
+          children: [
+            {path: '/app/course/category', component: classifyControl},
+            {path: '/app/course/type', component: courseTypeControl},
+            {path: '/app/course/list', component: courseList},
+          ]
+        },
+        {path: '/app/course/category', component: operatCenter},
+        {path: '/app/course/type', component: operatCenter},
+        {path: '/app/course/list', component: operatCenter},
+        {path: '/app/user/list', component: operatCenter},
+        {path: '/app/supporter', component: operatCenter},
+        {path: '/app/coupon', component: operatCenter},
       ]
     },
 
     // 运维中心
-    {path:'/saveCenter',
-      component:saveCenter,
-      children:[
+    {
+      path: '/saveCenter',
+      component: saveCenter,
+      children: [
         // 离线包管理  版本管理
-        {path:'/saveCenter/leaveBag',component:leaveBag},
-        {path:'/saveCenter/versionsControl',component:versionsControl},
+        {path: '/saveCenter/leaveBag', component: defaults},
+        {path: '/saveCenter/versionsControl', component: versionsControl},
 
       ]
     }

@@ -9,7 +9,7 @@
         <span>分类管理</span>&nbsp&nbsp
       </div>
       <div>
-        <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
+        <!--   s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button class="s-del">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select">
@@ -19,22 +19,19 @@
     </el-header>
     <template>
       <el-table
-        ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
+        border
         @selection-change="handleSelectionChange">
         <el-table-column
-          width="30">
-        </el-table-column>
-        <el-table-column
           label="#"
-          width="120">
+          width="50">
           <template slot-scope="scope">{{ scope.row.id}}</template>
         </el-table-column>
         <el-table-column
           type="selection"
-          width="120">
+          width="50">
         </el-table-column>
         <el-table-column
           prop="name"
@@ -44,12 +41,12 @@
         <el-table-column
           prop="comment"
           label="备注"
-          width="500">
+          width="700">
         </el-table-column>
         <el-table-column
           prop="state"
           label="状态"
-          width="120">
+          width="50">
         </el-table-column>
         <el-table-column
           prop="operate"
