@@ -4,7 +4,6 @@ import operatCenter from './components/operat-center/operatCenter'
 
 import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
 
-
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
 // 引入 销售跟进用户
@@ -52,7 +51,6 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 export default {
   routes:[
     {path:'/',redirect:'/app/article/category',component:operatCenter},
-
     {path:'/operatCenter',component:operatCenter},
 
     // 销售中心
@@ -136,9 +134,7 @@ export default {
         // 离线包管理  版本管理
         {path:'/saveCenter/leaveBag',component:defaults},
         {path:'/saveCenter/versionsControl',component:versionsControl},
-
       ]
     }
-
   ]
 }
