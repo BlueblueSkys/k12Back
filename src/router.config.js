@@ -15,7 +15,7 @@ import answerList from './components/operat-center/appInfo-control/answerControl
 import typeControl from './components/operat-center/appInfo-control/answerControl/typeControl'
 import opinionList from './components/operat-center/appInfo-control/opinionControl/opinionList'
 import opinionTypeControl from './components/operat-center/appInfo-control/opinionControl/opinionTypeControl'
-import courseTypeControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
+import courseTypeControl from './components/operat-center/recordCourse-control/courseTypeControl/courseTypeControl'
 import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
 import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
 
@@ -67,6 +67,7 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 export default {
   routes: [
     {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/app', redirect: '/app/article/category', component: operatCenter},
     {path: '/operatCenter', component: operatCenter},
 
     // 销售中心
@@ -109,53 +110,35 @@ export default {
           redirect: '/app/article/category',
 
         },
+        // 网站内容管理
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/list', component: infoList},
         {path: '/app/notice', component: noticeControl},
         {path: '/app/carousel', component: slideshowControl},
         {path: '/app/video', component: videoControl},
-        {
-          path: '/app/event',
-          redirect: '/app/event/category',
-          component: activeClassifyControl,
-          children: [
-            {path: '/app/event/category', component: activeClassifyControl},
-            {path: '/app/event/list', component: activeList},
-          ]
-        },
-        {
-          path: '/app/qa',
-          redirect: '/app/qa/category',
-          component: typeControl,
-          children: [
-            {path: '/app/qa/category', component: typeControl},
-            {path: '/app/qa/list', component: answerList},
-          ]
-        },
-        {
-          path: '/app/feedback',
-          redirect: '/app/feedback/category',
-          component: opinionTypeControl,
-          children: [
-            {path: '/app/feedback/category', component: opinionTypeControl},
-            {path: '/app/feedback/list', component: opinionList},
-          ]
-        },
-        {
-          path: '/app/course',
-          redirect: '/app/course/category',
-          component: classifyControl,
-          children: [
-            {path: '/app/course/category', component: classifyControl},
-            {path: '/app/course/type', component: courseTypeControl},
-            {path: '/app/course/list', component: courseList},
-          ]
-        },
-        {path: '/app/course/category', component: operatCenter},
-        {path: '/app/course/type', component: operatCenter},
-        {path: '/app/course/list', component: operatCenter},
+
+        // 活动管理
+        {path: '/app/event/category', component: activeClassifyControl},
+        {path: '/app/event/list', component: activeList},
+
+        // 问答管理
+        {path: '/app/qa/category', component: typeControl},
+        {path: '/app/qa/list', component: answerList},
+
+        // 意见反馈管理
+        {path: '/app/feedback/category', component: opinionTypeControl},
+        {path: '/app/feedback/list', component: opinionList},
+
+        // 录播课程管理
+        {path: '/app/course/category', component: classifyControl},
+        {path: '/app/course/type', component: courseTypeControl},
+        {path: '/app/course/list', component: courseList},
+
+        // 用户管理
         {path: '/app/user/list', component: operatCenter},
+        // 客服人员管理
         {path: '/app/supporter', component: operatCenter},
+        // 兑换卷管理
         {path: '/app/coupon', component: operatCenter},
       ]
     },
