@@ -66,7 +66,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editSclassify">编辑
             </el-button>
             <el-button
               size="mini"
@@ -92,9 +93,12 @@
       Sclassify() {
         this.$router.push('/app/course/category/Sclassify')
       },
+      editSclassify(){
+        this.$router.push('/app/course/category/edit')
+      },
       formatStatus: function (row, column, cellValue) {
         if (cellValue == "1") {
-          return '非正常';
+          return '停用';
         } else if (cellValue == "0") {
           return '正常';
         }

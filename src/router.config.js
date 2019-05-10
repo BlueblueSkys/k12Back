@@ -31,6 +31,14 @@ import addInfoList from './components/add/addInfoList'
 import addNoticeControl from './components/add/addNoticeControl'
 import serviceStaffControl from './components/operat-center/serviceStaff-control/serviceStaffControl'
 import coinControl from './components/operat-center/coin-control/coinControl'
+import editinfoClassify from './components/edit/editinfoClassify'
+import editInfoList from './components/edit/editInfoList'
+import editNotice from './components/edit/editNotice'
+import editSlider from './components/edit/editSlider'
+import editSclassify from './components/edit/editSclassify'
+import editCourseControl from './components/edit/editCourseControl'
+import editClassList from './components/edit/editClassList'
+
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -123,14 +131,23 @@ export default {
 
         },
         // 网站内容管理
+        // 资讯分类管理
         {path: '/app/article/category', component: infoClassifyControl},
-        {path: '/app/article/category/add', component: addvue,},
+        {path: '/app/article/category/add', component: addvue},
+        {path: '/app/article/category/edit', component: editinfoClassify},
+        // 资讯列表管理
         {path: '/app/article/list', component: infoList},
-        {path: '/app/article/list/add', component: addInfoList,},
+        {path: '/app/article/list/add', component: addInfoList},
+        {path: '/app/article/list/edit', component: editInfoList},
+        // 公告管理
         {path: '/app/notice', component: noticeControl},
-        {path: '/app/notice/add', component: addNoticeControl,},
+        {path: '/app/notice/add', component: addNoticeControl},
+        {path: '/app/notice/edit', component: editNotice},
+        // 轮播图管理
         {path: '/app/carousel', component: slideshowControl},
-        {path: '/app/carousel/Slider', component:Slider },
+        {path: '/app/carousel/Slider', component:Slider},
+        {path: '/app/carousel/edit', component:editSlider},
+        // 视频管理
         {path: '/app/video', component: videoControl},
 
         // 活动管理
@@ -146,12 +163,18 @@ export default {
         {path: '/app/feedback/list', component: opinionList},
 
         // 录播课程管理
+        // 课程分类管理
         {path: '/app/course/category', component: classifyControl},
         {path: '/app/course/category/Sclassify', component: Sclassify},
+        {path: '/app/course/category/edit', component: editSclassify},
+        // 课程类型管理
         {path: '/app/course/type', component: courseTypeControl},
-        {path: '/app/course/type/add', component: addCourseControl,},
+        {path: '/app/course/type/add', component: addCourseControl},
+        {path: '/app/course/type/edit', component: editCourseControl},
+        // 课程列表管理
         {path: '/app/course/list', component: courseList},
         {path: '/app/course/list/add', component: addclasslist},
+        {path: '/app/course/list/edit', component: editClassList},
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},

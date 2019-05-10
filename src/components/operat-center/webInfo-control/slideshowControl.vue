@@ -87,7 +87,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editSlider">编辑
             </el-button>
             <el-button
               size="mini"
@@ -115,7 +116,7 @@
         if(cellVale=="0"){
           return '正常'
         }else if(cellVale == '1'){
-          return '非正常'
+          return '停用'
         }
 
       },
@@ -141,8 +142,10 @@
         this.multipleSelection = val;
       },
       Slider(){
-
         this.$router.push('/app/carousel/Slider');
+      },
+      editSlider(){
+        this.$router.push('/app/carousel/edit');
       }
     },
     mounted(){
