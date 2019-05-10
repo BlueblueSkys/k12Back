@@ -95,7 +95,8 @@
             </el-button>
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editClassList">编辑
             </el-button>
           </template>
         </el-table-column>
@@ -134,13 +135,16 @@
       },
       getstatus(row,column,cellValue){
         if (cellValue=='1'){
-          return '非正常'
+          return '停用'
         }else{
           return '正常'
         }
       },
       goadd(){
         this.$router.push('/app/course/list/add');
+      },
+      editClassList(){
+        this.$router.push('/app/course/list/edit');
       }
     },
     mounted(){

@@ -59,7 +59,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     width: 100%;
     height: 100%;
   }
@@ -80,7 +80,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 2019;
+    z-index: 1;
   }
 
   .el-menu-demo {

@@ -19,10 +19,14 @@ a{
 .body-left{
   float: left;
   height: 100%;
+  margin-top: 60px;
 }
 
 .inputs{
   margin-top: 20px;
+}
+.right{
+  margin-top: 60px;
 }
 .allright{
   width:100%;
@@ -35,15 +39,4 @@ a{
   font-weight: bolder;
   text-decoration: underline;
   margin-left:10px;
-}
-
-.el-message-box__wrapper{
- position:relative;
-}
-
-.el-message{
-  line-height:600px;
-  position:absolute;
- bottom:600px;
-  left:50px;
 }

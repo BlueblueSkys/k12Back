@@ -40,8 +40,8 @@
           prop="image"
           label="图片"
           width="200">
-          <template slot-scope="scope">
-            <img :src="scope.row.image" min-width="70" height="70"/>
+          <template   slot-scope="scope">
+            <img :src="scope.row.image"  min-width="70" height="70" />
           </template>
 
         </el-table-column>
@@ -87,7 +87,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editSlider">编辑
             </el-button>
             <el-button
               size="mini"
@@ -111,11 +112,11 @@
       }
     },
     methods: {
-      formatStatus: function (row, column, cellVale) {
-        if (cellVale == "0") {
+      formatStatus:function(row, column,cellVale){
+        if(cellVale=="0"){
           return '正常'
-        } else if (cellVale == '1') {
-          return '非正常'
+        }else if(cellVale == '1'){
+          return '停用'
         }
       },
       sdel() {
@@ -138,8 +139,8 @@
       getdate() {
         this.axios.get('/api/carousels').then(res => (
           this.tableData = res.data.data,
-            console.log(res.data)
-        )).catch(err => (
+          console.log(res.data)
+        )).catch( err=> (
           console.log(err)
         ))
 
@@ -156,9 +157,11 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
-      Slider() {
-
+      Slider(){
         this.$router.push('/app/carousel/Slider');
+      },
+      editSlider(){
+        this.$router.push('/app/carousel/edit');
       }
     },
     mounted() {
