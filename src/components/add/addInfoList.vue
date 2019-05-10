@@ -4,8 +4,7 @@
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>运营中心</el-breadcrumb-item>
-        <el-breadcrumb-item>咨询管理</el-breadcrumb-item>
-        <el-breadcrumb-item>新增咨询管理</el-breadcrumb-item>
+        <el-breadcrumb-item>资讯列表</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
