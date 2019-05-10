@@ -4,7 +4,9 @@ a{
   text-decoration: none;
 }
 .router-link-active{}
-
+.el-form-item{
+  width: 30%;
+}
 .el-icon-plus{
   font-weight:bolder;
 }
@@ -13,6 +15,10 @@ a{
 }
 .allright{
   width:100%;
+}
+.body-left{
+  float: left;
+  height: 100%;
 }
 
 .inputs{

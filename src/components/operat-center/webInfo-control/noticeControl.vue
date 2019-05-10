@@ -6,12 +6,12 @@
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>运营中心</el-breadcrumb-item>
-          <el-breadcrumb-item>公告管理</el-breadcrumb-item>
+          <el-breadcrumb-item>咨询管理</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
+        <el-button><i class="el-icon-plus"></i>新增公告</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>

@@ -1,4 +1,8 @@
 // import Home from './components/Home.vue'
+
+// 新增组件
+import addvue from './components/add/Ademo'
+
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
@@ -67,6 +71,7 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 export default {
   routes: [
     {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/app', redirect: '/app/article/category', component: operatCenter},
     {path: '/operatCenter', component: operatCenter},
 
     // 销售中心
@@ -94,9 +99,9 @@ export default {
       component: systemControl,
       children: [
         {path: '/system/admin', component: systemAdmin},
-        {path: '/system/role', component: systemPerson},
+        {path: '/system/role', component: systemAdmin},
         {path: '/system/log', component: systemLog},
-        {path: '/system/help', component: systemHelp},
+        {path: '/system/help', component: addvue},
       ]
     },
     // 运营中心
@@ -110,6 +115,7 @@ export default {
 
         },
         {path: '/app/article/category', component: infoClassifyControl},
+        {path: '/app/article/category/add', component: addvue,},
         {path: '/app/article/list', component: infoList},
         {path: '/app/notice', component: noticeControl},
         {path: '/app/carousel', component: slideshowControl},
@@ -146,7 +152,7 @@ export default {
           redirect: '/app/course/category',
           component: classifyControl,
           children: [
-            {path: '/app/course/category', component: classifyControl},
+            {path: '/app/course/category', component: classifyControl,},
             {path: '/app/course/type', component: courseTypeControl},
             {path: '/app/course/list', component: courseList},
           ]
