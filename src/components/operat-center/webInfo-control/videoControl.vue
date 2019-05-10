@@ -56,7 +56,8 @@
           show-overflow-tooltip>
           <template slot-scope="scope">
             <el-button
-              size="mini">编辑
+              size="mini"
+              type="primary">编辑
             </el-button>
             <el-button
               size="mini"
@@ -71,7 +72,7 @@
 
 <script>
   export default {
-    name: "noticeControl",
+    name: "videoControl",
     data() {
       return {
         tableData: [{

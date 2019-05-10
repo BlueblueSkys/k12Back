@@ -75,7 +75,7 @@
 
 <script>
   export default {
-    name: "noticeControl",
+    name: "infoList",
     data() {
       return {
         tableData: [],

@@ -68,7 +68,7 @@
         <el-table-column
           prop="status"
           label="状态"
-          width="100"
+          width="80"
           :formatter="formatStatus"
         >
         </el-table-column>
@@ -102,7 +102,7 @@
 
 <script>
   export default {
-    name: "infoClassifyControl",
+    name: "slideshowControl",
     data() {
       return {
         input: '',
@@ -153,10 +153,16 @@
         var y = dt.getFullYear();
         var m = dt.getMonth()+1;
         var d = dt.getDate();
+        var h = dt.getHours();
+        var min = dt.getMinutes();
+        var s = dt.getSeconds();
         m = m.toString().padStart(2,0)
         d = d.toString().padStart(2,0)
+        h = h.toString().padStart(2,0)
+        min = min.toString().padStart(2,0)
+        s = s.toString().padStart(2,0)
 
-        return `${y}-${m}-${d}`
+        return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
     }
   }
