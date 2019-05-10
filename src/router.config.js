@@ -23,7 +23,11 @@ import opinionTypeControl from './components/operat-center/appInfo-control/opini
 import courseTypeControl from './components/operat-center/recordCourse-control/courseTypeControl/courseTypeControl'
 import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
 import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
-
+import addCourseControl from './components/add/addCourseControl'
+import addInfoList from './components/add/addInfoList'
+import addNoticeControl from './components/add/addNoticeControl'
+import serviceStaffControl from './components/operat-center/serviceStaff-control/serviceStaffControl'
+import coinControl from './components/operat-center/coin-control/coinControl'
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -119,7 +123,9 @@ export default {
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/category/add', component: addvue,},
         {path: '/app/article/list', component: infoList},
+        {path: '/app/article/list/add', component: addInfoList,},
         {path: '/app/notice', component: noticeControl},
+        {path: '/app/notice/add', component: addNoticeControl,},
         {path: '/app/carousel', component: slideshowControl},
         {path: '/app/video', component: videoControl},
 
@@ -138,14 +144,15 @@ export default {
         // 录播课程管理
         {path: '/app/course/category', component: classifyControl},
         {path: '/app/course/type', component: courseTypeControl},
+        {path: '/app/course/type/add', component: addCourseControl,},
         {path: '/app/course/list', component: courseList},
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},
         // 客服人员管理
-        {path: '/app/supporter', component: operatCenter},
+        {path: '/app/supporter', component: serviceStaffControl},
         // 兑换卷管理
-        {path: '/app/coupon', component: operatCenter},
+        {path: '/app/coupon', component: coinControl},
       ]
     },
 

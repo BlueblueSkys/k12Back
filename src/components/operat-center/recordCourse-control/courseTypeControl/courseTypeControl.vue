@@ -12,14 +12,14 @@
       </div>
       <div class="inputs">
         <!--   s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button class="s-add"><i class="el-icon-plus"></i>新增课程类型</el-button>
+        <el-button class="s-add" @click="addCourseControl"><i class="el-icon-plus"></i>新增课程类型</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
     </el-header>
-    <template>
+    <template  v-if="addflag">
       <el-table
         :data="tableData"
         tooltip-effect="dark"
@@ -72,13 +72,18 @@
 </template>
 
 <script>
+  import addCourseControl from "../../../add/addCourseControl"
   export default {
     name: "infoClassifyControl",
     data() {
       return {
         input:'',
         tableData: [],
+        addflag:true,
       }
+    },
+    components:{
+      addCourseControl
     },
     methods: {
       formatStatus:function(row, column, cellValue){
@@ -107,6 +112,9 @@
           console.log(err);
         })
       },
+      addCourseControl(){
+        this.$router.push('/app/course/type/add')
+      }
     },
     mounted(){
       this.getinfo()

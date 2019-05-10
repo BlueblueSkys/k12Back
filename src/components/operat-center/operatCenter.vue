@@ -1,9 +1,9 @@
 <template>
   <div style="width: 100%;">
-    <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246);">
+    <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
       <el-menu :default-openeds="openlist">
         <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>网站内容管理</template>
+          <template slot="title"><i class="el-icon-s-unfold"></i>网站内容管理</template>
           <el-submenu index="10" class="el-submenu">
             <template slot="title">
               <!--<router-link to="/app/article">资讯管理</router-link>-->
@@ -33,7 +33,7 @@
           </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
-          <template slot="title"><i class="el-icon-menu"></i>APP内容管理</template>
+          <template slot="title"><i class="el-icon-s-grid"></i>APP内容管理</template>
           <el-submenu index="2-1">
             <template slot="title">
               <router-link to="/app/event">活动管理</router-link>
@@ -69,7 +69,7 @@
           </el-submenu>
         </el-submenu>
         <el-submenu index="3">
-          <template slot="title"><i class="el-icon-setting"></i>录播课程管理</template>
+          <template slot="title"><i class="el-icon-mic"></i>录播课程管理</template>
           <el-menu-item index="3-1">
             <template slot="title">
               <router-link to="/app/course/category">分类管理</router-link>
@@ -87,15 +87,15 @@
           </el-menu-item>
         </el-submenu>
         <el-menu-item index="4" style="text-indent: 13px;">
-          <i class="el-icon-setting"></i>
+          <i class="el-icon-s-custom"></i>
           <span slot="title" style="margin-left: 7px"><router-link to="/app/user/list">注册用户管理</router-link></span>
         </el-menu-item>
         <el-menu-item index="5" style="text-indent: 13px">
-          <i class="el-icon-setting"></i>
+          <i class="el-icon-service"></i>
           <span slot="title" style="margin-left: 7px"><router-link to="/app/supporter">客服人员管理</router-link></span>
         </el-menu-item>
         <el-menu-item index="6" style="text-indent: 13px">
-          <i class="el-icon-setting"></i>
+          <i class="el-icon-cpu"></i>
           <span slot="title" style="margin-left: 7px"><router-link to="/app/coupon">兑换券管理</router-link></span>
         </el-menu-item>
       </el-menu>
@@ -136,6 +136,7 @@
 
   .body-left {
     float: left;
+    overflow: hidden;
   }
 
   .right {

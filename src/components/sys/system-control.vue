@@ -4,25 +4,25 @@
     <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
       <el-menu>
         <el-menu-item index="1" style="text-indent: 13px;">
-          <i class="el-icon-setting"></i>
+          <i class="el-icon-user-solid"></i>
           <router-link to="/system/admin" class="router-link" style="margin-left: 7px;">管理员管理</router-link>
         </el-menu-item>
         <el-menu-item index="2" style="text-indent: 13px;">
           <template slot="title">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-user"></i>
             <router-link to="/system/role" class="router-link" style="margin-left: 7px;">角色管理</router-link>
           </template>
         </el-menu-item>
         <el-menu-item index="3" style="text-indent: 13px;">
           <template slot="title">
-            <i class="el-icon-setting"></i>
-            <router-link to="/system/log" class="router-link" style="margin-right: 7px">系统日志</router-link>
+            <i class="el-icon-s-order"></i>
+            <router-link to="/system/log" class="router-link" style="margin-left: 7px">系统日志</router-link>
           </template>
         </el-menu-item>
         <el-menu-item index="4" style="text-indent: 13px;">
           <template slot="title">
-            <i class="el-icon-setting"></i>
-            <router-link to="/system/help" class="router-link" style="margin-right: 7px">帮助文档</router-link>
+            <i class="el-icon-question"></i>
+            <router-link to="/system/help" class="router-link" style="margin-left: 7px">帮助文档</router-link>
           </template>
         </el-menu-item>
       </el-menu>
