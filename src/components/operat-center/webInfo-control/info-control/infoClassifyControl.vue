@@ -11,7 +11,7 @@
         </el-breadcrumb>
       </div>
       <div class="inputs">
-        <!--   s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
+        <!--   s-add 添加  s-del 删除  el-input不能输入 疑似没有给data值-->
         <el-button class="s-add" @click="goadd"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
