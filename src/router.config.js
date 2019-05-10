@@ -4,6 +4,8 @@
 import addvue from './components/add/Ademo'
 import Slider from './components/add/s-Slider'
 import Sclassify from './components/add/Sclassify'
+// 新增课程列表
+import addclasslist from './components/add/DXclasslist'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
@@ -24,7 +26,11 @@ import opinionTypeControl from './components/operat-center/appInfo-control/opini
 import courseTypeControl from './components/operat-center/recordCourse-control/courseTypeControl/courseTypeControl'
 import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
 import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
-
+import addCourseControl from './components/add/addCourseControl'
+import addInfoList from './components/add/addInfoList'
+import addNoticeControl from './components/add/addNoticeControl'
+import serviceStaffControl from './components/operat-center/serviceStaff-control/serviceStaffControl'
+import coinControl from './components/operat-center/coin-control/coinControl'
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -119,11 +125,12 @@ export default {
         // 网站内容管理
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/category/add', component: addvue,},
-
         {path: '/app/article/list', component: infoList},
+        {path: '/app/article/list/add', component: addInfoList,},
         {path: '/app/notice', component: noticeControl},
+        {path: '/app/notice/add', component: addNoticeControl,},
         {path: '/app/carousel', component: slideshowControl},
-        {path: '/app/carousel/Slider',component:Slider},
+        {path: '/app/carousel/Slider', component:Slider },
         {path: '/app/video', component: videoControl},
 
         // 活动管理
@@ -142,14 +149,16 @@ export default {
         {path: '/app/course/category', component: classifyControl},
         {path: '/app/course/category/Sclassify', component: Sclassify},
         {path: '/app/course/type', component: courseTypeControl},
+        {path: '/app/course/type/add', component: addCourseControl,},
         {path: '/app/course/list', component: courseList},
+        {path: '/app/course/list/add', component: addclasslist},
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},
         // 客服人员管理
-        {path: '/app/supporter', component: operatCenter},
+        {path: '/app/supporter', component: serviceStaffControl},
         // 兑换卷管理
-        {path: '/app/coupon', component: operatCenter},
+        {path: '/app/coupon', component: coinControl},
       ]
     },
 
