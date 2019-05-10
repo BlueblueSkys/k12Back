@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-container>
+    <el-container class="wrap2">
       <el-container class="head">
         <el-header class="theNav">
           <div class="navtext">机灵兔编程</div>
@@ -43,7 +43,7 @@
 </script>
 
 <style>
-  * {
+  *  {
     margin: 0;
     padding: 0;
   }
@@ -125,6 +125,9 @@
     margin-top: 10px;
   }
   .right{
-    /*width: 100%;*/
+    height: 100%;
+  }
+  .wrap2{
+    height: 100%;
   }
 </style>

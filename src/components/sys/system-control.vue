@@ -1,6 +1,6 @@
 <template>
   <!--系统管理-->
-  <div style="width: 100%; text-align:left">
+  <div style="width: 100%; text-align:left; height: 100% ">
     <el-aside class="body-left" width="200px" style="background-color: rgb(238, 241, 246)">
       <el-menu>
         <el-menu-item index="1" style="text-indent: 13px;">
@@ -22,7 +22,7 @@
         <el-menu-item index="4" style="text-indent: 13px;">
           <template slot="title">
             <i class="el-icon-setting"></i>
-            <router-link to="/system/role" class="router-link" style="margin-right: 7px">帮助文档</router-link>
+            <router-link to="/system/help" class="router-link" style="margin-right: 7px">帮助文档</router-link>
           </template>
         </el-menu-item>
       </el-menu>
@@ -35,7 +35,7 @@
 
 <script>
   export default {
-    name: "system-control"
+    name: "system-control",
   }
 </script>
 
