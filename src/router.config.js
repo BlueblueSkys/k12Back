@@ -27,15 +27,6 @@ import sMarketuser from './components/sale-center/s-marketuser'
 import sSaleuser from './components/sale-center/s-saleuser'
 // 引入订单管理
 import orderControl from './components/sale-center/order-control'
-// 资讯管理
-import infoControl from './components/operat-center/webInfo-control/info-control/infoControl'
-// 活动管理
-import activeControl from './components/operat-center/appInfo-control/active-control/activeControl'
-// 问答管理
-import answerControl from './components/operat-center/appInfo-control/answerControl/answerControl'
-// 用户反馈
-import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
-
 
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
