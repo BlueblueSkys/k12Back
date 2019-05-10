@@ -1,18 +1,18 @@
 <template>
-  <div class="allright">
+  <div>
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div>
         <!--       s-bolder 加粗           -->
         <span class="s-bolder">首页</span>&nbsp&nbsp>
         <span class="s-bolder">运营中心</span>&nbsp&nbsp>
-        <span>资讯管理</span>&nbsp&nbsp>
-        <span>分类管理</span>&nbsp&nbsp
+        <span>轮播图管理</span>
+
       </div>
       <div>
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
-        <el-button class="s-del">删除</el-button>
-        <el-input placeholder="请输入内容" class="input-with-select">
+        <el-button type="danger">删除</el-button>
+        <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
       </div>
@@ -24,31 +24,59 @@
         tooltip-effect="dark"
         @selection-change="handleSelectionChange">
         <el-table-column
-          width="30">
-        </el-table-column>
-        <el-table-column
           label="#"
-          width="120">
-          <template slot-scope="scope">{{ scope.row.id}}</template>
+          width="80">
+          <template slot-scope="scope">
+            <span v-text="scope.$index+1"></span>
+          </template>
         </el-table-column>
         <el-table-column
           type="selection"
-          width="120">
+          width="80">
         </el-table-column>
         <el-table-column
-          prop="name"
-          label="名称"
+          prop="image"
+          label="图片"
           width="200">
+          <template   slot-scope="scope">
+            <img :src="scope.row.image"  min-width="70" height="70" />
+          </template>
+
         </el-table-column>
         <el-table-column
-          prop="comment"
-          label="备注"
-          width="500">
+          prop="title"
+          label="标题"
+          width="100">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="sort"
+          label="类型"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="link"
+          label="链接"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="description"
+          label="描述"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="status"
           label="状态"
-          width="120">
+          width="100"
+          :formatter="formatStatus"
+        >
+        </el-table-column>
+        <el-table-column
+          prop="createTime"
+          label="修改时间"
+          width="200">
+          <template   slot-scope="scope">
+            <p>{{scope.row.createTime|format}}</p>
+          </template>
         </el-table-column>
         <el-table-column
           prop="operate"
@@ -71,24 +99,34 @@
 
 <script>
   export default {
-    name: "noticeControl",
+    name: "infoClassifyControl",
     data() {
       return {
-        tableData: [{
-          id: '1',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }, {
-          id: '2',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }],
-        data:''
+        input: '',
+        tableData: [],
+
       }
     },
     methods: {
+      formatStatus:function(row, column,cellVale){
+        if(cellVale=="0"){
+          return '正常'
+        }else if(cellVale == '1'){
+          return '非正常'
+        }
+
+      },
+
+      getdate(){
+        this.axios.get('/api/carousels').then(res =>(
+          this.tableData = res.data.data,
+          console.log(res.data)
+        )).catch( err=> (
+          console.log(err)
+        ))
+
+      },
+
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -100,17 +138,23 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
-      },
-      getdata(){
-        // this.$axios.get('/api/notices').then(res => (
-        //   console.log(res.data)
-        // )).catch(err => (
-        //   console.log(err)
-        // ));
       }
     },
     mounted(){
-      // this.getdata();
+      this.getdate()
+    },
+
+    filters:{
+      format:function(){
+        var dt = new Date();
+        var y = dt.getFullYear();
+        var m = dt.getMonth()+1;
+        var d = dt.getDate();
+        m = m.toString().padStart(2,0)
+        d = d.toString().padStart(2,0)
+
+        return `${y}-${m}-${d}`
+      }
     }
   }
 </script>
@@ -120,3 +164,4 @@
     width: 100%;
   }
 </style>
+

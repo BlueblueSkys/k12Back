@@ -1,5 +1,4 @@
 <template>
-  <!-- 公告管理-->
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div>
@@ -79,7 +78,6 @@
 </template>
 
 <script>
-
   export default {
     name: "noticeControl",
     data() {
@@ -148,7 +146,6 @@
         return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
     }
-
   }
 </script>
 

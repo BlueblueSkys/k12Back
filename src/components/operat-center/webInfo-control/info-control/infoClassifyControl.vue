@@ -27,7 +27,7 @@
         <el-table-column
           label="#"
           width="50">
-          <template slot-scope="scope">{{ scope.row.id}}</template>
+          <template slot-scope="scope"><span v-text="scope.$index+1"></span></template>
         </el-table-column>
         <el-table-column
           type="selection"
@@ -39,14 +39,15 @@
           width="200">
         </el-table-column>
         <el-table-column
-          prop="comment"
+          prop="remark"
           label="备注"
           width="700">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="status"
           label="状态"
-          width="50">
+          width="50"
+          :formatter="formatStatus">
         </el-table-column>
         <el-table-column
           prop="operate"
@@ -74,20 +75,17 @@
     data() {
       return {
         input:'',
-        tableData: [{
-          id: '1',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }, {
-          id: '2',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }],
+        tableData: [],
       }
     },
     methods: {
+      formatStatus:function(row, column, cellValue){
+        if(cellValue == "1"){
+          return '非正常';
+        }else if(cellValue == "0"){
+          return '正常';
+        }
+      },
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -99,7 +97,17 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
-      }
+      },
+      getinfo(){
+        this.axios.get('/api/article/categories').then(res=>{
+          this.tableData = res.data.data
+        }).catch(err=>{
+          console.log(err);
+        })
+      },
+    },
+    mounted(){
+      this.getinfo()
     }
   }
 </script>

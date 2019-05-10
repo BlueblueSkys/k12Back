@@ -2,8 +2,9 @@
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
-import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+import infoClassifyControl from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
 
+// 运营中心/ 网站内容管理 / 公告管理
 import infoList from './components/operat-center/webInfo-control/info-control/infoList'
 import noticeControl from './components/operat-center/webInfo-control/noticeControl'
 import slideshowControl from './components/operat-center/webInfo-control/slideshowControl'
@@ -108,7 +109,7 @@ export default {
           redirect: '/app/article/category',
 
         },
-        {path: '/app/article/category', component: defaults},
+        {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/list', component: infoList},
         {path: '/app/notice', component: noticeControl},
         {path: '/app/carousel', component: slideshowControl},
@@ -165,7 +166,7 @@ export default {
       component: saveCenter,
       children: [
         // 离线包管理  版本管理
-        {path: '/saveCenter/leaveBag', component: defaults},
+        {path: '/saveCenter/leaveBag', component: infoClassifyControl},
         {path: '/saveCenter/versionsControl', component: versionsControl},
 
       ]
