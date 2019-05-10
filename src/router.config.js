@@ -1,4 +1,6 @@
 // import Home from './components/Home.vue'
+// 登录
+import login from './components/login'
 
 // 新增组件
 import addvue from './components/add/Ademo'
@@ -78,6 +80,8 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes: [
+    // {path: '/', redirect: '/login', component: login},
+    // {path:'/login',component:login},
     {path: '/', redirect: '/app/article/category', component: operatCenter},
     {path: '/app', redirect: '/app/article/category', component: operatCenter},
     {path: '/operatCenter', component: operatCenter},

@@ -19,10 +19,14 @@ a{
 .body-left{
   float: left;
   height: 100%;
+  margin-top: 60px;
 }
 
 .inputs{
   margin-top: 20px;
+}
+.right{
+  margin-top: 60px;
 }
 .allright{
   width:100%;
@@ -35,4 +39,7 @@ a{
   font-weight: bolder;
   text-decoration: underline;
   margin-left:10px;
+}
+.el-table{
+
 }
