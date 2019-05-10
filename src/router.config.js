@@ -13,6 +13,7 @@ import infoList from './components/operat-center/webInfo-control/info-control/in
 import noticeControl from './components/operat-center/webInfo-control/noticeControl'
 import slideshowControl from './components/operat-center/webInfo-control/slideshowControl'
 import videoControl from './components/operat-center/webInfo-control/videoControl'
+import registerUserControl from './components/operat-center/registerUser-control/registerUserControl'
 import activeList from './components/operat-center/appInfo-control/active-control/activeList'
 import activeClassifyControl from './components/operat-center/appInfo-control/active-control/activeClassifyControl'
 import answerList from './components/operat-center/appInfo-control/answerControl/answerList'
@@ -140,7 +141,7 @@ export default {
         {path: '/app/course/list', component: courseList},
 
         // 用户管理
-        {path: '/app/user/list', component: operatCenter},
+        {path: '/app/user/list', component: registerUserControl},
         // 客服人员管理
         {path: '/app/supporter', component: operatCenter},
         // 兑换卷管理
