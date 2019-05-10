@@ -41,8 +41,8 @@
         },
         rules: {
           name: [
-            {required: true, message: '请输入分类名称', trigger: 'blur'},
-            {min: 3, max: 5, message: '长度在 3 到 6 个字符', trigger: 'blur'}
+            {required: true, message: '请输入分类名称', trigger: 'change'},
+            {min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur'}
           ],
           remark: [
             {required: true, message: '请输入备注', trigger: 'change'}

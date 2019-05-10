@@ -136,6 +136,7 @@
 
   .body-left {
     float: left;
+    overflow: hidden;
   }
 
   .right {
