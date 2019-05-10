@@ -123,5 +123,7 @@
     float: right;
     margin-top: 10px;
   }
-
+  .right{
+    /*width: 100%;*/
+  }
 </style>

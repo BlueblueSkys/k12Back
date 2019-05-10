@@ -3,8 +3,6 @@
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
 import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
-// 运营中心/ 网站内容管理 / 公告管理
-import noticeControl from './components/operat-center/webInfo-control/noticeControl'
 
 import infoList from './components/operat-center/webInfo-control/info-control/infoList'
 import noticeControl from './components/operat-center/webInfo-control/noticeControl'

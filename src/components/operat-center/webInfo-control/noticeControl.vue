@@ -1,12 +1,12 @@
 <template>
+  <!-- 公告管理-->
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div>
         <!--       s-bolder 加粗           -->
         <span class="s-bolder">首页</span>&nbsp&nbsp>
         <span class="s-bolder">运营中心</span>&nbsp&nbsp>
-        <span>资讯管理</span>&nbsp&nbsp>
-        <span>分类管理</span>&nbsp&nbsp
+        <span>公告管理</span>&nbsp&nbsp>
       </div>
       <div>
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
@@ -20,36 +20,44 @@
     <template>
       <el-table
         ref="multipleTable"
-        :data="tableData"
+        :data="datas"
         tooltip-effect="dark"
-        style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column
           width="30">
         </el-table-column>
         <el-table-column
           label="#"
-          width="120">
-          <template slot-scope="scope">{{ scope.row.id}}</template>
+          width="80">
+          <template slot-scope="scope">{{scope.$index+1}}</template>
         </el-table-column>
         <el-table-column
           type="selection"
-          width="120">
+          width="100">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="title"
           label="名称"
           width="200">
         </el-table-column>
         <el-table-column
-          prop="comment"
+          prop="content"
           label="备注"
-          width="500">
+          width="400">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="status"
           label="状态"
-          width="120">
+          width="120"
+          :formatter="getstatus">
+        </el-table-column>
+        <el-table-column
+          prop="createTime"
+          label="修改时间"
+          width="180">
+          <template slot-scope="scope">
+          <p>{{scope.row.createTime|format}}</p>
+          </template>
         </el-table-column>
         <el-table-column
           prop="operate"
@@ -71,6 +79,7 @@
 </template>
 
 <script>
+
   export default {
     name: "noticeControl",
     data() {
@@ -86,7 +95,7 @@
           comment: '上海市普陀区金沙江路 1518 弄',
           state: '正常'
         }],
-        data:''
+        datas:[]
       }
     },
     methods: {
@@ -103,16 +112,43 @@
         this.multipleSelection = val;
       },
       getdata(){
-        this.$axios.get('/api/notices').then(res => (
-          console.log(res.data)
+        this.axios.get('/api/notices').then(res => (
+          this.datas = res.data.data,
+            console.log(res.data)
         )).catch(err => (
           console.log(err)
         ));
+      },
+      getstatus(row,column,cellValue){
+          if (cellValue=='1'){
+            return '非正常'
+          }else{
+            return '正常'
+          }
       }
     },
     mounted(){
       this.getdata();
+    },
+    filters:{
+      format:function(){
+        var dt = new Date();
+        var y = dt.getFullYear();
+        var m = dt.getMonth()+1;
+        var d = dt.getDate();
+        var h = dt.getHours();
+        var min = dt.getMinutes();
+        var s = dt.getSeconds();
+        m = m.toString().padStart(2,0)
+        d = d.toString().padStart(2,0)
+        h = h.toString().padStart(2,0)
+        min = min.toString().padStart(2,0)
+        s = s.toString().padStart(2,0)
+
+        return `${y}-${m}-${d} ${h}:${min}:${s}`
+      }
     }
+
   }
 </script>
 
