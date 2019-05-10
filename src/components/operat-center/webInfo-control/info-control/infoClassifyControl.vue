@@ -1,14 +1,16 @@
 <template>
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
-      <div>
+      <div class="navt">
         <!--       s-bolder 加粗           -->
-        <span class="s-bolder">首页</span>&nbsp&nbsp>
-        <span class="s-bolder">运营中心</span>&nbsp&nbsp>
-        <span>资讯管理</span>&nbsp&nbsp>
-        <span>分类管理</span>&nbsp&nbsp
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item>运营中心</el-breadcrumb-item>
+          <el-breadcrumb-item>咨询管理</el-breadcrumb-item>
+          <el-breadcrumb-item>咨询分类管理</el-breadcrumb-item>
+        </el-breadcrumb>
       </div>
-      <div>
+      <div class="inputs">
         <!--   s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button type="danger">删除</el-button>
@@ -41,12 +43,12 @@
         <el-table-column
           prop="remark"
           label="备注"
-          width="700">
+          width="620">
         </el-table-column>
         <el-table-column
           prop="status"
           label="状态"
-          width="50"
+          width="80"
           :formatter="formatStatus">
         </el-table-column>
         <el-table-column

@@ -1,14 +1,16 @@
 <template>
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
-      <div>
+      <div class="navt">
         <!--       s-bolder 加粗           -->
-        <span class="s-bolder">首页</span>&nbsp&nbsp>
-        <span class="s-bolder">运营中心</span>&nbsp&nbsp>
-        <span>轮播图管理</span>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item>运营中心</el-breadcrumb-item>
+          <el-breadcrumb-item>轮播图管理</el-breadcrumb-item>
+        </el-breadcrumb>
 
       </div>
-      <div>
+      <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button type="danger">删除</el-button>
@@ -22,10 +24,7 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
-
         @selection-change="handleSelectionChange">
-
         <el-table-column
           label="#"
           width="80">
@@ -97,13 +96,10 @@
         </el-table-column>
       </el-table>
     </template>
-
   </div>
 </template>
 
 <script>
-
-
   export default {
     name: "infoClassifyControl",
     data() {
@@ -168,11 +164,12 @@
         return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
     }
-
   }
 </script>
 
 <style scoped>
-
+  .allright{
+    width: 100%;
+  }
 </style>
 
