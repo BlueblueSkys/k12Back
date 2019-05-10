@@ -27,7 +27,7 @@
         <el-table-column
           label="#"
           width="50">
-          <template scope="scope"><span v-text="scope.$index+1"></span></template>
+          <template slot-scope="scope"><span v-text="scope.$index+1"></span></template>
         </el-table-column>
         <el-table-column
           type="selection"
