@@ -1,6 +1,6 @@
 <template>
   <div class="allright">
-    <el-header style="text-align: left; font-size: 16px; height:300px">
+    <el-header style="text-align: left; font-size: 16px; height:50px">
       <div class="navt">
         <!--       s-bolder 加粗           -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -130,7 +130,7 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary" @click="edit">编辑
             </el-button>
             <el-button
               size="mini"
@@ -156,6 +156,9 @@
       }
     },
     methods:{
+      edit(){
+        this.$router.push('/app/user/list/editregisteruser')
+      },
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
