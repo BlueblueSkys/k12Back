@@ -9,7 +9,7 @@
       </el-breadcrumb>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="课程类型名称" prop="name">
+      <el-form-item label="类型名称" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item label="备注" prop="remark">
