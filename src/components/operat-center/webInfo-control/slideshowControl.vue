@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div>
         <!--       s-bolder 加粗           -->
@@ -29,46 +29,57 @@
         <el-table-column
           label="#"
           width="80">
-          <template slot-scope="scope">{{ scope.row.id}}</template>
+          <template slot-scope="scope">
+            <span v-text="scope.$index+1"></span>
+          </template>
         </el-table-column>
         <el-table-column
           type="selection"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="image"
           label="图片"
           width="200">
+          <template   slot-scope="scope">
+            <img :src="scope.row.image"  min-width="70" height="70" />
+          </template>
+
         </el-table-column>
         <el-table-column
-          prop="comment"
+          prop="title"
           label="标题"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="sort"
           label="类型"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="link"
           label="链接"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="description"
           label="描述"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="status"
           label="状态"
-          width="100">
+          width="100"
+          :formatter="formatStatus"
+        >
         </el-table-column>
         <el-table-column
-          prop="state"
+          prop="createTime"
           label="修改时间"
           width="200">
+          <template   slot-scope="scope">
+            <p>{{scope.row.createTime|format}}</p>
+          </template>
         </el-table-column>
         <el-table-column
           prop="operate"
@@ -86,29 +97,42 @@
         </el-table-column>
       </el-table>
     </template>
+
   </div>
 </template>
 
 <script>
+
+
   export default {
     name: "infoClassifyControl",
-    data(){
-      return{
-        input:'',
-        tableData: [{
-          id: '1',
-          name: '王大虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }, {
-          id: '2',
-          name: '王大虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }],
+    data() {
+      return {
+        input: '',
+        tableData: [],
+
       }
     },
     methods: {
+      formatStatus:function(row, column,cellVale){
+        if(cellVale=="0"){
+          return '正常'
+        }else if(cellVale == '1'){
+          return '非正常'
+        }
+
+      },
+
+      getdate(){
+        this.axios.get('/api/carousels').then(res =>(
+          this.tableData = res.data.data,
+          console.log(res.data)
+        )).catch( err=> (
+          console.log(err)
+        ))
+
+      },
+
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -121,7 +145,24 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
+    },
+    mounted(){
+      this.getdate()
+    },
+
+    filters:{
+      format:function(){
+        var dt = new Date();
+        var y = dt.getFullYear();
+        var m = dt.getMonth()+1;
+        var d = dt.getDate();
+        m = m.toString().padStart(2,0)
+        d = d.toString().padStart(2,0)
+
+        return `${y}-${m}-${d}`
+      }
     }
+
   }
 </script>
 

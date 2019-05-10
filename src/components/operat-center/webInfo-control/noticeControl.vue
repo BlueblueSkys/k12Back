@@ -103,7 +103,7 @@
         this.multipleSelection = val;
       },
       getdata(){
-        this.$axios.get('/api/notices').then(res => (
+        this.axios.get('/api/notices').then(res => (
           console.log(res.data)
         )).catch(err => (
           console.log(err)
