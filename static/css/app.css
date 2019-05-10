@@ -36,3 +36,14 @@ a{
   text-decoration: underline;
   margin-left:10px;
 }
+
+.el-message-box__wrapper{
+ position:relative;
+}
+
+.el-message{
+  line-height:600px;
+  position:absolute;
+ bottom:600px;
+  left:50px;
+}
