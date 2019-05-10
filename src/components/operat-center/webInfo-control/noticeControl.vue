@@ -66,7 +66,8 @@
           show-overflow-tooltip>
           <template slot-scope="scope">
             <el-button
-              size="mini">编辑
+              size="mini"
+              type="primary">编辑
             </el-button>
             <el-button
               size="mini"
@@ -84,17 +85,7 @@
     name: "noticeControl",
     data() {
       return {
-        tableData: [{
-          id: '1',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }, {
-          id: '2',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }],
+
         datas:[]
       }
     },

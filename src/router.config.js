@@ -18,7 +18,7 @@ import opinionTypeControl from './components/operat-center/appInfo-control/opini
 import courseTypeControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
 import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
 import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
-
+import registerUser from './components/operat-center/registerUser-control/registerUserControl'
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -66,7 +66,8 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes: [
-    {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/', redirect: '/app', component: operatCenter},
+    {path: '/app', redirect: '/app/article/category', component: operatCenter},
     {path: '/operatCenter', component: operatCenter},
 
     // 销售中心
@@ -154,7 +155,7 @@ export default {
         {path: '/app/course/category', component: operatCenter},
         {path: '/app/course/type', component: operatCenter},
         {path: '/app/course/list', component: operatCenter},
-        {path: '/app/user/list', component: operatCenter},
+        {path: '/app/user/list', component:  registerUser},
         {path: '/app/supporter', component: operatCenter},
         {path: '/app/coupon', component: operatCenter},
       ]

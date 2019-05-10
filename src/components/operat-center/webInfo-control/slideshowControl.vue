@@ -68,7 +68,7 @@
         <el-table-column
           prop="status"
           label="状态"
-          width="100"
+          width="80"
           :formatter="formatStatus"
         >
         </el-table-column>
@@ -86,7 +86,8 @@
           show-overflow-tooltip>
           <template slot-scope="scope">
             <el-button
-              size="mini">编辑
+              size="mini"
+              type="primary">编辑
             </el-button>
             <el-button
               size="mini"
@@ -101,7 +102,7 @@
 
 <script>
   export default {
-    name: "infoClassifyControl",
+    name: "slideshowControl",
     data() {
       return {
         input: '',

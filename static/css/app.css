@@ -24,3 +24,9 @@ a{
 .navt{
   margin-top: 15px;
 }
+
+.s-router-link{
+  font-weight: bolder;
+  text-decoration: underline;
+  margin-left:10px;
+}
