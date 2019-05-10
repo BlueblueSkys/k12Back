@@ -40,7 +40,7 @@ import editSlider from './components/edit/editSlider'
 import editSclassify from './components/edit/editSclassify'
 import editCourseControl from './components/edit/editCourseControl'
 import editClassList from './components/edit/editClassList'
-
+import editregisteruser from './components/edit/editregisteruser'
 
 // 引入销售中心
 import saleCenter from './components/sale-center/sale_center'
@@ -181,6 +181,7 @@ export default {
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},
+        {path:'/app/user/list/editregisteruser',component:editregisteruser},
         // 客服人员管理
         {path: '/app/supporter', component: serviceStaffControl},
         // 兑换卷管理

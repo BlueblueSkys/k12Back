@@ -12,8 +12,8 @@
       </div>
       <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button class="s-add" @click="Slider"><i class="el-icon-plus" ></i>新增轮播图</el-button>
-        <el-button type="danger">删除</el-button>
+        <el-button class="s-add" @click="Slider"><i class="el-icon-plus"></i>新增轮播图</el-button>
+        <el-button type="danger" >删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
@@ -76,7 +76,7 @@
           prop="createTime"
           label="修改时间"
           width="200">
-          <template   slot-scope="scope">
+          <template slot-scope="scope">
             <p>{{scope.row.createTime|format}}</p>
           </template>
         </el-table-column>
@@ -92,7 +92,7 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger">删除
+              type="danger" @click="sdel">删除
             </el-button>
           </template>
         </el-table-column>
@@ -118,10 +118,26 @@
         }else if(cellVale == '1'){
           return '停用'
         }
-
       },
-      getdate(){
-        this.axios.get('/api/carousels').then(res =>(
+      sdel() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
+      getdate() {
+        this.axios.get('/api/carousels').then(res => (
           this.tableData = res.data.data,
           console.log(res.data)
         )).catch( err=> (
@@ -148,24 +164,24 @@
         this.$router.push('/app/carousel/edit');
       }
     },
-    mounted(){
+    mounted() {
       this.getdate()
     },
 
-    filters:{
-      format:function(){
+    filters: {
+      format: function () {
         var dt = new Date();
         var y = dt.getFullYear();
-        var m = dt.getMonth()+1;
+        var m = dt.getMonth() + 1;
         var d = dt.getDate();
         var h = dt.getHours();
         var min = dt.getMinutes();
         var s = dt.getSeconds();
-        m = m.toString().padStart(2,0)
-        d = d.toString().padStart(2,0)
-        h = h.toString().padStart(2,0)
-        min = min.toString().padStart(2,0)
-        s = s.toString().padStart(2,0)
+        m = m.toString().padStart(2, 0)
+        d = d.toString().padStart(2, 0)
+        h = h.toString().padStart(2, 0)
+        min = min.toString().padStart(2, 0)
+        s = s.toString().padStart(2, 0)
 
         return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
@@ -174,7 +190,7 @@
 </script>
 
 <style scoped>
-  .allright{
+  .allright {
     width: 100%;
   }
 </style>

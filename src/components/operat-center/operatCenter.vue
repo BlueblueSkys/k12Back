@@ -129,16 +129,13 @@
     text-indent: 40px;
     text-align: left;
   }
-
   .el-submenu {
     text-align: center;
   }
-
   .body-left {
     float: left;
     overflow: hidden;
   }
-
   .right {
     /*float: left;*/
     border-right: 1px solid lightgray;
