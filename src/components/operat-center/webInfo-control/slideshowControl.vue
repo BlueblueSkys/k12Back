@@ -156,10 +156,16 @@
         var y = dt.getFullYear();
         var m = dt.getMonth()+1;
         var d = dt.getDate();
+        var h = dt.getHours();
+        var min = dt.getMinutes();
+        var s = dt.getSeconds();
         m = m.toString().padStart(2,0)
         d = d.toString().padStart(2,0)
+        h = h.toString().padStart(2,0)
+        min = min.toString().padStart(2,0)
+        s = s.toString().padStart(2,0)
 
-        return `${y}-${m}-${d}`
+        return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
     }
 
