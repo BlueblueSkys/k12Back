@@ -60,7 +60,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editNotice">编辑
             </el-button>
             <el-button
               size="mini"
@@ -104,13 +105,16 @@
       },
       getstatus(row,column,cellValue){
         if (cellValue=='1'){
-          return '非正常'
+          return '停用'
         }else{
           return '正常'
         }
       },
       addNoticeControl(){
         this.$router.push('/app/notice/add')
+      },
+      editNotice(){
+        this.$router.push('/app/notice/edit')
       }
     },
     mounted(){

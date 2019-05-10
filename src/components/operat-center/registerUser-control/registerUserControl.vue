@@ -172,7 +172,7 @@
         if(cellVale=="0"){
           return '正常'
         }else if(cellVale == '1'){
-          return '非正常'
+          return '停用'
         }
 
       },

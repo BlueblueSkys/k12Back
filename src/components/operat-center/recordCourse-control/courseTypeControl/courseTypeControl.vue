@@ -58,7 +58,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editCourseControl">编辑
             </el-button>
             <el-button
               size="mini"
@@ -88,7 +89,7 @@
     methods: {
       formatStatus:function(row, column, cellValue){
         if(cellValue == "1"){
-          return '非正常';
+          return '停用';
         }else if(cellValue == "0"){
           return '正常';
         }
@@ -114,6 +115,9 @@
       },
       addCourseControl(){
         this.$router.push('/app/course/type/add')
+      },
+      editCourseControl(){
+        this.$router.push('/app/course/type/edit')
       }
     },
     mounted(){

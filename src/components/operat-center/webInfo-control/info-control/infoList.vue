@@ -60,7 +60,8 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary">编辑
+              type="primary"
+            @click="editInfoList">编辑
             </el-button>
             <el-button
               size="mini"
@@ -108,13 +109,16 @@
       },
       getstatus(row,column,cellValue){
         if (cellValue=='1'){
-          return '非正常'
+          return '停用'
         }else{
           return '正常'
         }
       },
       addInfoList(){
         this.$router.push('/app/article/list/add')
+      },
+      editInfoList(){
+        this.$router.push('/app/article/list/edit')
       }
     },
     mounted(){
