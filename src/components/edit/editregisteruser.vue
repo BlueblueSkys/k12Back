@@ -55,35 +55,41 @@
       return {
         ruleForm: {
           tel: '',
-         nickname: '',
+          nickname: '',
           lastname: '',
-          city:'',
-          childSchool:'',
-          gender:'',
-          status:''
+          city: '',
+          childSchool: '',
+          gender: '',
+          status: ''
         },
         rules: {
           tel: [
             {required: true, message: '请输入正确手机号', trigger: 'blur'},
             {message: '请输入正确手机号', trigger: 'blur'}
           ],
-         nickname: [
-            {required: true, message: '请输入昵称', trigger: 'change'}
+          nickname: [
+            {required: true, message: '请输入昵称', trigger: 'blur'},
+            {message: '请输入昵称', trigger: 'blur'}
           ],
-         lastname: [
-            {required: true, message: '请输入姓名', trigger: 'change'}
+          lastname: [
+            {required: true, message: '请输入姓名', trigger: 'blur'},
+            {message: '请输入姓名', trigger: 'blur'}
           ],
-          city:[
-            {required: true, message: '请输入地址', trigger: 'change'}
+          city: [
+            {required: true, message: '请输入地址', trigger: 'blur'},
+            {message: '请输入地址', trigger: 'blur'}
           ],
-          childSchool:[
-            {required: true, message: '请输入孩子所在学校', trigger: 'change'}
+          childSchool: [
+            {required: true, message: '请输入孩子所在学校', trigger: 'blur'},
+            {message: '请输入孩子所在学校', trigger: 'blur'}
           ],
-          gender:[
-            {required: true, message: '请输入性别', trigger: 'change'}
+          gender: [
+            {required: true, message: '请输入性别', trigger: 'blur'},
+            {message: '请输入性别', trigger: 'blur'}
           ],
-          status:[
-            {required: true, message: '请输入状态', trigger: 'change'}
+          status: [
+            {required: true, message: '请输入状态', trigger: 'blur'},
+            {message: '请输入状态', trigger: 'blur'}
           ]
         }
       };
@@ -107,7 +113,7 @@
 </script>
 
 <style scoped>
-  .addwrap{
+  .addwrap {
     position: relative;
     padding-top: 20px;
     padding-left: 20px;
@@ -116,7 +122,8 @@
     height: 100%;
     background-color: #F2F6FC;
   }
-  .demo-ruleForm{
+
+  .demo-ruleForm {
     background-color: white;
     padding: 50px 0;
     margin-top: 20px;
