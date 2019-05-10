@@ -139,7 +139,7 @@
   }
 
   .right {
-    float: left;
+
    border-right:1px solid lightgray;
   }
 </style>

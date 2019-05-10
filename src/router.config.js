@@ -2,9 +2,8 @@
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
-import defaults from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
+import infoClassifyControl from './components/operat-center/webInfo-control/info-control/infoClassifyControl'
 // 运营中心/ 网站内容管理 / 公告管理
-import noticeControl from './components/operat-center/webInfo-control/noticeControl'
 
 import infoList from './components/operat-center/webInfo-control/info-control/infoList'
 import noticeControl from './components/operat-center/webInfo-control/noticeControl'
@@ -29,15 +28,6 @@ import sMarketuser from './components/sale-center/s-marketuser'
 import sSaleuser from './components/sale-center/s-saleuser'
 // 引入订单管理
 import orderControl from './components/sale-center/order-control'
-// 资讯管理
-import infoControl from './components/operat-center/webInfo-control/info-control/infoControl'
-// 活动管理
-import activeControl from './components/operat-center/appInfo-control/active-control/activeControl'
-// 问答管理
-import answerControl from './components/operat-center/appInfo-control/answerControl/answerControl'
-// 用户反馈
-import opinionControl from './components/operat-center/appInfo-control/opinionControl/opinionControl'
-
 
 // 引入 系统管理
 import systemControl from './components/sys/system-control'
@@ -110,7 +100,7 @@ export default {
           redirect: '/app/article/category',
 
         },
-        {path: '/app/article/category', component: defaults},
+        {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/list', component: infoList},
         {path: '/app/notice', component: noticeControl},
         {path: '/app/carousel', component: slideshowControl},
@@ -167,7 +157,7 @@ export default {
       component: saveCenter,
       children: [
         // 离线包管理  版本管理
-        {path: '/saveCenter/leaveBag', component: defaults},
+        // {path: '/saveCenter/leaveBag', component: infoClassifyControl},
         {path: '/saveCenter/versionsControl', component: versionsControl},
 
       ]
