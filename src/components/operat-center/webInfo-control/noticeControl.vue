@@ -6,12 +6,12 @@
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>运营中心</el-breadcrumb-item>
-          <el-breadcrumb-item>咨询管理</el-breadcrumb-item>
+          <el-breadcrumb-item>公告列表</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button><i class="el-icon-plus"></i>新增公告</el-button>
+        <el-button class="s-add"><i class="el-icon-plus"></i>新增公告</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
@@ -21,43 +21,36 @@
     <template>
       <el-table
         ref="multipleTable"
-        :data="datas"
+        :data="tableData"
+        border
         tooltip-effect="dark"
         @selection-change="handleSelectionChange">
         <el-table-column
-          width="30">
-        </el-table-column>
-        <el-table-column
           label="#"
-          width="80">
+          width="50">
           <template slot-scope="scope">{{scope.$index+1}}</template>
         </el-table-column>
         <el-table-column
           type="selection"
-          width="100">
+          width="50">
         </el-table-column>
         <el-table-column
           prop="title"
-          label="名称"
-          width="200">
-        </el-table-column>
-        <el-table-column
-          prop="content"
-          label="备注"
-          width="400">
+          label="标题"
+          width="800">
         </el-table-column>
         <el-table-column
           prop="status"
           label="状态"
-          width="120"
+          width="80"
           :formatter="getstatus">
         </el-table-column>
         <el-table-column
           prop="createTime"
           label="修改时间"
-          width="180">
+          width="200">
           <template slot-scope="scope">
-          <p>{{scope.row.createTime|format}}</p>
+            <p>{{scope.row.createTime|format}}</p>
           </template>
         </el-table-column>
         <el-table-column
@@ -66,7 +59,8 @@
           show-overflow-tooltip>
           <template slot-scope="scope">
             <el-button
-              size="mini">编辑
+              size="mini"
+              type="primary">编辑
             </el-button>
             <el-button
               size="mini"
@@ -84,18 +78,7 @@
     name: "noticeControl",
     data() {
       return {
-        tableData: [{
-          id: '1',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }, {
-          id: '2',
-          name: '王小虎',
-          comment: '上海市普陀区金沙江路 1518 弄',
-          state: '正常'
-        }],
-        datas:[]
+        tableData: [],
       }
     },
     methods: {
@@ -112,19 +95,18 @@
         this.multipleSelection = val;
       },
       getdata(){
-        this.axios.get('/api/notices').then(res => (
-          this.datas = res.data.data,
-            console.log(res.data)
-        )).catch(err => (
+        this.axios.get('/api/notices').then(res =>{
+          this.tableData = res.data.data
+        }).catch(err => {
           console.log(err)
-        ));
+        });
       },
       getstatus(row,column,cellValue){
-          if (cellValue=='1'){
-            return '非正常'
-          }else{
-            return '正常'
-          }
+        if (cellValue=='1'){
+          return '非正常'
+        }else{
+          return '正常'
+        }
       }
     },
     mounted(){
@@ -139,12 +121,11 @@
         var h = dt.getHours();
         var min = dt.getMinutes();
         var s = dt.getSeconds();
-        m = m.toString().padStart(2,0)
-        d = d.toString().padStart(2,0)
-        h = h.toString().padStart(2,0)
-        min = min.toString().padStart(2,0)
-        s = s.toString().padStart(2,0)
-
+        m = m.toString().padStart(2,0);
+        d = d.toString().padStart(2,0);
+        h = h.toString().padStart(2,0);
+        min = min.toString().padStart(2,0);
+        s = s.toString().padStart(2,0);
         return `${y}-${m}-${d} ${h}:${min}:${s}`
       }
     }
