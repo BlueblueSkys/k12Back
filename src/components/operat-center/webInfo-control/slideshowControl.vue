@@ -12,7 +12,7 @@
       </div>
       <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button class="s-add"><i class="el-icon-plus"></i>新增轮播图</el-button>
+        <el-button class="s-add" @click="Slider"><i class="el-icon-plus" ></i>新增轮播图</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
           <el-button slot="append" icon="el-icon-search"></el-button>
@@ -119,7 +119,6 @@
         }
 
       },
-
       getdate(){
         this.axios.get('/api/carousels').then(res =>(
           this.tableData = res.data.data,
@@ -129,7 +128,6 @@
         ))
 
       },
-
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -141,6 +139,10 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
+      },
+      Slider(){
+
+        this.$router.push('/app/carousel/Slider');
       }
     },
     mounted(){

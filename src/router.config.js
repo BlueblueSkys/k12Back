@@ -2,7 +2,8 @@
 
 // 新增组件
 import addvue from './components/add/Ademo'
-
+import Slider from './components/add/s-Slider'
+import Sclassify from './components/add/Sclassify'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
@@ -118,9 +119,11 @@ export default {
         // 网站内容管理
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/category/add', component: addvue,},
+
         {path: '/app/article/list', component: infoList},
         {path: '/app/notice', component: noticeControl},
         {path: '/app/carousel', component: slideshowControl},
+        {path: '/app/carousel/Slider',component:Slider},
         {path: '/app/video', component: videoControl},
 
         // 活动管理
@@ -137,6 +140,7 @@ export default {
 
         // 录播课程管理
         {path: '/app/course/category', component: classifyControl},
+        {path: '/app/course/category/Sclassify', component: Sclassify},
         {path: '/app/course/type', component: courseTypeControl},
         {path: '/app/course/list', component: courseList},
 

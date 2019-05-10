@@ -72,12 +72,12 @@
 </template>
 
 <script>
-  import addvue from '../../../add/Ademo'
+
 
   export default {
     name: "infoClassifyControl",
     components:{
-      addvue
+
     },
     data() {
       return {

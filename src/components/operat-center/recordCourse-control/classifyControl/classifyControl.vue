@@ -12,7 +12,7 @@
       </div>
       <div class="inputs">
         <!--   s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
-        <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
+        <el-button class="s-add" @click="Sclassify"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button type="danger">删除</el-button>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
           <el-button slot="append" icon="el-icon-search"></el-button>
@@ -39,8 +39,8 @@
           prop="cover"
           label="封面图"
           width="200">
-          <template   slot-scope="scope">
-            <img :src="scope.row.cover"  min-width="70" height="70" />
+          <template slot-scope="scope">
+            <img :src="scope.row.cover" min-width="70" height="70"/>
           </template>
         </el-table-column>
         <el-table-column
@@ -84,15 +84,18 @@
     name: "classifyControl",
     data() {
       return {
-        input:'',
+        input: '',
         tableData: [],
       }
     },
     methods: {
-      formatStatus:function(row, column, cellValue){
-        if(cellValue == "1"){
+      Sclassify() {
+        this.$router.push('/app/course/category/Sclassify')
+      },
+      formatStatus: function (row, column, cellValue) {
+        if (cellValue == "1") {
           return '非正常';
-        }else if(cellValue == "0"){
+        } else if (cellValue == "0") {
           return '正常';
         }
       },
@@ -108,23 +111,23 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
-      getinfo(){
-        this.axios.get('/api/course/categories').then(res=>{
+      getinfo() {
+        this.axios.get('/api/course/categories').then(res => {
           console.log(res.data);
           this.tableData = res.data.data
-        }).catch(err=>{
+        }).catch(err => {
           console.log(err);
         })
       },
     },
-    mounted(){
+    mounted() {
       this.getinfo()
     }
   }
 </script>
 
 <style scoped>
-  .allright{
+  .allright {
     width: 100%;
   }
 </style>
