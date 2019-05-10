@@ -59,7 +59,7 @@
             if (loginParams.username == "admin" && loginParams.password == "123456") {
               _this.logining = false;
               sessionStorage.setItem('user', JSON.stringify(loginParams));
-              _this.$router.push({ path: '/menutab' });
+              _this.$router.push({ path: '/app/article/category' });
             } else {
               _this.logining = false;
               _this.$alert('用户名或密码错误！', '提示信息', {
@@ -82,14 +82,13 @@
     border-radius: 5px;
     -moz-border-radius: 5px;
     background-clip: padding-box;
-    margin: 180px auto;
     width: 350px;
     padding: 35px 35px 15px;
     background: #fff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
-    position: fixed;
-    z-index: 2020;
+    margin: 0 auto;
+    transform: translateY(50%);
   }
 
   label.el-checkbox.remember {

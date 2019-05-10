@@ -88,9 +88,8 @@ import sRegister from './components/sale-center/s_statistics/s-register'
 
 export default {
   routes: [
-    // {path: '/', redirect: '/login', component: login},
-    // {path:'/login',component:login},
-    {path: '/', redirect: '/app/article/category', component: operatCenter},
+    {path: '/', redirect: '/login', component: login},
+    {path:'/login',component:login},
     {path: '/app', redirect: '/app/article/category', component: operatCenter},
     {path: '/operatCenter', component: operatCenter},
 

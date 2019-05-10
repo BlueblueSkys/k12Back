@@ -13,8 +13,6 @@
           </el-menu>
         </el-header>
       </el-container>
-
-
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -43,7 +41,7 @@
 </script>
 
 <style>
-  *  {
+  * {
     margin: 0;
     padding: 0;
   }
@@ -80,7 +78,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2019;
   }
 
   .el-menu-demo {
@@ -124,10 +122,12 @@
     float: right;
     margin-top: 10px;
   }
-  .right{
+
+  .right {
     height: 100%;
   }
-  .wrap2{
+
+  .wrap2 {
     height: 100%;
   }
 </style>
