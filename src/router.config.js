@@ -2,7 +2,8 @@
 
 // 新增组件
 import addvue from './components/add/Ademo'
-
+// 新增课程列表
+import addclasslist from './components/add/DXclasslist'
 // 引入运营中心
 import operatCenter from './components/operat-center/operatCenter'
 // 测试组件
@@ -146,6 +147,7 @@ export default {
         {path: '/app/course/type', component: courseTypeControl},
         {path: '/app/course/type/add', component: addCourseControl,},
         {path: '/app/course/list', component: courseList},
+        {path: '/app/course/list/add', component: addclasslist},
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},
