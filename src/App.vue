@@ -65,9 +65,10 @@
   }
 
   .el-header {
-    background-color: #B3C0D1;
+    background-color: #F2F6FC;
     color: #333;
     line-height: 60px;
+    padding-top: 10px;
   }
 
   .el-aside {

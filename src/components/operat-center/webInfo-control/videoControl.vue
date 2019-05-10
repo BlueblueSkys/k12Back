@@ -1,14 +1,14 @@
 <template>
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
-      <div>
+      <div class="navt">
         <!--       s-bolder 加粗           -->
         <span class="s-bolder">首页</span>&nbsp&nbsp>
         <span class="s-bolder">运营中心</span>&nbsp&nbsp>
         <span>资讯管理</span>&nbsp&nbsp>
         <span>分类管理</span>&nbsp&nbsp
       </div>
-      <div>
+      <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add"><i class="el-icon-plus"></i>新增资讯管理</el-button>
         <el-button class="s-del">删除</el-button>
