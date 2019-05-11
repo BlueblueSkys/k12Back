@@ -57,7 +57,20 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$confirm('确定要添加吗?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              this.axios.post('/api/article/category',{
+                name:this.ruleForm.name,
+                remark:this.ruleForm.remark,
+                status:this.ruleForm.status
+              }).then(res=>{
+                console.log(res);
+                this.$router.push('/app/article/category')
+              });
+            })
           } else {
             console.log('error submit!!');
             return false;
@@ -66,7 +79,8 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
+
     }
   }
 </script>

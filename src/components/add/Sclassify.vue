@@ -77,7 +77,23 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$confirm('此操作将添加该文件, 是否继续?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              this.axios.post('api/course/category', {
+                cover: this.ruleForm.cover,
+                name: this.ruleForm.name,
+                remark: this.ruleForm.remark,
+                status: this.ruleForm.status,
+              }).then(res => (
+                console.log(res)
+              )).catch(err => {
+                console.log(err);
+              })
+              this.$router.push('/app/course/category')
+            });
           } else {
             console.log('error submit!!');
             return false;

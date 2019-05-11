@@ -71,7 +71,7 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger">删除
+              type="danger" @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -123,6 +123,20 @@
           console.log(err);
         })
       },
+      // 删除
+      del(id){
+        this.$confirm('此操作将添加该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('api/course/category/'+id).then(res=>(
+            console.log(res)
+          )).catch(err=>(
+            console.log(err)
+          ))
+        });
+      }
     },
     mounted() {
       this.getinfo()

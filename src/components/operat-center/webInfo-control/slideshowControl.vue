@@ -92,7 +92,7 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger" @click="sdel">删除
+              type="danger" @click="sdel(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -119,23 +119,27 @@
           return '停用'
         }
       },
-      sdel() {
+     // 删除
+      sdel(id){
+
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
+          this.axios.delete('api/course/'+id).then(res=>{
+            console.log(res);
+          }).catch(err=>{
+            console.log(err);
+          })
+
         });
+
+
+
+
       },
+      // 获取所有数据
       getdate() {
         this.axios.get('/api/carousels').then(res => (
           this.tableData = res.data.data,
@@ -157,13 +161,17 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
+     // 跳转添加页面
       Slider(){
         this.$router.push('/app/carousel/Slider');
       },
+
+      // 跳转编辑页面
       editSlider(){
         this.$router.push('/app/carousel/edit');
       }
     },
+    // 获取并在页面显示
     mounted() {
       this.getdate()
     },

@@ -134,7 +134,7 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger">删除
+              type="danger" @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -182,9 +182,23 @@
       getdate(){
         this.axios.get('/api/users').then(res =>(
           this.datas = res.data.data
-        )).cath(err=>(
+        )).catch(err=>(
           console.log(err)
         ))
+      },
+      // 删除
+      del(id){
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('api/user/'+id).then(res=>{
+            console.log(res);
+          }).catch(err=>{
+            console.log(err);
+          })
+        });
       }
     },
     mounted() {
