@@ -12,8 +12,9 @@
       </div>
 
     </el-header>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="margin-top: 15px">
-      <el-form-item label="图片"  prop="pic">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+             style="margin-top: 15px">
+      <el-form-item label="图片" prop="pic">
         <el-input v-model="ruleForm.pic"></el-input>
       </el-form-item>
       <el-form-item label="标题" prop="title">
@@ -44,63 +45,84 @@
 </template>
 
 <script>
-    export default {
-        name: "Slider",
-      data(){
-          return{
-            ruleForm:{
-              pic:'',
-              title:'',
-              sort:'',
-              link:'',
-              description:'',
-              status:''
-            },
-            rules:{
-              pic:[
-                {required: true, message: '请输入图片地址', trigger: 'blur'},
-                {message: '请输入图片地址', trigger: 'blur'}
-              ],
-              title:[
-                {required: true, message: '请输入标题', trigger: 'blur'},
-                {message: '请输入标题', trigger: 'blur'}
-              ],
-              sort:[
-                {required: true, message: '请输入类型', trigger: 'blur'},
-                {message: '请输入类型', trigger: 'blur'}
-              ],
-              link:[
-                {required: true, message: '请输入链接', trigger: 'blur'},
-                {message: '请输入链接', trigger: 'blur'}
-              ],
-              description:[
-                {required: true, message: '请输入描述', trigger: 'blur'},
-                {message: '请输入描述', trigger: 'blur'}
-              ],
-              status:[
-                {required: true, message: '请输入状态', trigger: 'blur'},
-
-              ]
-            }
-
-          }
-      },
-      methods: {
-        submitForm(formName) {
-          this.$refs[formName].validate((valid) => {
-            if (valid) {
-              alert('submit!');
-            } else {
-              console.log('error submit!!');
-              return false;
-            }
-          });
+  export default {
+    name: "Slider",
+    data() {
+      return {
+        ruleForm: {
+          pic: '',
+          title: '',
+          sort: '',
+          link: '',
+          description: '',
+          status: ''
         },
-        resetForm(formName) {
-          this.$refs[formName].resetFields();
+        rules: {
+          pic: [
+            {required: true, message: '请输入图片地址', trigger: 'blur'},
+            {message: '请输入图片地址', trigger: 'blur'}
+          ],
+          title: [
+            {required: true, message: '请输入标题', trigger: 'blur'},
+            {message: '请输入标题', trigger: 'blur'}
+          ],
+          sort: [
+            {required: true, message: '请输入类型', trigger: 'blur'},
+            {message: '请输入类型', trigger: 'blur'}
+          ],
+          link: [
+            {required: true, message: '请输入链接', trigger: 'blur'},
+            {message: '请输入链接', trigger: 'blur'}
+          ],
+          description: [
+            {required: true, message: '请输入描述', trigger: 'blur'},
+            {message: '请输入描述', trigger: 'blur'}
+          ],
+          status: [
+            {required: true, message: '请输入状态', trigger: 'blur'},
+
+          ]
         }
+
+      }
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+
+            this.$confirm('此操作将添加该文件, 是否继续?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              this.axios.post('api/carousel', {
+                image: this.ruleForm.pic,
+                description: this.ruleForm.description,
+                link: this.ruleForm.link,
+                sort: this.ruleForm.sort,
+                status: this.ruleForm.status,
+                title: this.ruleForm.title,
+              }).then(res => (
+                console.log(res)
+              )).catch(err => {
+                console.log(err);
+              })
+              this.$router.push('/app/carousel')
+            });
+
+
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
+  }
 </script>
 
 <style scoped>
