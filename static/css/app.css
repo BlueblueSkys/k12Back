@@ -29,12 +29,13 @@ a{
 /* 右侧显示界面 */
 .allright{
   width: 100%;
-  margin-left: 200px;
+  /*margin-left: 200px;*/
 }
 .inputs{
   margin-top: 20px;
 }
 .right{
+  margin-left: 200px;
   margin-top: 60px;
 }
 .navt{
