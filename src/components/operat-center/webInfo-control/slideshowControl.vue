@@ -52,7 +52,7 @@
         </el-table-column>
         <el-table-column
           prop="sort"
-          label="类型"
+          label="排序"
           width="100">
         </el-table-column>
         <el-table-column

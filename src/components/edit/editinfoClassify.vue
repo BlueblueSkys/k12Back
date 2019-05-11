@@ -66,7 +66,19 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
+    },
+    mounted(){
+      var id = this.$route.params.id;
+      console.log(this.$route.params.id);
+      this.axios.get('/api/article/category/'+id).then(res=>{
+        this.ruleForm = res.data.data;
+        if(this.ruleForm.status =='0'){
+          this.ruleForm.status='正常'
+        }else if(this.ruleForm.status =='1'){
+          this.ruleForm.status='停用'
+        }
+      })
     }
   }
 </script>

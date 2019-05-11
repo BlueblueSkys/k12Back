@@ -59,7 +59,7 @@
             <el-button
               size="mini"
               type="primary"
-            @click="editinfoClassify">编辑
+            @click="editinfoClassify(scope.row.id)">编辑
             </el-button>
             <el-button
               size="mini"
@@ -134,8 +134,8 @@
         this.$router.push('/app/article/category/add')
       },
       // 编辑页面
-      editinfoClassify(){
-        this.$router.push('/app/article/category/edit')
+      editinfoClassify(sid){
+        this.$router.push({name:'editinfoClassify', params:{id:sid}});
       }
     },
     // 刷新页面

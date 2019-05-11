@@ -35,9 +35,22 @@
           width="50">
         </el-table-column>
         <el-table-column
+          prop="cid"
+          label="文章分类"
+          width="100">
+        </el-table-column>
+        <el-table-column
           prop="title"
           label="标题"
-          width="800">
+          width="200">
+        </el-table-column>
+        <el-table-column
+          prop="content"
+          label="内容"
+          width="700"
+          show-tooltip-when-overflow="hidden"
+          context="ellipsis"
+        >
         </el-table-column>
         <el-table-column
           prop="status"
@@ -100,6 +113,7 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
+      // 获取所有数据
       getdata(){
         this.axios.get('/api/articles').then(res =>{
           this.tableData = res.data.data
@@ -107,6 +121,7 @@
           console.log(err)
         });
       },
+      // 判断状态
       getstatus(row,column,cellValue){
         if (cellValue=='1'){
           return '停用'
@@ -114,12 +129,15 @@
           return '正常'
         }
       },
+      // 添加页面
       addInfoList(){
         this.$router.push('/app/article/list/add')
       },
+      // 编辑页面
       editInfoList(){
         this.$router.push('/app/article/list/edit')
       },
+      // 删除
       del(num){
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
@@ -141,9 +159,11 @@
         });
       }
     },
+    // 刷新页面
     mounted(){
       this.getdata();
     },
+    // 时间过滤器
     filters:{
       format:function(){
         var dt = new Date();
@@ -168,4 +188,5 @@
   .allright{
     width: 100%;
   }
+
 </style>
