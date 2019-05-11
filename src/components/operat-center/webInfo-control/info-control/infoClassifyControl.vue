@@ -19,7 +19,7 @@
         </el-input>
       </div>
     </el-header>
-    <template v-if="addflag" >
+    <template v-if="addflag">
       <el-table
         :data="tableData"
         tooltip-effect="dark"
@@ -63,7 +63,8 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger">删除
+              type="danger"
+            @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -73,8 +74,6 @@
 </template>
 
 <script>
-
-
   export default {
     name: "infoClassifyControl",
     components:{
@@ -88,6 +87,20 @@
       }
     },
     methods: {
+      // 删除
+      del(id){
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('/api/article/categories/'+id).then(res=>{
+            console.log(res);
+          });
+          this.getinfo()
+        });
+      },
+      // 判断状态是否正常
       formatStatus:function(row, column, cellValue){
         if(cellValue == "1"){
           return '停用';
@@ -95,6 +108,7 @@
           return '正常';
         }
       },
+      // 全选
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -107,6 +121,7 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
+      // 获取全部数据
       getinfo(){
         this.axios.get('/api/article/categories').then(res=>{
           this.tableData = res.data.data
@@ -114,13 +129,16 @@
           console.log(err);
         })
       },
+      // 添加页面
       goadd(){
         this.$router.push('/app/article/category/add')
       },
+      // 编辑页面
       editinfoClassify(){
         this.$router.push('/app/article/category/edit')
       }
     },
+    // 刷新页面
     mounted(){
       this.getinfo()
     },
