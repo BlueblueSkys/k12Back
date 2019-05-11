@@ -139,7 +139,7 @@ export default {
         // 资讯分类管理
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/category/add', component: addvue},
-        {path: '/app/article/category/edit', component: editinfoClassify},
+        {path: '/app/article/category/edit/:id', component: editinfoClassify, name:'editinfoClassify'},
         // 资讯列表管理
         {path: '/app/article/list', component: infoList},
         {path: '/app/article/list/add', component: addInfoList},
@@ -149,9 +149,9 @@ export default {
         {path: '/app/notice/add', component: addNoticeControl},
         {path: '/app/notice/edit/:id', component: editNotice,name:'editNotice'},
         // 轮播图管理
-        {path: '/app/carousel', component: slideshowControl},
+        {path: '/app/carousel', component: slideshowControl },
         {path: '/app/carousel/Slider', component:Slider},
-        {path: '/app/carousel/edit', component:editSlider},
+        {path: '/app/carousel/edit/:id', component:editSlider,name:editSlider},
         // 视频管理
         {path: '/app/video', component: videoControl},
 

@@ -36,7 +36,12 @@
         <el-table-column
           prop="title"
           label="标题"
-          width="800">
+          width="750">
+        </el-table-column>
+        <el-table-column
+          prop="sort"
+          label="排序"
+          width="500">
         </el-table-column>
         <el-table-column
           prop="status"
