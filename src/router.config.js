@@ -29,6 +29,7 @@ import courseTypeControl from './components/operat-center/recordCourse-control/c
 import courseList from './components/operat-center/recordCourse-control/courseList/courseList'
 import classifyControl from './components/operat-center/recordCourse-control/classifyControl/classifyControl'
 import addCourseControl from './components/add/addCourseControl'
+//咨询列表新增↓
 import addInfoList from './components/add/addInfoList'
 import addNoticeControl from './components/add/addNoticeControl'
 import serviceStaffControl from './components/operat-center/serviceStaff-control/serviceStaffControl'

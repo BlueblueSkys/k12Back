@@ -7,7 +7,7 @@ a{
 .el-form-item{
   width: 30%;
 }
-.demo-ruleForm .el-form-item{
+.logininput{
   width: 100%;
 }
 .title{
@@ -19,23 +19,23 @@ a{
 .s-bolder{
   font-weight:bolder;
 }
-.allright{
-  width:100%;
-}
+/* 左侧手风琴菜单 */
 .body-left{
-  float: left;
   height: 100%;
   margin-top: 60px;
+  position: fixed;
+  z-index: 2021;
 }
-
+/* 右侧显示界面 */
+.allright{
+  width: 100%;
+  margin-left: 200px;
+}
 .inputs{
   margin-top: 20px;
 }
 .right{
   margin-top: 60px;
-}
-.allright{
-  width:100%;
 }
 .navt{
   margin-top: 15px;

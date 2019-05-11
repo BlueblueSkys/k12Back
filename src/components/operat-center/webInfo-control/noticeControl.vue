@@ -2,7 +2,6 @@
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div class="navt">
-        <!--       s-bolder 加粗           -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>运营中心</el-breadcrumb-item>
@@ -10,9 +9,9 @@
         </el-breadcrumb>
       </div>
       <div class="inputs">
-        <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add" @click="addNoticeControl"><i class="el-icon-plus"></i>新增公告</el-button>
         <el-button type="danger">删除</el-button>
+        <!--  搜索   -->
         <el-input placeholder="请输入内容" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
@@ -63,9 +62,7 @@
               type="primary"
             @click="editNotice">编辑
             </el-button>
-            <el-button
-              size="mini"
-              type="danger">删除
+            <el-button size="mini" type="danger" @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -115,7 +112,28 @@
       },
       editNotice(){
         this.$router.push('/app/notice/edit')
+      },
+      del(num){
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('/api/notice/'+num).then(res=>{
+            console.log(res);
+          });
+          this.$message({
+            type: 'success',
+            message: '删除成功!',
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
       }
+
     },
     mounted(){
       this.getdata();
