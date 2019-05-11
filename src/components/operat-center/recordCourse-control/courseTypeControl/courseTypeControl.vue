@@ -63,7 +63,8 @@
             </el-button>
             <el-button
               size="mini"
-              type="danger">删除
+              type="danger"
+            @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -87,6 +88,20 @@
       addCourseControl
     },
     methods: {
+      // 删除
+      del(id){
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('/api/course/type/'+id).then(res=>{
+            console.log(res);
+          });
+          this.getinfo()
+        });
+      },
+      // 判断状态
       formatStatus:function(row, column, cellValue){
         if(cellValue == "1"){
           return '停用';
@@ -106,6 +121,7 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
+      // 获取全部数据
       getinfo(){
         this.axios.get('/api/article/categories').then(res=>{
           this.tableData = res.data.data
@@ -113,13 +129,16 @@
           console.log(err);
         })
       },
+      // 添加页面
       addCourseControl(){
         this.$router.push('/app/course/type/add')
       },
+      // 编辑页面
       editCourseControl(){
         this.$router.push('/app/course/type/edit')
       }
     },
+    // 刷新页面
     mounted(){
       this.getinfo()
     }
