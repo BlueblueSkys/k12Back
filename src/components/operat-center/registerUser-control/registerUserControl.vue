@@ -130,7 +130,7 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              type="primary" @click="edit">编辑
+              type="primary" @click="edit()">编辑
             </el-button>
             <el-button
               size="mini"
@@ -156,6 +156,7 @@
       }
     },
     methods:{
+      // 编辑
       edit(){
         this.$router.push('/app/user/list/editregisteruser')
       },

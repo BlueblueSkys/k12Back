@@ -148,9 +148,9 @@ export default {
         {path: '/app/notice/add', component: addNoticeControl},
         {path: '/app/notice/edit', component: editNotice},
         // 轮播图管理
-        {path: '/app/carousel', component: slideshowControl},
+        {path: '/app/carousel', component: slideshowControl },
         {path: '/app/carousel/Slider', component:Slider},
-        {path: '/app/carousel/edit', component:editSlider},
+        {path: '/app/carousel/edit/:id', component:editSlider,name:editSlider},
         // 视频管理
         {path: '/app/video', component: videoControl},
 

@@ -12,8 +12,9 @@
       </div>
 
     </el-header>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="margin-top: 15px">
-      <el-form-item label="图片"  prop="pic">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+             style="margin-top: 15px">
+      <el-form-item label="图片" prop="pic">
         <el-input v-model="ruleForm.pic"></el-input>
       </el-form-item>
       <el-form-item label="标题" prop="title">
@@ -46,38 +47,41 @@
 <script>
   export default {
     name: "editSlider",
-    data(){
-      return{
-        ruleForm:{
-          pic:'',
-          title:'',
-          sort:'',
-          link:'',
-          description:'',
-          status:''
+
+    data() {
+      return {
+        boor:'',
+        slide:'',
+        ruleForm: {
+          pic: '',
+          title: '',
+          sort: '',
+          link: '',
+          description: '',
+          status: ''
         },
-        rules:{
-          pic:[
+        rules: {
+          pic: [
             {required: true, message: '请输入图片地址', trigger: 'blur'},
             {message: '请输入图片地址', trigger: 'blur'}
           ],
-          title:[
+          title: [
             {required: true, message: '请输入标题', trigger: 'blur'},
             {message: '请输入标题', trigger: 'blur'}
           ],
-          sort:[
+          sort: [
             {required: true, message: '请输入类型', trigger: 'blur'},
             {message: '请输入类型', trigger: 'blur'}
           ],
-          link:[
+          link: [
             {required: true, message: '请输入链接', trigger: 'blur'},
             {message: '请输入链接', trigger: 'blur'}
           ],
-          description:[
+          description: [
             {required: true, message: '请输入描述', trigger: 'blur'},
             {message: '请输入描述', trigger: 'blur'}
           ],
-          status:[
+          status: [
             {required: true, message: '请输入状态', trigger: 'blur'},
 
           ]
@@ -99,7 +103,29 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
+    },
+    mounted(){
+      console.log(this.$route.params.id)
+      this.axios.get('api/carousel/'+this.$route.params.id).then(res=>{
+        this.slide=res.data.data;
+        this.ruleForm.pic = this.slide.image;
+        this.ruleForm.title = this.slide.title;
+        this.ruleForm.sort = this.slide.sort;
+        this.ruleForm.link = this.slide.link;
+        this.ruleForm.description = this.slide.description;
+        this.ruleForm.status = this.slide.status;
+
+        this.ruleForm.status = '0'?'正常':'停用';
+        // if(this.ruleForm.status==0){
+        //   this.ruleForm.status='正常'
+        // }else if(this.ruleForm.status==1){
+        //   this.ruleForm.status='停用'
+        // }
+
+
+      })
     }
+
   }
 </script>
 
