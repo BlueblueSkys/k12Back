@@ -60,7 +60,7 @@
             <el-button
               size="mini"
               type="primary"
-            @click="editNotice">编辑
+            @click="editNotice(scope.row.id)">编辑
             </el-button>
             <el-button size="mini" type="danger" @click="del(scope.row.id)">删除
             </el-button>
@@ -110,8 +110,9 @@
       addNoticeControl(){
         this.$router.push('/app/notice/add')
       },
-      editNotice(){
-        this.$router.push('/app/notice/edit')
+      editNotice(ids){
+        this.$router.push({name:'editNotice',params:{id:ids}});
+        // this.$router.push('/app/notice/edit/'+ids);
       },
       del(num){
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {

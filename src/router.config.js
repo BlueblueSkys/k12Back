@@ -31,6 +31,7 @@ import classifyControl from './components/operat-center/recordCourse-control/cla
 import addCourseControl from './components/add/addCourseControl'
 //咨询列表新增↓
 import addInfoList from './components/add/addInfoList'
+//公告管理编辑页面
 import addNoticeControl from './components/add/addNoticeControl'
 import serviceStaffControl from './components/operat-center/serviceStaff-control/serviceStaffControl'
 import coinControl from './components/operat-center/coin-control/coinControl'
@@ -146,7 +147,7 @@ export default {
         // 公告管理
         {path: '/app/notice', component: noticeControl},
         {path: '/app/notice/add', component: addNoticeControl},
-        {path: '/app/notice/edit', component: editNotice},
+        {path: '/app/notice/edit/:id', component: editNotice,name:'editNotice'},
         // 轮播图管理
         {path: '/app/carousel', component: slideshowControl},
         {path: '/app/carousel/Slider', component:Slider},
