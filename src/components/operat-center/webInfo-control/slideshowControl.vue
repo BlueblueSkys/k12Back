@@ -88,7 +88,7 @@
             <el-button
               size="mini"
               type="primary"
-            @click="editSlider">编辑
+            @click="editSlider(scope.row.id)">编辑
             </el-button>
             <el-button
               size="mini"
@@ -102,6 +102,8 @@
 </template>
 
 <script>
+  import editSlider from "../../edit/editSlider";
+
   export default {
     name: "slideshowControl",
     data() {
@@ -167,8 +169,20 @@
       },
 
       // 跳转编辑页面
-      editSlider(){
-        this.$router.push('/app/carousel/edit');
+      editSlider(id){
+        // this.$router.push('/app/carousel/edit');
+        this.$router.push( {
+
+          name:editSlider,
+          params:{
+            id:id
+          }
+        })
+        // this.axios.get('api/carousel/'+id).then(res=>{
+        //   console.log(res.data.data);
+        // }).catch(err=>{
+        //   console.log(err);
+        // })
       }
     },
     // 获取并在页面显示
