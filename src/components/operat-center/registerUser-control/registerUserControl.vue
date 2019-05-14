@@ -1,6 +1,6 @@
 <template>
   <div class="allright">
-    <el-header style="text-align: left; font-size: 16px; height:50px">
+    <el-header style="text-align: left; font-size: 16px; height: 260px">
       <div class="navt">
         <!--       s-bolder 加粗           -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -67,28 +67,15 @@
       </el-dialog>
     </el-header>
     <template>
-      <el-table
-        ref="multipleTable"
-        :data="datas"
-        tooltip-effect="dark"
-        border
-        @selection-change="handleSelectionChange">
-        <el-table-column
-          prop="date"
-          label="#"
-          width="50">
+      <el-table class="usertab" ref="multipleTable" :data="datas" tooltip-effect="dark" border @selection-change="handleSelectionChange">
+        <el-table-column  prop="date" label="#" width="50">
           <template slot-scope="scope">
             <span v-text="scope.$index+1"></span>
           </template>
         </el-table-column>
-        <el-table-column
-          type="selection"
-          width="50">
+        <el-table-column type="selection" width="50">
         </el-table-column>
-        <el-table-column
-          prop="phone"
-          label="手机号吗"
-          width="150">
+        <el-table-column  prop="phone" label="手机号吗"  width="150">
         </el-table-column>
         <el-table-column
           prop="nickname"
@@ -125,30 +112,16 @@
             <p>{{scope.row.createTime|format(scope.row.createTime)}}</p>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="remark"
-          label="备注"
-          width="120">
+        <el-table-column prop="remark" label="备注" width="120">
         </el-table-column>
 
-        <el-table-column
-          prop="status"
-          label="状态"
-          width="80"
-          :formatter="formatStatus">
+        <el-table-column  prop="status" label="状态" width="80" :formatter="formatStatus">
         </el-table-column>
-        <el-table-column
-          prop="operate"
-          label="操作"
-          show-overflow-tooltip>
+        <el-table-column prop="operate" label="操作" show-overflow-tooltip>
           <template slot-scope="scope">
-            <el-button
-              size="mini"
-              type="primary" @click="edit(scope.row.id)">编辑
+            <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑
             </el-button>
-            <el-button
-              size="mini"
-              type="danger" @click="del(scope.row.id)">删除
+            <el-button size="mini" type="danger" @click="del(scope.row.id)">删除
             </el-button>
           </template>
         </el-table-column>
@@ -157,14 +130,11 @@
 
     <!--  分页  -->
     <div class="fenye">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
         :current-page="currentPage"
         :page-size='size'
         layout="total, sizes, prev, pager, next, jumper"
-        :total='totalNum'
-      >
+        :total='totalNum'>
       </el-pagination>
     </div>
   </div>
@@ -182,7 +152,6 @@
         delarr: [],
         value1: '',
         value2: '',
-        input: '',
         select: '全部',
         datas: [],
         newdatas: [],
@@ -199,41 +168,31 @@
     methods: {
       // 改变
       changestart() {
-        if (this.value1 != null) {
-          this.boor = true
-          if (this.boor && this.flag) {
-            for (var i = 0; i < this.datas.length; i++) {
-              if (this.value1.getTime() < this.datas[i].createTime < this.value2.getTime()) {
-                this.newdatas.push(this.datas[i])
-                this.datas = this.newdatas
-              }
-            }
-          }
+        if (this.value1 != '') {
+          this.value1 =  this.value1.getTime();
+          this.boor = true;
         } else {
-          getdate()
+          this.getdate();
           this.newdatas = []
         }
 
       },
       changeend() {
-        if (this.value2 != null) {
-          this.flag = true
-
+        if (this.value2 != '') {
+          this.value2 =  this.value2.getTime();
+          this.flag = true;
           if (this.boor && this.flag) {
             for (var i = 0; i < this.datas.length; i++) {
-              if (this.value1.getTime() < this.datas[i].createTime < this.value2.getTime()) {
-                console.log(this.datas[i]);
+              if (this.value1 < this.datas[i].createTime &&this.datas[i].createTime < this.value2) {
                 this.newdatas.push(this.datas[i])
-                this.datas = this.newdatas
-                // console.log(1)
               }
             }
+            this.datas = this.newdatas
           }
         } else {
           this.getdate()
-
+          this.newdatas = []
         }
-
       },
 
 
@@ -274,7 +233,6 @@
         console.log(this.size);
         this.axios.get('/api/users?page=' + this.page + '&size=' + this.size).then(res => (
           this.datas = res.data.data
-
         )).catch(err => (
           console.log(err)
         ))
@@ -288,11 +246,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-
           this.axios.delete('/api/user/' + id).then(res => {
             console.log(res);
             console.log('删除成功');
-
           }).catch(err => {
             console.log(err);
           })
@@ -335,16 +291,10 @@
       alldel() {
         this.delarr = []
         console.log(this.multipleSelection.length);
-
         this.delVisible = true;//显示删除弹框
-
         const length = this.multipleSelection.length;
-
         for (let i = 0; i < length; i++) {
-
           this.delarr.push(this.multipleSelection[i].id)
-
-
         }
         console.log(this.delarr);
 
@@ -378,12 +328,10 @@
       },
     },
     mounted() {
-      getdate:this.axios.get('/api/users').then(res => (
+      this.axios.get('/api/users').then(res => (
         this.datas = res.data.data,
           console.log( res.data.data),
           this.totalNum = res.data.paging.total
-
-
       )).catch(err => (
         console.log(err)
       ))
@@ -412,7 +360,10 @@
 </script>
 
 <style scoped>
-.userCon{
-  height: 300px !important;
-}
+/*.userCon{*/
+  /*height: 300px !important;*/
+/*}*/
+  /*.usertab{*/
+    /*top: 200px;*/
+  /*}*/
 </style>

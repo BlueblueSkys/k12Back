@@ -37,6 +37,7 @@ a{
   margin-top: 20px;
 }
 .right{
+  background-color: #F2F6FC;
   margin-left: 200px;
   margin-top: 60px;
 }
@@ -68,7 +69,11 @@ a{
 /* 注册用户管理*/
 
 .fenye{
-  float:left;
+  margin: 50px 0;
+  /*position: relative;*/
+  /*top: 60px;*/
+  /*bottom: 0;*/
+  /*text-align: left;*/
 }
 .upload-demo{
   float:left;
@@ -96,4 +101,11 @@ a{
   width: 178px;
   height: 178px;
   display: block;
+}
+/* 用户注册 */
+.inputs{
+  margin-bottom: 20px;
+}
+.el-table{
+  top: 20px;
 }
