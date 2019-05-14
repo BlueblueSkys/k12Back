@@ -74,7 +74,7 @@
           width="50">
         </el-table-column>
         <el-table-column
-          prop="tel"
+          prop="phone"
           label="手机号吗"
           width="150">
         </el-table-column>
