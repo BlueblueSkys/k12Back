@@ -9,14 +9,19 @@
       </el-breadcrumb>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="分类" prop="typeid">
-        <el-input v-model="ruleForm.typeid"></el-input>
+      <el-form-item label="分类" prop="cid">
+        <el-input v-model="ruleForm.cid"></el-input>
       </el-form-item>
-      <el-form-item label="标题" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
+      <el-form-item label="标题" prop="title">
+        <el-input v-model="ruleForm.title"></el-input>
       </el-form-item>
       <el-form-item label="内容" prop="content">
-        <el-input v-model="ruleForm.content"></el-input>
+        <div id="editor">
+          <!--<el-input v-model="ruleForm.content"></el-input>-->
+          <div id="editorElem" style="text-align:left">
+
+          </div>
+        </div>
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-radio-group v-model="ruleForm.status">
@@ -33,24 +38,30 @@
 </template>
 
 <script>
+  import E from '../../../node_modules/wangeditor/release/wangEditor'
+
   export default {
     name: "addInfoList",
     data() {
       return {
+        editorContent: '',
+        img:'',
+        dialogImageUrl: '',
+        dialogVisible: false,
+        productImgs: [],
+        isMultiple: true,
+        imgLimit: 6,
         ruleForm: {
-          name: '',
-          status: '',
+          title: '',
+          cid:'',
+          status:''
         },
         rules: {
-          typeid: [
+          cid: [
             {required: true, message: '请输入分类id', trigger: 'change'},
           ],
-          name: [
-            {required: true, message: '请输入分类名称', trigger: 'blur'},
-            {min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur'}
-          ],
-          content: [
-            {required: true, message: '请输入内容', trigger: 'change'}
+          title: [
+            {required: true, message: '请输入标题', trigger: 'blur'},
           ],
           status: [
             {required: true, message: '请选择状态', trigger: 'change'}
@@ -59,15 +70,22 @@
       };
     },
     methods: {
+      getContent: function () {
+        alert(this.editorContent)
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // alert('submit!');
-            var newobj = {};
-            newobj.name = this.ruleForm.name;
-            newobj.status = this.ruleForm.name;
-            newobj.content = this.ruleForm.content;
-            newobj.typeid = this.ruleForm.typeid;
+            var newobj='';
+            newobj += "cid="+this.ruleForm.cid + "&";
+            newobj += 'title='+this.ruleForm.title+"&";
+            newobj += 'content='+this.editorContent+"&";
+            if (this.ruleForm.status=='正常'){
+              this.ruleForm.status = 0
+            } else{
+              this.ruleForm.status = 1
+            }
+            newobj += 'status='+this.ruleForm.status;
             console.log(newobj);
 
             this.$confirm('确定添加?', '提示', {
@@ -81,13 +99,6 @@
             }).catch((err) => {
               console.log(err);
             });
-
-            // this.axios.post('/api/article',newobj
-            // ).then(res =>{
-            //   console.log(res)
-            // }).catch(err => {
-            //   console.log(err)
-            // });
           } else {
             console.log('error submit!!');
             return false;
@@ -96,7 +107,45 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      handleRemove(file, fileList) {//移除图片
+        console.log(file, fileList);
+      },
+      handlePictureCardPreview(file) {//预览图片时调用
+        console.log(file);
+        this.dialogImageUrl = file.url;
+        this.dialogVisible = true;
+      },
+
+      beforeAvatarUpload(file) {//文件上传之前调用做一些拦截限制
+        console.log(file);
+        // const isJPG = true;
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        // if (!isJPG) {
+        //   this.$message.error('上传头像图片只能是 JPG 格式!');
+        // }
+        if (!isLt2M) {
+          this.$message.error('上传图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
+      handleAvatarSuccess(res, file) {//图片上传成功
+        console.log(res);
+        console.log(file);
+        this.imageUrl = URL.createObjectURL(file.raw);
+        console.log(file.url);
+        this.img = file.url;
       }
+    },
+    mounted() {
+      var editor = new E('#editorElem')
+      editor.customConfig.onchange = (html) => {
+        this.editorContent = html
+      };
+      editor.customConfig.uploadImgServer = '/upload';
+      editor.create()
     }
   }
 </script>
@@ -115,5 +164,11 @@
     background-color: white;
     padding: 50px 0;
     margin-top: 20px;
+  }
+  .upimg{
+    /*width: 30%;*/
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 100px;
   }
 </style>

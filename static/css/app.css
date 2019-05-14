@@ -30,6 +30,8 @@ a{
 .allright{
   width: 100%;
   /*margin-left: 200px;*/
+  padding: 0 10px;
+  background-color: #F2F6FC;
 }
 .inputs{
   margin-top: 20px;
@@ -54,3 +56,13 @@ a{
   height: 100%;
   background-color: #fff;
 }
+#editorElem{
+  width: 70%;
+  min-width: 900px;
+}
+
+.w-e-text-container{
+  z-index: 2000 !important;
+}
+
+/* 注册用户管理*/

@@ -13,6 +13,9 @@ Vue.prototype.axios = axios;
 import ElementUI from 'element-ui'
 
 import '../node_modules/element-ui/lib/theme-chalk/index.css'
+// var editor = new E('#editor');
+// 或者 var editor = new E( document.getElementById('editor') )
+// editor.create();
 
 Vue.use(ElementUI);
 

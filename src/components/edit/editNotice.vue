@@ -1,10 +1,11 @@
 <template>
+  <!--编辑公告-->
   <div class="addwrap">
     <div class="navt">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>运营中心</el-breadcrumb-item>
-        <el-breadcrumb-item>公告列表</el-breadcrumb-item>
+        <el-breadcrumb-item>编辑公告</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -46,7 +47,6 @@
         rules: {
           title: [
             {required: true, message: '请输入分类名称', trigger: 'blur'},
-            {min: 3, max: 5, message: '长度在 3 到 6 个字符', trigger: 'blur'}
           ],
           sort: [
             {required: true, message: '请输入备注', trigger: 'change'}
@@ -64,18 +64,18 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            var newobj = {};
-            newobj.sort = this.ruleForm.sort;
-            newobj.title = this.ruleForm.title;
-            newobj.content = this.ruleForm.content;
-            newobj.status = this.ruleForm.status;
-            console.log(newobj);
+            var newStr = '';
+            newStr += 'sort='+this.ruleForm.sort+'&';
+            newStr += 'title='+this.ruleForm.title+'&';
+            newStr += 'content='+this.ruleForm.content+'&';
+            newStr += 'status='+this.ruleForm.status;
+            console.log(newStr);
             this.$confirm('确定添加?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.axios.post('/api/notice',newobj).then((res)=>(
+              this.axios.put('/api/notice/'+this.$route.params.id,newStr).then((res)=>(
                 console.log(res)
               ))
             }).catch((err) => {
@@ -89,16 +89,16 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-        // console.log(this.num1)/
       }
     },
     mounted(){
       var id = this.$route.params.id;
       console.log(this.$route.params.id);
       this.axios.get('/api/notice/'+id).then(res =>{
-        this.ruleForm = res.data.data,
-          this.ruleForm.status = '0'?'正常':'停用',
-        console.log(this.ruleForm.status)
+        this.ruleForm = res.data.data;
+          console.log(res.data);
+          this.ruleForm.status = '0'?'正常':'停用'
+          // (this.ruleForm.sort).toString();
       })
     },
   }

@@ -110,7 +110,7 @@
         this.slide=res.data.data;
         this.ruleForm.pic = this.slide.image;
         this.ruleForm.title = this.slide.title;
-        this.ruleForm.sort = this.slide.sort;
+        this.ruleForm.sort = (this.slide.sort).toString();
         this.ruleForm.link = this.slide.link;
         this.ruleForm.description = this.slide.description;
         this.ruleForm.status = this.slide.status;

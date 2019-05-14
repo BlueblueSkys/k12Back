@@ -1,6 +1,6 @@
 <template>
   <div class="allright">
-    <el-header style="text-align: left; font-size: 16px; height:50px">
+    <el-header class="userCon" style="text-align: left; font-size: 16px ">
       <div class="navt">
         <!--       s-bolder 加粗           -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -34,7 +34,7 @@
             type="date"
             placeholder="注册开始日期">
           </el-date-picker>
-          ~
+
           <el-date-picker
             v-model="value2"
             type="date"
@@ -78,25 +78,17 @@
           label="手机号吗"
           width="150">
         </el-table-column>
-        <el-table-column
-          prop="nickname"
-          label="昵称"
-          width="120">
+
+        <el-table-column prop="nickname" label="昵称" width="120">
         </el-table-column>
-        <el-table-column
-          prop="lastname"
-          label="姓氏"
-          width="120">
+
+        <el-table-column prop="lastname" label="姓氏" width="120">
         </el-table-column>
-        <el-table-column
-          prop="city"
-          label="地址"
-          width="120">
+
+        <el-table-column prop="city" label="地址"  width="120">
         </el-table-column>
-        <el-table-column
-          prop="childSchool"
-          label="孩子所在学校"
-          width="120">
+
+        <el-table-column prop="childSchool" label="孩子所在学校" width="120">
         </el-table-column>
 
         <el-table-column
@@ -228,5 +220,7 @@
 </script>
 
 <style scoped>
-
+.userCon{
+  height: 300px !important;
+}
 </style>
