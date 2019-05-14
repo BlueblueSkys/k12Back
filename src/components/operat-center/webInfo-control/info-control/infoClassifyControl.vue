@@ -124,7 +124,8 @@
       // 获取全部数据
       getinfo(){
         this.axios.get('/api/article/categories').then(res=>{
-          this.tableData = res.data.data
+          this.tableData = res.data.data,
+            console.log(res.data.data)
         }).catch(err=>{
           console.log(err);
         })

@@ -140,6 +140,7 @@ export default {
         {path: '/app/article/category', component: infoClassifyControl},
         {path: '/app/article/category/add', component: addvue},
         {path: '/app/article/category/edit/:id', component: editinfoClassify, name:'editinfoClassify'},
+        {path: '/app/article/list/edit/:id', component: editInfoList, name:'editInfoList'},
         // 资讯列表管理
         {path: '/app/article/list', component: infoList},
         {path: '/app/article/list/add', component: addInfoList},

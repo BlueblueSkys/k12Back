@@ -1,17 +1,18 @@
+<!-- 新增公告 -->
 <template>
   <div class="addwrap">
     <div class="navt">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>运营中心</el-breadcrumb-item>
-        <el-breadcrumb-item>公告列表</el-breadcrumb-item>
+        <el-breadcrumb-item>新增公告</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="排序值" prop="sort">
         <el-input v-model="ruleForm.sort"></el-input>
       </el-form-item>
-      <el-form-item label="标题" prop="title ">
+      <el-form-item label="标题" prop="title">
         <el-input v-model="ruleForm.title"></el-input>
       </el-form-item>
       <el-form-item label="内容" prop="content">
@@ -44,8 +45,7 @@
         },
         rules: {
           title: [
-            {required: true, message: '请输入分类名称', trigger: 'blur'},
-            {min: 3, max: 5, message: '长度在 3 到 6 个字符', trigger: 'blur'}
+            {required: true, message: '请输入分类名称', trigger: 'change'},
           ],
           sort: [
             {required: true, message: '请输入备注', trigger: 'change'}
@@ -63,18 +63,18 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            var newobj = {};
-            newobj.sort = this.ruleForm.sort;
-            newobj.title = this.ruleForm.title;
-            newobj.content = this.ruleForm.content;
-            newobj.status = this.ruleForm.status;
-            console.log(newobj);
+            var newStr='';
+            newStr += 'sort='+this.ruleForm.sort+"&";
+            newStr += 'title='+this.ruleForm.title+"&";
+            newStr += 'content='+this.ruleForm.content+"&";
+            newStr += 'status='+this.ruleForm.status;
+            console.log(newStr);
             this.$confirm('确定添加?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.axios.post('/api/notice',newobj).then((res)=>(
+              this.axios.post('/api/notice',newStr).then((res)=>(
                 console.log(res)
               ))
             }).catch((err) => {

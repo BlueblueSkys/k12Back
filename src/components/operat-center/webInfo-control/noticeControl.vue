@@ -1,3 +1,4 @@
+<!-- 公告列表 -->
 <template>
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
@@ -36,12 +37,12 @@
         <el-table-column
           prop="title"
           label="标题"
-          width="750">
+          width="300">
         </el-table-column>
         <el-table-column
-          prop="sort"
-          label="排序"
-          width="50">
+          prop="content"
+          label="内容"
+          width="500">
         </el-table-column>
         <el-table-column
           prop="status"
@@ -49,12 +50,9 @@
           width="80"
           :formatter="getstatus">
         </el-table-column>
-        <el-table-column
-          prop="createTime"
-          label="修改时间"
-          width="200">
+        <el-table-column prop="createTime" label="修改时间" width="200">
           <template slot-scope="scope">
-            <p>{{scope.row.createTime|format}}</p>
+            <p>{{scope.row.createTime|format(scope.row.createTime)}}</p>
           </template>
         </el-table-column>
         <el-table-column
@@ -100,7 +98,8 @@
       },
       getdata(){
         this.axios.get('/api/notices').then(res =>{
-          this.tableData = res.data.data
+          this.tableData = res.data.data,
+            console.log(res.data.data)
         }).catch(err => {
           console.log(err)
         });
@@ -145,8 +144,8 @@
       this.getdata();
     },
     filters:{
-      format:function(){
-        var dt = new Date();
+      format:function(time){
+        var dt = new Date(time);
         var y = dt.getFullYear();
         var m = dt.getMonth()+1;
         var d = dt.getDate();

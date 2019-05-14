@@ -67,6 +67,8 @@
     color: #333;
     line-height: 60px;
     padding-top: 10px;
+    padding-left: 0;
+    padding-right: 0px;
   }
 
   .el-aside {

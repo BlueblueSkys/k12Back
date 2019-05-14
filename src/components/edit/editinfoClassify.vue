@@ -34,6 +34,7 @@
     name: "editinfoClassify",
     data() {
       return {
+        sid:this.$router.id,
         ruleForm: {
           name: '',
           remark: '',
@@ -57,7 +58,29 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            var newobj='';
+            newobj += "name="+this.ruleForm.name + "&";
+            newobj += 'remark='+this.ruleForm.remark+"&";
+            if (this.ruleForm.status=='正常'){
+              this.ruleForm.status = 0
+            } else{
+              this.ruleForm.status = 1
+            }
+            newobj += 'status='+this.ruleForm.status;
+            console.log(newobj);
+
+            this.$confirm('确定添加?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              this.axios.put('/api/article/category/'+this.sid,newobj).then(res=>{
+                console.log(res);
+              });
+            }).catch((err) => {
+              console.log(err);
+            });
+
           } else {
             console.log('error submit!!');
             return false;
@@ -70,6 +93,7 @@
     },
     mounted(){
       var id = this.$route.params.id;
+      this.sid = id;
       console.log(this.$route.params.id);
       this.axios.get('/api/article/category/'+id).then(res=>{
         this.ruleForm = res.data.data;

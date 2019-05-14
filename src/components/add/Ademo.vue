@@ -57,16 +57,21 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            var newobj = "";
+            newobj += "name="+this.ruleForm.name + "&";
+            newobj += 'remark='+this.ruleForm.remark+"&";
+            if (this.ruleForm.status=='正常'){
+              this.ruleForm.status = 0
+            } else{
+              this.ruleForm.status = 1
+            }
+            newobj += 'status='+this.ruleForm.status;
             this.$confirm('确定要添加吗?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.axios.post('/api/article/category',{
-                name:this.ruleForm.name,
-                remark:this.ruleForm.remark,
-                status:this.ruleForm.status
-              }).then(res=>{
+              this.axios.post('/api/article/category',newobj).then(res=>{
                 console.log(res);
                 this.$router.push('/app/article/category')
               });

@@ -1,4 +1,5 @@
 <template>
+  <!--咨询列表-->
   <div class="allright">
     <el-header style="text-align: left; font-size: 16px; height:150px">
       <div class="navt">
@@ -30,40 +31,20 @@
           width="50">
           <template slot-scope="scope">{{scope.$index+1}}</template>
         </el-table-column>
-        <el-table-column
-          type="selection"
-          width="50">
+        <el-table-column type="selection" width="50">
         </el-table-column>
-        <el-table-column
-          prop="cid"
-          label="文章分类"
-          width="100">
+        <el-table-column prop="cid" label="文章分类" width="100">
         </el-table-column>
-        <el-table-column
-          prop="title"
-          label="标题"
-          width="150">
+        <el-table-column prop="title" label="标题" width="600">
         </el-table-column>
-        <el-table-column
-          prop="content"
-          label="内容"
-          width="550"
-          show-tooltip-when-overflow
-          context="ellipsis"
-        >
-        </el-table-column>
-        <el-table-column
-          prop="status"
-          label="状态"
-          width="80"
-          :formatter="getstatus">
+        <el-table-column prop="status" label="状态" width="100" :formatter="getstatus">
         </el-table-column>
         <el-table-column
           prop="createTime"
           label="修改时间"
-          width="200">
+          width="220">
           <template slot-scope="scope">
-            <p>{{scope.row.createTime|format}}</p>
+            <p>{{scope.row.createTime|format(scope.row.createTime)}}</p>
           </template>
         </el-table-column>
         <el-table-column
@@ -74,7 +55,7 @@
             <el-button
               size="mini"
               type="primary"
-            @click="editInfoList">编辑
+            @click="editInfoList(scope.row.id)">编辑
             </el-button>
             <el-button
               size="mini"
@@ -116,7 +97,8 @@
       // 获取所有数据
       getdata(){
         this.axios.get('/api/articles').then(res =>{
-          this.tableData = res.data.data
+          this.tableData = res.data.data,
+            console.log(res.data.data)
         }).catch(err => {
           console.log(err)
         });
@@ -134,8 +116,8 @@
         this.$router.push('/app/article/list/add')
       },
       // 编辑页面
-      editInfoList(){
-        this.$router.push('/app/article/list/edit')
+      editInfoList(ids){
+        this.$router.push({name:'editInfoList',params:{id:ids}});
       },
       // 删除
       del(num){
@@ -144,7 +126,8 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.axios.delete('/api/article/categories/'+num).then(res=>{
+          this.axios.delete('/api/article/'+num).then(res=>{
+            this.getdata();
             console.log(res);
           });
           this.$message({
@@ -165,8 +148,8 @@
     },
     // 时间过滤器
     filters:{
-      format:function(){
-        var dt = new Date();
+      format:function(data){
+        var dt = new Date(data);
         var y = dt.getFullYear();
         var m = dt.getMonth()+1;
         var d = dt.getDate();
