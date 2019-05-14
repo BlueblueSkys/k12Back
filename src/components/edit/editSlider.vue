@@ -20,8 +20,8 @@
       <el-form-item label="标题" prop="title">
         <el-input v-model="ruleForm.title"></el-input>
       </el-form-item>
-      <el-form-item label="类型" prop="sort">
-        <el-input v-model="ruleForm.sort"></el-input>
+      <el-form-item label="类型" prop="type">
+        <el-input v-model="ruleForm.type"></el-input>
       </el-form-item>
       <el-form-item label="链接" prop="link">
         <el-input v-model="ruleForm.link"></el-input>
@@ -36,7 +36,7 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">立即修改</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
 
@@ -50,26 +50,28 @@
 
     data() {
       return {
-        boor:'',
-        slide:'',
+        newobj: '',
+        id: '',
+        boor: '',
+        slide: '',
         ruleForm: {
           pic: '',
           title: '',
-          sort: '',
+          type: '',
           link: '',
           description: '',
           status: ''
         },
         rules: {
-          pic: [
-            {required: true, message: '请输入图片地址', trigger: 'blur'},
-            {message: '请输入图片地址', trigger: 'blur'}
-          ],
+          // pic: [
+          //   {required: true, message: '请输入图片地址', trigger: 'blur'},
+          //   {message: '请输入图片地址', trigger: 'blur'}
+          // ],
           title: [
             {required: true, message: '请输入标题', trigger: 'blur'},
             {message: '请输入标题', trigger: 'blur'}
           ],
-          sort: [
+          type: [
             {required: true, message: '请输入类型', trigger: 'blur'},
             {message: '请输入类型', trigger: 'blur'}
           ],
@@ -93,10 +95,25 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            console.log(this.id);
+            // this.newobj+='image='+(this.ruleForm.pic).http+'&'
+            this.newobj += 'description=' + this.ruleForm.description + '&'
+            this.newobj += 'link=' + this.ruleForm.link + '&'
+            this.newobj += 'type=' + this.ruleForm.type + '&'
+            this.ruleForm.status = '正常' ? '0' : '1'
+            this.newobj += 'status=' + this.ruleForm.status + '&'
+            this.newobj += 'title=' + this.ruleForm.title
+            console.log(this.newobj)
+            // console.log(this.$route.params.id);
+            this.axios.put('api/carousel/'+this.id, this.newobj).then(res => {
+              console.log('修改成功');
+              console.log(res);
+              this.$router.push('/app/carousel')
+            })
+
           } else {
             console.log('error submit!!');
-            return false;
+            // console.log(this.newobj);
           }
         });
       },
@@ -104,18 +121,21 @@
         this.$refs[formName].resetFields();
       }
     },
-    mounted(){
-      console.log(this.$route.params.id)
-      this.axios.get('api/carousel/'+this.$route.params.id).then(res=>{
-        this.slide=res.data.data;
+    mounted() {
+      this.id = this.$route.params.id
+      // console.log(this.$route.params.id)
+      this.axios.get('api/carousel/' + this.$route.params.id).then(res => {
+        // console.log(res.data);
+        this.slide = res.data.data[0];
+        // console.log(this.slide.type);
         this.ruleForm.pic = this.slide.image;
         this.ruleForm.title = this.slide.title;
-        this.ruleForm.sort = (this.slide.sort).toString();
+        this.ruleForm.type = this.slide.type.toString();
         this.ruleForm.link = this.slide.link;
         this.ruleForm.description = this.slide.description;
         this.ruleForm.status = this.slide.status;
 
-        this.ruleForm.status = '0'?'正常':'停用';
+        this.ruleForm.status = '0' ? '正常' : '停用';
         // if(this.ruleForm.status==0){
         //   this.ruleForm.status='正常'
         // }else if(this.ruleForm.status==1){

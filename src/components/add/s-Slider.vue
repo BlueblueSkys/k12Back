@@ -15,13 +15,22 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
              style="margin-top: 15px">
       <el-form-item label="图片" prop="pic">
-        <el-input v-model="ruleForm.pic"></el-input>
+        <el-upload
+          class="avatar-uploader"
+          action="api/upload/image"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
       </el-form-item>
+
       <el-form-item label="标题" prop="title">
         <el-input v-model="ruleForm.title"></el-input>
       </el-form-item>
-      <el-form-item label="类型" prop="sort">
-        <el-input v-model="ruleForm.sort"></el-input>
+      <el-form-item label="类型" prop="type">
+        <el-input v-model="ruleForm.type"></el-input>
       </el-form-item>
       <el-form-item label="链接" prop="link">
         <el-input v-model="ruleForm.link"></el-input>
@@ -49,24 +58,24 @@
     name: "Slider",
     data() {
       return {
+        imageUrl: '',
+        newobj:'',
         ruleForm: {
           pic: '',
           title: '',
-          sort: '',
+          type: '',
           link: '',
           description: '',
-          status: ''
+          status: '',
+
         },
         rules: {
-          pic: [
-            {required: true, message: '请输入图片地址', trigger: 'blur'},
-            {message: '请输入图片地址', trigger: 'blur'}
-          ],
+
           title: [
             {required: true, message: '请输入标题', trigger: 'blur'},
             {message: '请输入标题', trigger: 'blur'}
           ],
-          sort: [
+          type: [
             {required: true, message: '请输入类型', trigger: 'blur'},
             {message: '请输入类型', trigger: 'blur'}
           ],
@@ -87,26 +96,47 @@
       }
     },
     methods: {
+      handleAvatarSuccess(res, file) {
+        console.log(res);
+        this.imageUrl = URL.createObjectURL(file.raw);
+        console.log(this.imageUrl);
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
+
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+
+            // this.newobj+='image='+(this.ruleForm.pic).http+'&'
+            this.newobj+='description=' +this.ruleForm.description+'&'
+            this.newobj+='link=' +this.ruleForm.link+'&'
+            this. newobj+='type=' +this.ruleForm.type+'&'
+            this.ruleForm.status='正常'?'0':'1'
+            this.newobj+='status=' +this.ruleForm.status+'&'
+            this. newobj+='title=' +this.ruleForm.title
 
             this.$confirm('此操作将添加该文件, 是否继续?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.axios.post('api/carousel', {
-                image: this.ruleForm.pic,
-                description: this.ruleForm.description,
-                link: this.ruleForm.link,
-                sort: this.ruleForm.sort,
-                status: this.ruleForm.status,
-                title: this.ruleForm.title,
-              }).then(res => (
+              this.axios.post('api/carousel',this.newobj
+              ).then(res => (
                 console.log(res)
               )).catch(err => {
                 console.log(err);
+                console.log(this.newobj);
               })
               this.$router.push('/app/carousel')
             });

@@ -13,9 +13,17 @@
       <div class="inputs">
         <!--            s-add 添加  s-del 删除     el-input不能输入 疑似没有给data值-->
         <el-button class="s-add" @click="Slider"><i class="el-icon-plus"></i>新增轮播图</el-button>
-        <el-button type="danger" >删除</el-button>
+        <el-button type="danger" @click="alldel">删除</el-button>
+        <el-dialog :visible.sync="delVisible" title="提示" width="30%">
+          <span>确定要删除吗</span>
+          <span slot="footer">
+<!--            @click="multiDelete"-->
+          <el-button type="primary" @click="deleteRow">确 定</el-button>
+          <el-button @click="dialogVisible = false">取 消</el-button>
+        </span>
+        </el-dialog>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
-          <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
         </el-input>
       </div>
     </el-header>
@@ -40,8 +48,8 @@
           prop="image"
           label="图片"
           width="200">
-          <template   slot-scope="scope">
-            <img :src="scope.row.image"  min-width="70" height="70" />
+          <template slot-scope="scope">
+            <img :src="scope.row.image" min-width="70" height="70"/>
           </template>
 
         </el-table-column>
@@ -51,8 +59,8 @@
           width="100">
         </el-table-column>
         <el-table-column
-          prop="sort"
-          label="排序"
+          prop="type"
+          label="类型"
           width="100">
         </el-table-column>
         <el-table-column
@@ -77,7 +85,7 @@
           label="修改时间"
           width="200">
           <template slot-scope="scope">
-            <p>{{scope.row.createTime|format}}</p>
+            <p>{{scope.row.createTime|format(scope.row.createTime)}}</p>
           </template>
         </el-table-column>
         <el-table-column
@@ -88,7 +96,7 @@
             <el-button
               size="mini"
               type="primary"
-            @click="editSlider(scope.row.id)">编辑
+              @click="editSlider(scope.row.id)">编辑
             </el-button>
             <el-button
               size="mini"
@@ -98,6 +106,17 @@
         </el-table-column>
       </el-table>
     </template>
+    <div class="fenye">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size='size'
+        layout="total, sizes, prev, pager, next, jumper"
+        :total='totalNum'
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -108,49 +127,38 @@
     name: "slideshowControl",
     data() {
       return {
+        newobj: '',
+        multipleSelection: [],
         input: '',
+        delVisible: false,
+        delarr: [],
         tableData: [],
+        currentPage: 1,
+        // 每页数量
+        size: 10,
+        // 页数
+        page: 1,
+        totalNum: 0,
 
       }
     },
     methods: {
-      formatStatus:function(row, column,cellVale){
-        if(cellVale=="0"){
+      formatStatus: function (row, column, cellVale) {
+        if (cellVale == "0") {
           return '正常'
-        }else if(cellVale == '1'){
+        } else if (cellVale == '1') {
           return '停用'
         }
       },
-     // 删除
-      sdel(id){
 
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.axios.delete('api/course/'+id).then(res=>{
-            console.log(res);
-          }).catch(err=>{
-            console.log(err);
-          })
+      // 操作多选
 
-        });
+      handleSelectionChange(val) {
 
-
-
+        this.multipleSelection = val;
 
       },
-      // 获取所有数据
-      getdate() {
-        this.axios.get('/api/carousels').then(res => (
-          this.tableData = res.data.data,
-          console.log(res.data)
-        )).catch( err=> (
-          console.log(err)
-        ))
 
-      },
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -159,23 +167,128 @@
         } else {
           this.$refs.multipleTable.clearSelection();
         }
+      }
+      ,
+
+
+      // 批量删除
+      alldel() {
+        this.delarr = []
+        console.log(this.multipleSelection.length);
+
+        this.delVisible = true;//显示删除弹框
+
+        const length = this.multipleSelection.length;
+
+        for (let i = 0; i < length; i++) {
+
+          this.delarr.push(this.multipleSelection[i].id)
+
+
+        }
+        console.log(this.delarr);
+
       },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
+
+/// 确定删除
+
+      deleteRow() {
+
+        for (var i = 0; i < this.delarr.length; i++) {
+          console.log(this.delarr[i]);
+          this.newobj += this.delarr[i]+','
+
+        }
+        console.log(this.newobj);
+
+        this.axios.delete("/api/carousels/"+this.newobj).then(res => {
+
+          this.getdate()
+
+        }).catch(error => {
+
+          console.log(error);
+
+          this.$message.error('包装删除失败')
+
+        })
+
+        this.delVisible = false;//关闭删除提示模态框
+
       },
-     // 跳转添加页面
-      Slider(){
+
+
+      // 删除
+      sdel(id) {
+
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.axios.delete('api/carousel/' + id).then(res => {
+            console.log(res);
+            this.getdate()
+          }).catch(err => {
+            console.log(err);
+          })
+
+        });
+
+
+      }
+      ,
+      // 获取所有数据
+      getdate() {
+        console.log(this.page);
+        console.log(this.size);
+        this.axios.get('/api/carousels?page=' + this.page + '&size=' + this.size).then(res => (
+          this.tableData = res.data.data
+
+        )).catch(err => (
+          console.log(err)
+        ))
+
+      }
+      ,
+
+
+      // 跳转添加页面
+      Slider() {
         this.$router.push('/app/carousel/Slider');
-      },
+      }
+      ,
 
+      // 分页
+      handleSizeChange(pagenum) {
+        this.size = pagenum
+        this.currentPage = 1
+        console.log(this.currentPage);
+        this.getdate(1, pagenum);
+        // console.log(`每页 ${pagenum} 条`);
+      }
+      ,
+      handleCurrentChange(val) {
+        // console.log(val);
+        this.page = val
+        // console.log(this.size);
+        this.getdate(val, this.size);
+        // console.log(`当前页: ${val}`);
+      }
+      ,
+
+      // 搜索
+      search() {
+        console.log(this.tableData);
+
+      }
+      ,
       // 跳转编辑页面
-      editSlider(id){
-        // this.$router.push('/app/carousel/edit');
-        this.$router.push( {
-
-          name:editSlider,
-          params:{
-            id:id
+      editSlider(id) {
+        this.$router.push({
+          name: editSlider,
+          params: {
+            id: id
           }
         })
         // this.axios.get('api/carousel/'+id).then(res=>{
@@ -187,12 +300,24 @@
     },
     // 获取并在页面显示
     mounted() {
-      this.getdate()
+      getdate:{
+        console.log(this.page);
+        console.log(this.size);
+        this.axios.get('/api/carousels').then(res => (
+          this.tableData = res.data.data,
+
+            this.totalNum = res.data.paging.total
+        )).catch(err => (
+          console.log(err)
+        ))
+
+      }
+
     },
 
     filters: {
-      format: function () {
-        var dt = new Date();
+      format: function (time) {
+        var dt = new Date(time);
         var y = dt.getFullYear();
         var m = dt.getMonth() + 1;
         var d = dt.getDate();

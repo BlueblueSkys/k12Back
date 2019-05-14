@@ -184,7 +184,7 @@ export default {
 
         // 用户管理
         {path: '/app/user/list', component: registerUserControl},
-        {path:'/app/user/list/editregisteruser',component:editregisteruser},
+        {path:'/app/user/list/editregisteruser/:id',component:editregisteruser,name:'editregisteruser'},
         // 客服人员管理
         {path: '/app/supporter', component: serviceStaffControl},
         // 兑换卷管理
