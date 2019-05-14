@@ -12,12 +12,21 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://172.16.30.123:8012',//代理地址
+        target: 'http://172.16.16.138:8080',//代理地址
         changeOrigin: true,//是否允许开启代理
         pathRewrite: {//代理地址重写
-          '^/api': ''
+          '^/api':''
         }
-      }
+      },
+      // '/img': {//代理请求图片的接口
+      //   changeOrigin: true,
+      //   secure: false, //https请求需设置此项
+      //   target: 'https://jsonplaceholder.typicode.com/posts',
+      //   pathRewrite: {
+      //     '^/img': ''
+      //   }
+      // }
+
     },
 
     // Various Dev Server settings

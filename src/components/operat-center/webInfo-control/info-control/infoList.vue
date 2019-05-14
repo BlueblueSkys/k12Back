@@ -42,13 +42,13 @@
         <el-table-column
           prop="title"
           label="标题"
-          width="200">
+          width="150">
         </el-table-column>
         <el-table-column
           prop="content"
           label="内容"
-          width="700"
-          show-tooltip-when-overflow="hidden"
+          width="550"
+          show-tooltip-when-overflow
           context="ellipsis"
         >
         </el-table-column>

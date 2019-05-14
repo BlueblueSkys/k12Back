@@ -41,7 +41,7 @@
         <el-table-column
           prop="sort"
           label="排序"
-          width="500">
+          width="50">
         </el-table-column>
         <el-table-column
           prop="status"
