@@ -69,7 +69,7 @@
             newStr += 'title='+this.ruleForm.title+'&';
             newStr += 'content='+this.ruleForm.content+'&';
             newStr += 'status='+this.ruleForm.status;
-            console.log(newStr);
+            console.log(newStr,this.$route.params.id);
             this.$confirm('确定添加?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',

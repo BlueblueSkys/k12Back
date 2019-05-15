@@ -18,10 +18,13 @@
       <el-form-item label="内容" prop="content">
         <div id="editor">
           <!--<el-input v-model="ruleForm.content"></el-input>-->
-          <div id="editorElem" style="text-align:left">
-
-          </div>
+          <p id="editorElem" style="text-align:left">
+          </p>
         </div>
+        <!--<form action="/api/upload/image" method="post" enctype="multipart/form-data">-->
+          <!--<input type="file" >-->
+          <!--<input type="submit">-->
+        <!--</form>-->
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-radio-group v-model="ruleForm.status">
@@ -145,7 +148,25 @@
       editor.customConfig.onchange = (html) => {
         this.editorContent = html
       };
-      editor.customConfig.uploadImgServer = '/upload';
+      editor.customConfig.uploadImgServer = '/api/upload/image';
+      editor.customConfig.uploadFileName = 'image';
+      editor.customConfig.uploadImgHooks = {
+        before: function (xhr, editor, files) {
+          console.log(xhr,files);
+        },
+        success: function (xhr, editor, result) {
+          console.log("上传成功");
+        },
+        fail: function (xhr, editor, result) {
+          console.log(result);
+        },
+        error: function (xhr, editor) {
+          console.log("上传出错");
+        },
+        timeout: function (xhr, editor) {
+          console.log("上传超时");
+        }
+      }
       editor.create()
     }
   }
