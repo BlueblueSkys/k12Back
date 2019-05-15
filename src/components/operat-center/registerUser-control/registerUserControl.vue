@@ -67,15 +67,16 @@
       </el-dialog>
     </el-header>
     <template>
-      <el-table class="usertab" ref="multipleTable" :data="datas" tooltip-effect="dark" border @selection-change="handleSelectionChange">
-        <el-table-column  prop="date" label="#" width="50">
+      <el-table class="usertab" ref="multipleTable" :data="datas" tooltip-effect="dark" border
+                @selection-change="handleSelectionChange">
+        <el-table-column prop="date" label="#" width="50">
           <template slot-scope="scope">
             <span v-text="scope.$index+1"></span>
           </template>
         </el-table-column>
         <el-table-column type="selection" width="50">
         </el-table-column>
-        <el-table-column  prop="phone" label="手机号吗"  width="150">
+        <el-table-column prop="phone" label="手机号吗" width="150">
         </el-table-column>
         <el-table-column
           prop="nickname"
@@ -115,7 +116,7 @@
         <el-table-column prop="remark" label="备注" width="120">
         </el-table-column>
 
-        <el-table-column  prop="status" label="状态" width="80" :formatter="formatStatus">
+        <el-table-column prop="status" label="状态" width="80" :formatter="formatStatus">
         </el-table-column>
         <el-table-column prop="operate" label="操作" show-overflow-tooltip>
           <template slot-scope="scope">
@@ -131,10 +132,10 @@
     <!--  分页  -->
     <div class="fenye">
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-size='size'
-        layout="total, sizes, prev, pager, next, jumper"
-        :total='totalNum'>
+                     :current-page="currentPage"
+                     :page-size='size'
+                     layout="total, sizes, prev, pager, next, jumper"
+                     :total='totalNum'>
       </el-pagination>
     </div>
   </div>
@@ -170,7 +171,7 @@
       // 改变
       changestart() {
         if (this.value1 != '') {
-          this.value1 =  this.value1.getTime();
+          this.value1 = this.value1.getTime();
           this.boor = true;
         } else {
           this.getdate();
@@ -180,11 +181,11 @@
       },
       changeend() {
         if (this.value2 != '') {
-          this.value2 =  this.value2.getTime();
+          this.value2 = this.value2.getTime();
           this.flag = true;
           if (this.boor && this.flag) {
             for (var i = 0; i < this.datas.length; i++) {
-              if (this.value1 < this.datas[i].createTime &&this.datas[i].createTime < this.value2) {
+              if (this.value1 < this.datas[i].createTime && this.datas[i].createTime < this.value2) {
                 this.newdatas.push(this.datas[i])
               }
             }
@@ -207,10 +208,6 @@
         })
       }
       ,
-
-
-
-
       formatStatus: function (row, column, cellVale) {
         if (cellVale == "0") {
           return '正常'
@@ -229,16 +226,8 @@
 
       }
       ,
-      getdate() {
-        console.log(this.page);
-        console.log(this.size);
-        this.axios.get('/api/users?page=' + this.page + '&size=' + this.size).then(res => (
-          this.datas = res.data.data
-        )).catch(err => (
-          console.log(err)
-        ))
-      }
-      ,
+
+
       // 删除
       del(id) {
 
@@ -272,7 +261,15 @@
         // console.log(`当前页: ${val}`);
       }
       ,
-
+      getdate() {
+        console.log(this.page);
+        console.log(this.size);
+        this.axios.get('/api/users?page=' + this.page + '&size=' + this.size).then(res => (
+          this.datas = res.data.data
+        )).catch(err => (
+          console.log(err)
+        ))
+      },
       // 操作多选框
       toggleSelection(rows) {
         if (rows) {
@@ -328,16 +325,17 @@
 
       },
     },
+    // 创建
     mounted() {
       this.axios.get('/api/users').then(res => (
         this.datas = res.data.data,
-          console.log( res.data.data),
+          console.log(res.data.data),
           this.totalNum = res.data.paging.total
       )).catch(err => (
         console.log(err)
       ))
     },
-
+    // 过滤器
     filters: {
       format: function (time) {
         var dt = new Date(time);
@@ -361,10 +359,10 @@
 </script>
 
 <style scoped>
-/*.userCon{*/
+  /*.userCon{*/
   /*height: 300px !important;*/
-/*}*/
+  /*}*/
   /*.usertab{*/
-    /*top: 200px;*/
+  /*top: 200px;*/
   /*}*/
 </style>

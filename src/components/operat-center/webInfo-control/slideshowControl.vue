@@ -196,12 +196,12 @@
 
         for (var i = 0; i < this.delarr.length; i++) {
           console.log(this.delarr[i]);
-          this.newobj += this.delarr[i]+','
+          this.newobj += this.delarr[i] + ','
 
         }
         console.log(this.newobj);
 
-        this.axios.delete("/api/carousels/"+this.newobj).then(res => {
+        this.axios.delete("/api/carousels/" + this.newobj).then(res => {
 
           this.getdate()
 
@@ -285,6 +285,7 @@
       ,
       // 跳转编辑页面
       editSlider(id) {
+        debugger
         this.$router.push({
           name: editSlider,
           params: {
@@ -300,6 +301,7 @@
     },
     // 获取并在页面显示
     mounted() {
+
       getdate:{
         console.log(this.page);
         console.log(this.size);
@@ -313,6 +315,12 @@
 
       }
 
+    },
+
+    watch: {
+      input: function (val, oldVal) {
+        this.tableData = this.otableData.filter(item => (~item.name.indexOf(val)));
+      }
     },
 
     filters: {

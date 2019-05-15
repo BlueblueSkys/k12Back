@@ -140,6 +140,7 @@
       }
     },
     mounted() {
+      debugger
       var editor = new E('#editorElem')
       editor.customConfig.onchange = (html) => {
         this.editorContent = html
