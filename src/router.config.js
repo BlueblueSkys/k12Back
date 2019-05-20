@@ -176,7 +176,7 @@ export default {
         // 课程类型管理
         {path: '/app/course/type', component: courseTypeControl},
         {path: '/app/course/type/add', component: addCourseControl},
-        {path: '/app/course/type/edit', component: editCourseControl},
+        {path: '/app/course/type/edit/:id', component: editCourseControl,name:'editCourseControl'},
         // 课程列表管理
         {path: '/app/course/list', component: courseList},
         {path: '/app/course/list/add', component: addclasslist},

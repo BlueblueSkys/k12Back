@@ -34,6 +34,9 @@
     name: "editCourseControl",
     data() {
       return {
+        slide:'',
+        newobj:'',
+        id:'',
         ruleForm: {
           name: '',
           remark: '',
@@ -42,11 +45,10 @@
         rules: {
           name: [
             {required: true, message: '请输入分类名称', trigger: 'blur'},
-            {min: 3, max: 5, message: '长度在 3 到 6 个字符', trigger: 'blur'}
+
           ],
-          remark: [
-            {required: true, message: '请输入备注', trigger: 'change'}
-          ],
+
+
           status: [
             {required: true, message: '请选择状态', trigger: 'change'}
           ],
@@ -57,7 +59,18 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.newobj+='name='+(this.ruleForm.name)+'&'
+            this.newobj += 'remark=' + this.ruleForm.remark + '&'
+
+            this.ruleForm.status = '正常' ? '0' : '1'
+            this.newobj += 'status=' + this.ruleForm.status + '&'
+
+            this.axios.put('api/course/type/'+this.$route.params.id, this.newobj).then(res => {
+              console.log('修改成功');
+              console.log(res);
+              this.$router.push('/app/course/type')
+            })
+
           } else {
             console.log('error submit!!');
             return false;
@@ -67,6 +80,20 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
+    },
+
+
+    mounted(){
+      console.log(this.$route.params.id);
+      this.axios.get('api/course/type/' + this.$route.params.id).then(res => {
+        console.log(res.data);
+        this.slide = res.data.data;
+        // console.log(this.slide);
+        this.ruleForm.name= this.slide.name;
+        this.ruleForm.remark = this.slide.remark;
+        this.ruleForm.status = this.slide.status;
+        this.ruleForm.status = '0' ? '正常' : '停用';
+      })
     }
   }
 </script>

@@ -34,6 +34,7 @@
     name: "Ademo",
     data() {
       return {
+        newobj:'',
         ruleForm: {
           name: '',
           remark: '',
@@ -44,9 +45,7 @@
             {required: true, message: '请输入分类名称', trigger: 'blur'},
             {min: 3, max: 5, message: '长度在 3 到 6 个字符', trigger: 'blur'}
           ],
-          remark: [
-            {required: true, message: '请输入备注', trigger: 'change'}
-          ],
+
           status: [
             {required: true, message: '请选择状态', trigger: 'change'}
           ],
@@ -62,11 +61,12 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.axios.post('/api/course/type',{
-                name:this.ruleForm.name,
-                remark:this.ruleForm.remark,
-                status:this.ruleForm.status
-              }).then(res=>{
+              this.newobj+='name='+(this.ruleForm.name)+'&'
+              this.newobj += 'remark=' + this.ruleForm.remark + '&'
+              this.ruleForm.status = '正常' ? '0' : '1'
+              this.newobj += 'status=' + this.ruleForm.status + '&'
+
+              this.axios.post('/api/course/type',this.newobj).then(res=>{
                 console.log(res);
                 this.$router.push('/app/course/type')
               });

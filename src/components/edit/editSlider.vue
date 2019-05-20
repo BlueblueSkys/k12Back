@@ -15,7 +15,16 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
              style="margin-top: 15px">
       <el-form-item label="图片" prop="pic">
-        <el-input v-model="ruleForm.pic"></el-input>
+        <el-upload
+          class="avatar-uploader"
+          action="api/upload/image"
+          name="image"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="imageUrl" :src="imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
       </el-form-item>
       <el-form-item label="标题" prop="title">
         <el-input v-model="ruleForm.title"></el-input>
@@ -50,6 +59,7 @@
 
     data() {
       return {
+        imageUrl: '',
         newobj: '',
         id: '',
         boor: '',
@@ -92,11 +102,33 @@
       }
     },
     methods: {
+
+      handleAvatarSuccess(res, file) {
+        console.log(res);
+        this.imageUrl = URL.createObjectURL(file.raw);
+
+        this.ruleForm.pic = res.data
+        console.log(this.ruleForm.pic);
+      },
+
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
+
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             console.log(this.id);
-            // this.newobj+='image='+(this.ruleForm.pic).http+'&'
+            this.newobj+='image='+(this.ruleForm.pic)+'&'
             this.newobj += 'description=' + this.ruleForm.description + '&'
             this.newobj += 'link=' + this.ruleForm.link + '&'
             this.newobj += 'type=' + this.ruleForm.type + '&'
@@ -125,10 +157,10 @@
       this.id = this.$route.params.id
       // console.log(this.$route.params.id)
       this.axios.get('api/carousel/' + this.$route.params.id).then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         this.slide = res.data.data[0];
         // console.log(this.slide.type);
-        this.ruleForm.pic = this.slide.image;
+        this. imageUrl = '/api'+this.slide.image;
         this.ruleForm.title = this.slide.title;
         this.ruleForm.type = this.slide.type.toString();
         this.ruleForm.link = this.slide.link;

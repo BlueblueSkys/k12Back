@@ -15,9 +15,12 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
              style="margin-top: 15px">
       <el-form-item label="图片" prop="pic">
+
+
         <el-upload
           class="avatar-uploader"
           action="api/upload/image"
+          name="image"
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
@@ -47,6 +50,7 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
+
       </el-form-item>
 
     </el-form>
@@ -99,8 +103,11 @@
       handleAvatarSuccess(res, file) {
         console.log(res);
         this.imageUrl = URL.createObjectURL(file.raw);
-        console.log(this.imageUrl);
+
+        this.ruleForm.pic = res.data
+        console.log(this.ruleForm.pic);
       },
+
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
         const isLt2M = file.size / 1024 / 1024 < 2;
@@ -118,14 +125,14 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
 
-            // this.newobj+='image='+(this.ruleForm.pic).http+'&'
+            this.newobj+='image='+(this.ruleForm.pic)+'&'
             this.newobj+='description=' +this.ruleForm.description+'&'
             this.newobj+='link=' +this.ruleForm.link+'&'
             this. newobj+='type=' +this.ruleForm.type+'&'
             this.ruleForm.status='正常'?'0':'1'
             this.newobj+='status=' +this.ruleForm.status+'&'
             this. newobj+='title=' +this.ruleForm.title
-
+            console.log(this.newobj);
             this.$confirm('此操作将添加该文件, 是否继续?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',

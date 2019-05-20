@@ -19,7 +19,7 @@
           <span slot="footer">
 <!--            @click="multiDelete"-->
           <el-button type="primary" @click="deleteRow">确 定</el-button>
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button @click="delVisible = false">取 消</el-button>
         </span>
         </el-dialog>
         <el-input placeholder="请输入内容" class="input-with-select" v-model="input">
@@ -49,7 +49,7 @@
           label="图片"
           width="200">
           <template slot-scope="scope">
-            <img :src="scope.row.image" min-width="70" height="70"/>
+            <img :src="'/api'+scope.row.image" min-width="70" height="70"/>
           </template>
 
         </el-table-column>
@@ -302,20 +302,19 @@
     // 获取并在页面显示
     mounted() {
 
-      getdate:{
-        console.log(this.page);
-        console.log(this.size);
-        this.axios.get('/api/carousels').then(res => (
-          this.tableData = res.data.data,
 
-            this.totalNum = res.data.paging.total
-        )).catch(err => (
-          console.log(err)
-        ))
-
-      }
+      console.log(this.page);
+      console.log(this.size);
+      this.axios.get('/api/carousels').then(res => (
+        this.tableData = res.data.data,
+        console.log(res.data.data),
+          this.totalNum = res.data.paging.total
+      )).catch(err => (
+        console.log(err)
+      ))
 
     },
+
 
     watch: {
       input: function (val, oldVal) {
